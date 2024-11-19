@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/Feather'
 import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import AntDesign from 'react-native-vector-icons/AntDesign'
 
 
 const OrderSummery = ({ }) => {
@@ -265,7 +266,11 @@ const OrderSummery = ({ }) => {
           if (res.status == "success") {
             let promoCodeMessage = `Additional discount of ${res.data?.discountValue} ${res.data?.discountType} will be applied on checkout.`
             setPromoCode((prev) => { return { ...prev, status: true, message: promoCodeMessage, checkoutPromoCode: res.data?.couponCode } })
-          } else if (res.status == "error") { Alert.alert(res.message) }
+          } else if (res.status == "error") {
+            Alert.alert(res.message)
+            // setPromoCode({ code: "" })
+            setPromoCode((prev) => { return { ...prev, error: "Validation Error" } })
+          }
         })
         .catch((err) => {
           if (err.message == "TypeError: Network request failed") {
@@ -496,7 +501,13 @@ const OrderSummery = ({ }) => {
             </View>
             {enterPromoCode &&
               <View style={[styles.inputContainer, { marginBottom: keyboardHeight }]}>
-                <TextInput autoCapitalize='none' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text, error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
+                <TextInput autoCapitalize='none' autoCorrect={false} autoComplete='off' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text.trim(), error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
+                {promoCode.code !== "" &&
+                  <TouchableOpacity style={{ position: "absolute", left: "67%", top: 12 }} onPress={(() => { setPromoCode({ code: "" }) })}>
+                    <AntDesign name={"close"} size={20} color={rsplTheme.rsplRed} />
+                  </TouchableOpacity>
+                }
+
                 <Pressable style={styles.applyBtn} onPress={(() => { getValidateCoupon() })}>
                   {loaderPromoCode ?
                     (<ActivityIndicator size={"small"} color={rsplTheme.rsplWhite} />) :
@@ -704,6 +715,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 4,
     fontSize: 16,
+    paddingRight: 35,
   },
 
   applyBtn: {
