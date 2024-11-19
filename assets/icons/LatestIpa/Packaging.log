@@ -1,0 +1,1065 @@
+2024-08-05 12:34:12 +0000  Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7f7d3c0341a0; archive(resolved)="<IDEArchive: 0x600122152940>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team(resolved)="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	Chain (14, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7f7d3c0341a0; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionProcessingPipelineContext: 0x7f7d2c28c240; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d3e2beb20; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d2dca4330; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d2dca7a00; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d2dca37a0; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d48517b30; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d485550e0; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d2dcf6eb0; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="<IDEProvisioningDisambiguatableBasicTeam: 0x600001bf8440; teamID='K6GKGFMMS9', teamName='FOREVER BOOKS PRIVATE LIMITED', teamType='Company', username='swaadhyayan712@gmail.com', isFreeProvisioningTeam='0'>">
+	<IDEDistributionContext: 0x7f7d2dcaca80; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="(null)">
+	<IDEDistributionContext: 0x7f7d2e8284d0; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="(null)">
+	<IDEDistributionContext: 0x7f7d2dcaa970; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="(null)">
+	<IDEDistributionContext: 0x7f7d3e7c0840; archive = "<IDEArchive: 0x600122152940>", distributionMethod="<IDEDistributionMethodDevelopmentSigned: 0x60005875ae30>", team="(null)">
+	<IDEDistributionContext: 0x7f7d2e06a2b0; archive = "<IDEArchive: 0x600122152940>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x7f7d3c0341a0>
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionCreateDestRootStep
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionCopyItemStep
+2024-08-05 12:34:12 +0000  Running /usr/bin/ditto '-V' '/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app'
+2024-08-05 12:34:12 +0000  >>> Copying /Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app 
+2024-08-05 12:34:12 +0000  copying file ./_CodeSignature/CodeResources ... 
+2024-08-05 12:34:12 +0000  30340 bytes for ./_CodeSignature/CodeResources
+2024-08-05 12:34:12 +0000  copying file ./Orientation ... 
+2024-08-05 12:34:12 +0000  4051184 bytes for ./Orientation
+2024-08-05 12:34:12 +0000  copying file ./AppIcon60x60@2x.png ... 
+11701 bytes for ./AppIcon60x60@2x.png
+copying file ./AccessibilityResources.bundle/en.lproj/Localizable.strings ... 
+518 bytes for ./AccessibilityResources.bundle/en.lproj/Localizable.strings
+copying file ./AccessibilityResources.bundle/Info.plist ... 
+2024-08-05 12:34:12 +0000  793 bytes for ./AccessibilityResources.bundle/Info.plist
+copying file ./Assets.car ... 
+2024-08-05 12:34:12 +0000  926671 bytes for ./Assets.car
+2024-08-05 12:34:12 +0000  copying file ./main.jsbundle ... 
+2024-08-05 12:34:12 +0000  3320416 bytes for ./main.jsbundle
+2024-08-05 12:34:12 +0000  copying file ./PrivacyInfo.xcprivacy ... 
+1255 bytes for ./PrivacyInfo.xcprivacy
+copying file ./LaunchScreen.storyboardc/t9Y-Ki-fbs-view-1wX-L7-0hc.nib ... 
+2048 bytes for ./LaunchScreen.storyboardc/t9Y-Ki-fbs-view-1wX-L7-0hc.nib
+copying file ./LaunchScreen.storyboardc/UIViewController-t9Y-Ki-fbs.nib ... 
+896 bytes for ./LaunchScreen.storyboardc/UIViewController-t9Y-Ki-fbs.nib
+2024-08-05 12:34:12 +0000  copying file ./LaunchScreen.storyboardc/Info.plist ... 
+2024-08-05 12:34:12 +0000  258 bytes for ./LaunchScreen.storyboardc/Info.plist
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/libswiftCoreImage.dylib ... 
+2024-08-05 12:34:12 +0000  335072 bytes for ./Frameworks/libswiftCoreImage.dylib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/_CodeSignature/CodeResources ... 
+2024-08-05 12:34:12 +0000  8072 bytes for ./Frameworks/Razorpay.framework/_CodeSignature/CodeResources
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Hash.txt ... 
+2024-08-05 12:34:12 +0000  32 bytes for ./Frameworks/Razorpay.framework/Hash.txt
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/EncryptedOtpelf.js ... 
+2024-08-05 12:34:12 +0000  88512 bytes for ./Frameworks/Razorpay.framework/EncryptedOtpelf.js
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Assets.car ... 
+2024-08-05 12:34:12 +0000  150735 bytes for ./Frameworks/Razorpay.framework/Assets.car
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/PrivacyInfo.xcprivacy ... 
+2024-08-05 12:34:12 +0000  6761 bytes for ./Frameworks/Razorpay.framework/PrivacyInfo.xcprivacy
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:12 +0000  2386 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/objects-11.0+.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/runtime.nib ... 
+2024-08-05 12:34:12 +0000  2386 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/runtime.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:12 +0000  1057 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/objects-11.0+.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/runtime.nib ... 
+2024-08-05 12:34:12 +0000  1057 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/runtime.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:12 +0000  1443 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/objects-11.0+.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/runtime.nib ... 
+2024-08-05 12:34:12 +0000  1443 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/runtime.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:12 +0000  13894 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/objects-11.0+.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/runtime.nib ... 
+2024-08-05 12:34:12 +0000  14098 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/runtime.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:12 +0000  2694 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/objects-11.0+.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/runtime.nib ... 
+2024-08-05 12:34:12 +0000  2811 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/runtime.nib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Checkout.storyboardc/Info.plist ... 
+2024-08-05 12:34:12 +0000  381 bytes for ./Frameworks/Razorpay.framework/Checkout.storyboardc/Info.plist
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Razorpay ... 
+2024-08-05 12:34:12 +0000  1466752 bytes for ./Frameworks/Razorpay.framework/Razorpay
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/CommonAssets/warning.png ... 
+2024-08-05 12:34:12 +0000  496 bytes for ./Frameworks/Razorpay.framework/CommonAssets/warning.png
+copying file ./Frameworks/Razorpay.framework/CommonAssets/check_mark.png ... 
+2024-08-05 12:34:12 +0000  649 bytes for ./Frameworks/Razorpay.framework/CommonAssets/check_mark.png
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/CommonAssets/Razorpay_Logo.png ... 
+2024-08-05 12:34:12 +0000  75526 bytes for ./Frameworks/Razorpay.framework/CommonAssets/Razorpay_Logo.png
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/Razorpay.framework/Info.plist ... 
+2024-08-05 12:34:12 +0000  762 bytes for ./Frameworks/Razorpay.framework/Info.plist
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/libswiftObjectiveC.dylib ... 
+2024-08-05 12:34:12 +0000  400112 bytes for ./Frameworks/libswiftObjectiveC.dylib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/libswiftCore.dylib ... 
+2024-08-05 12:34:12 +0000  23297568 bytes for ./Frameworks/libswiftCore.dylib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/libswiftCoreGraphics.dylib ... 
+857648 bytes for ./Frameworks/libswiftCoreGraphics.dylib
+copying file ./Frameworks/libswiftUIKit.dylib ... 
+655616 bytes for ./Frameworks/libswiftUIKit.dylib
+copying file ./Frameworks/libswiftMetal.dylib ... 
+395696 bytes for ./Frameworks/libswiftMetal.dylib
+copying file ./Frameworks/libswiftDispatch.dylib ... 
+1377360 bytes for ./Frameworks/libswiftDispatch.dylib
+copying file ./Frameworks/libswiftos.dylib ... 
+2024-08-05 12:34:12 +0000  396976 bytes for ./Frameworks/libswiftos.dylib
+copying file ./Frameworks/libswiftCoreFoundation.dylib ... 
+335280 bytes for ./Frameworks/libswiftCoreFoundation.dylib
+copying file ./Frameworks/libswiftDarwin.dylib ... 
+499744 bytes for ./Frameworks/libswiftDarwin.dylib
+copying file ./Frameworks/libswiftQuartzCore.dylib ... 
+2024-08-05 12:34:12 +0000  338256 bytes for ./Frameworks/libswiftQuartzCore.dylib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/hermes.framework/_CodeSignature/CodeResources ... 
+2024-08-05 12:34:12 +0000  1798 bytes for ./Frameworks/hermes.framework/_CodeSignature/CodeResources
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/hermes.framework/hermes ... 
+2024-08-05 12:34:12 +0000  3240384 bytes for ./Frameworks/hermes.framework/hermes
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/hermes.framework/Info.plist ... 
+815 bytes for ./Frameworks/hermes.framework/Info.plist
+copying file ./Frameworks/libswiftFoundation.dylib ... 
+2024-08-05 12:34:12 +0000  11552336 bytes for ./Frameworks/libswiftFoundation.dylib
+2024-08-05 12:34:12 +0000  copying file ./Frameworks/libswiftCoreLocation.dylib ... 
+401504 bytes for ./Frameworks/libswiftCoreLocation.dylib
+copying file ./embedded.mobileprovision ... 
+13158 bytes for ./embedded.mobileprovision
+2024-08-05 12:34:12 +0000  copying file ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeResources ... 
+2024-08-05 12:34:12 +0000  2032 bytes for ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeResources
+2024-08-05 12:34:12 +0000  copying file ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeDirectory ... 
+2024-08-05 12:34:12 +0000  188 bytes for ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeDirectory
+2024-08-05 12:34:12 +0000  copying file ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements-1 ... 
+2024-08-05 12:34:12 +0000  236 bytes for ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements-1
+2024-08-05 12:34:12 +0000  copying file ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeSignature ... 
+2024-08-05 12:34:12 +0000  4878 bytes for ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeSignature
+2024-08-05 12:34:12 +0000  copying file ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements ... 
+2024-08-05 12:34:12 +0000  204 bytes for ./ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements
+2024-08-05 12:34:12 +0000  copying file ./ReactNativeBlobUtilPrivacyInfo.bundle/PrivacyInfo.xcprivacy ... 
+2024-08-05 12:34:12 +0000  753 bytes for ./ReactNativeBlobUtilPrivacyInfo.bundle/PrivacyInfo.xcprivacy
+2024-08-05 12:34:12 +0000  copying file ./ReactNativeBlobUtilPrivacyInfo.bundle/Info.plist ... 
+2024-08-05 12:34:12 +0000  809 bytes for ./ReactNativeBlobUtilPrivacyInfo.bundle/Info.plist
+2024-08-05 12:34:12 +0000  copying file ./assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@3x.png ... 
+2024-08-05 12:34:12 +0000  212 bytes for ./assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@3x.png
+2024-08-05 12:34:12 +0000  copying file ./assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@2x.png ... 
+2024-08-05 12:34:12 +0000  163 bytes for ./assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@2x.png
+2024-08-05 12:34:12 +0000  copying file ./assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon.png ... 
+2024-08-05 12:34:12 +0000  108 bytes for ./assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon.png
+2024-08-05 12:34:12 +0000  copying file ./assets/node_modules/@react-navigation/elements/src/assets/back-icon@3x.png ... 
+2024-08-05 12:34:12 +0000  761 bytes for ./assets/node_modules/@react-navigation/elements/src/assets/back-icon@3x.png
+2024-08-05 12:34:12 +0000  copying file ./assets/node_modules/@react-navigation/elements/src/assets/back-icon@2x.png ... 
+2024-08-05 12:34:12 +0000  405 bytes for ./assets/node_modules/@react-navigation/elements/src/assets/back-icon@2x.png
+2024-08-05 12:34:12 +0000  copying file ./assets/node_modules/@react-navigation/elements/src/assets/back-icon.png ... 
+2024-08-05 12:34:12 +0000  290 bytes for ./assets/node_modules/@react-navigation/elements/src/assets/back-icon.png
+2024-08-05 12:34:12 +0000  copying file ./assets/node_modules/@react-navigation/elements/src/assets/back-icon-mask.png ... 
+2024-08-05 12:34:12 +0000  913 bytes for ./assets/node_modules/@react-navigation/elements/src/assets/back-icon-mask.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/check.png ... 
+2024-08-05 12:34:12 +0000  20230 bytes for ./assets/assets/icons/check.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/keypad.png ... 
+2024-08-05 12:34:12 +0000  21895 bytes for ./assets/assets/icons/keypad.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/filters_fill.png ... 
+2024-08-05 12:34:12 +0000  6510 bytes for ./assets/assets/icons/filters_fill.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/tick.png ... 
+2024-08-05 12:34:12 +0000  11121 bytes for ./assets/assets/icons/tick.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/lockQuestion.png ... 
+2024-08-05 12:34:12 +0000  13455 bytes for ./assets/assets/icons/lockQuestion.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/filters.png ... 
+2024-08-05 12:34:12 +0000  9514 bytes for ./assets/assets/icons/filters.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/eBookLogo.png ... 
+2024-08-05 12:34:12 +0000  32179 bytes for ./assets/assets/icons/eBookLogo.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/book.png ... 
+2024-08-05 12:34:12 +0000  35606 bytes for ./assets/assets/icons/book.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/down-arrow.png ... 
+2024-08-05 12:34:12 +0000  2806 bytes for ./assets/assets/icons/down-arrow.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/store.png ... 
+2024-08-05 12:34:12 +0000  17916 bytes for ./assets/assets/icons/store.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/pen.png ... 
+2024-08-05 12:34:12 +0000  7534 bytes for ./assets/assets/icons/pen.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/store_fill.png ... 
+2024-08-05 12:34:12 +0000  19131 bytes for ./assets/assets/icons/store_fill.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/mobileIcon.png ... 
+2024-08-05 12:34:12 +0000  177865 bytes for ./assets/assets/icons/mobileIcon.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/shopping.png ... 
+2024-08-05 12:34:12 +0000  17040 bytes for ./assets/assets/icons/shopping.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/person.png ... 
+2024-08-05 12:34:12 +0000  24999 bytes for ./assets/assets/icons/person.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/person_fill.png ... 
+2024-08-05 12:34:12 +0000  21302 bytes for ./assets/assets/icons/person_fill.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/loginImg.png ... 
+2024-08-05 12:34:12 +0000  67579 bytes for ./assets/assets/icons/loginImg.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/search.png ... 
+2024-08-05 12:34:12 +0000  14434 bytes for ./assets/assets/icons/search.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/love_fill.png ... 
+2024-08-05 12:34:12 +0000  7062 bytes for ./assets/assets/icons/love_fill.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/menu.png ... 
+2024-08-05 12:34:12 +0000  4637 bytes for ./assets/assets/icons/menu.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/shopping-cart.png ... 
+2024-08-05 12:34:12 +0000  8617 bytes for ./assets/assets/icons/shopping-cart.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/image-gallery.png ... 
+2024-08-05 12:34:12 +0000  13981 bytes for ./assets/assets/icons/image-gallery.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/empty-cart.png ... 
+2024-08-05 12:34:12 +0000  10025 bytes for ./assets/assets/icons/empty-cart.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/shopping_fill.png ... 
+2024-08-05 12:34:12 +0000  15111 bytes for ./assets/assets/icons/shopping_fill.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/interactiveBookLogo.png ... 
+2024-08-05 12:34:12 +0000  36581 bytes for ./assets/assets/icons/interactiveBookLogo.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/filter.png ... 
+2024-08-05 12:34:12 +0000  10629 bytes for ./assets/assets/icons/filter.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/eye.png ... 
+2024-08-05 12:34:12 +0000  12249 bytes for ./assets/assets/icons/eye.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/ProfileIcon.png ... 
+2024-08-05 12:34:12 +0000  12672 bytes for ./assets/assets/icons/ProfileIcon.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/eyeClose.png ... 
+2024-08-05 12:34:12 +0000  16184 bytes for ./assets/assets/icons/eyeClose.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/delete.png ... 
+2024-08-05 12:34:12 +0000  11573 bytes for ./assets/assets/icons/delete.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/trash.png ... 
+2024-08-05 12:34:12 +0000  7842 bytes for ./assets/assets/icons/trash.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/lockCheckMark.png ... 
+2024-08-05 12:34:12 +0000  49776 bytes for ./assets/assets/icons/lockCheckMark.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/backArrow.png ... 
+2024-08-05 12:34:12 +0000  3736 bytes for ./assets/assets/icons/backArrow.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/love.png ... 
+2024-08-05 12:34:12 +0000  8787 bytes for ./assets/assets/icons/love.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/camera.png ... 
+2024-08-05 12:34:12 +0000  11504 bytes for ./assets/assets/icons/camera.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/storeImg.png ... 
+2024-08-05 12:34:12 +0000  368051 bytes for ./assets/assets/icons/storeImg.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/right.png ... 
+2024-08-05 12:34:12 +0000  3263 bytes for ./assets/assets/icons/right.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/book_fill.png ... 
+2024-08-05 12:34:12 +0000  26792 bytes for ./assets/assets/icons/book_fill.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/close.png ... 
+2024-08-05 12:34:12 +0000  3609 bytes for ./assets/assets/icons/close.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/EmptyWishlist.png ... 
+2024-08-05 12:34:12 +0000  167169 bytes for ./assets/assets/icons/EmptyWishlist.png
+2024-08-05 12:34:12 +0000  copying file ./assets/assets/icons/mic.png ... 
+2024-08-05 12:34:12 +0000  13011 bytes for ./assets/assets/icons/mic.png
+2024-08-05 12:34:12 +0000  copying file ./Info.plist ... 
+2024-08-05 12:34:12 +0000  2038 bytes for ./Info.plist
+2024-08-05 12:34:12 +0000  copying file ./PkgInfo ... 
+2024-08-05 12:34:12 +0000  8 bytes for ./PkgInfo
+2024-08-05 12:34:12 +0000  /usr/bin/ditto exited with 0
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionEmbedProfileStep
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x600122132220; bundleID='com.razorpay.CheckoutOtpelf', path='<DVTFilePath:0x600012e20d20:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6614a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.razorpay.CheckoutOtpelf', executablePath='<DVTFilePath:0x600016e3dea0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework/Razorpay'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x60012212ccc0; bundleID='dev.hermesengine.iphoneos', path='<DVTFilePath:0x600012db5ce0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663f70; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='dev.hermesengine.iphoneos', executablePath='<DVTFilePath:0x600122157c60:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework/hermes'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x600122131920; bundleID='com.apple.dt.runtime.swiftCore', path='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661d10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCore', executablePath='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x6001221319e0; bundleID='com.apple.dt.runtime.swiftCoreFoundation', path='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661810; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreFoundation', executablePath='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x60012212a640; bundleID='com.apple.dt.runtime.swiftCoreGraphics', path='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6492c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreGraphics', executablePath='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x60012212f120; bundleID='com.apple.dt.runtime.swiftCoreImage', path='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e61edf0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreImage', executablePath='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x60012212ff00; bundleID='com.apple.dt.runtime.swiftCoreLocation', path='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663930; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreLocation', executablePath='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x60012212f1e0; bundleID='com.apple.dt.runtime.swiftDarwin', path='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663430; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDarwin', executablePath='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x60012212d920; bundleID='com.apple.dt.runtime.swiftDispatch', path='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6623f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDispatch', executablePath='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x600122131860; bundleID='com.apple.dt.runtime.swiftFoundation', path='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftFoundation', executablePath='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x60012212fde0; bundleID='com.apple.dt.runtime.swiftMetal', path='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e660cd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftMetal', executablePath='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x6001221326a0; bundleID='com.apple.dt.runtime.swiftObjectiveC', path='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661040; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftObjectiveC', executablePath='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x600122131500; bundleID='com.apple.dt.runtime.swiftQuartzCore', path='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663200; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftQuartzCore', executablePath='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x600122130f00; bundleID='com.apple.dt.runtime.swiftUIKit', path='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e648ff0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftUIKit', executablePath='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping profile for item: <IDEDistributionItem: 0x600122131380; bundleID='com.apple.dt.runtime.swiftos', path='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661fe0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftos', executablePath='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionInfoPlistStep
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionInfoPlistStep because it said so
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionAppThinningPlistStep
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionAppThinningPlistStep because it said so
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionCompileBitcodeStep
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCompileBitcodeStep because it said so
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionCodeSlimmingStep
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionCopyBCSymbolMapsStep
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionCopyBCSymbolMapsStep because it said so
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionSymbolsStep
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionSymbolsStep because it said so
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionAppThinningStep
+2024-08-05 12:34:12 +0000  Skipping step: IDEDistributionAppThinningStep because it said so
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionArchThinningStep
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/Razorpay.framework/Razorpay' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-08-05 12:34:12 +0000  Skipping architecture thinning for item "Razorpay" because arch "arm64e" wasn't found
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/hermes.framework/hermes' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-08-05 12:34:12 +0000  Skipping architecture thinning for item "hermes" because arch "arm64e" wasn't found
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftCore.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftCoreFoundation.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftCoreGraphics.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftCoreImage.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftCoreLocation.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftDarwin.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftDispatch.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftFoundation.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftMetal.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftObjectiveC.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftQuartzCore.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftUIKit.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib' '-remove' 'arm64e' '-output' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 0
+2024-08-05 12:34:12 +0000  Successfully thinned item "libswiftos.dylib", arch "arm64e"
+2024-08-05 12:34:12 +0000  Running /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Orientation' '-verify_arch' 'arm64e'
+2024-08-05 12:34:12 +0000  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo exited with 1
+2024-08-05 12:34:12 +0000  Skipping architecture thinning for item "Orientation" because arch "arm64e" wasn't found
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionODRStep
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionStripXattrsStep
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x600122132220; bundleID='com.razorpay.CheckoutOtpelf', path='<DVTFilePath:0x600012e20d20:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6614a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.razorpay.CheckoutOtpelf', executablePath='<DVTFilePath:0x600016e3dea0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework/Razorpay'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x60012212ccc0; bundleID='dev.hermesengine.iphoneos', path='<DVTFilePath:0x600012db5ce0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663f70; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='dev.hermesengine.iphoneos', executablePath='<DVTFilePath:0x600122157c60:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework/hermes'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x600122131920; bundleID='com.apple.dt.runtime.swiftCore', path='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661d10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCore', executablePath='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x6001221319e0; bundleID='com.apple.dt.runtime.swiftCoreFoundation', path='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661810; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreFoundation', executablePath='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x60012212a640; bundleID='com.apple.dt.runtime.swiftCoreGraphics', path='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6492c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreGraphics', executablePath='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x60012212f120; bundleID='com.apple.dt.runtime.swiftCoreImage', path='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e61edf0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreImage', executablePath='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x60012212ff00; bundleID='com.apple.dt.runtime.swiftCoreLocation', path='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663930; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreLocation', executablePath='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x60012212f1e0; bundleID='com.apple.dt.runtime.swiftDarwin', path='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663430; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDarwin', executablePath='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x60012212d920; bundleID='com.apple.dt.runtime.swiftDispatch', path='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6623f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDispatch', executablePath='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x600122131860; bundleID='com.apple.dt.runtime.swiftFoundation', path='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftFoundation', executablePath='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x60012212fde0; bundleID='com.apple.dt.runtime.swiftMetal', path='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e660cd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftMetal', executablePath='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x6001221326a0; bundleID='com.apple.dt.runtime.swiftObjectiveC', path='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661040; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftObjectiveC', executablePath='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x600122131500; bundleID='com.apple.dt.runtime.swiftQuartzCore', path='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663200; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftQuartzCore', executablePath='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x600122130f00; bundleID='com.apple.dt.runtime.swiftUIKit', path='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e648ff0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftUIKit', executablePath='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Skipping stripping extended attributes of item: <IDEDistributionItem: 0x600122131380; bundleID='com.apple.dt.runtime.swiftos', path='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661fe0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c160; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftos', executablePath='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', hardenedRuntime='0'>'>
+2024-08-05 12:34:12 +0000  Running /usr/bin/xattr '-crs' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app'
+2024-08-05 12:34:12 +0000  /usr/bin/xattr exited with 0
+2024-08-05 12:34:12 +0000  Processing step: IDEDistributionCodesignStep
+2024-08-05 12:34:12 +0000  Entitlements for <IDEDistributionItem: 0x600122132220; bundleID='com.razorpay.CheckoutOtpelf', path='<DVTFilePath:0x600012e20d20:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6614a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.razorpay.CheckoutOtpelf', executablePath='<DVTFilePath:0x600016e3dea0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework/Razorpay'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:12 +0000  Entitlements for <IDEDistributionItem: 0x600122132220; bundleID='com.razorpay.CheckoutOtpelf', path='<DVTFilePath:0x600012e20d20:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6614a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.razorpay.CheckoutOtpelf', executablePath='<DVTFilePath:0x600016e3dea0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework/Razorpay'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:12 +0000  Writing entitlements for <IDEDistributionItem: 0x600122132220; bundleID='com.razorpay.CheckoutOtpelf', path='<DVTFilePath:0x600012e20d20:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6614a0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c0b0; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.razorpay.CheckoutOtpelf', executablePath='<DVTFilePath:0x600016e3dea0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/Razorpay.framework/Razorpay'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~QiqP7W
+2024-08-05 12:34:12 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~QiqP7W' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/Razorpay.framework'
+2024-08-05 12:34:12 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/Razorpay.framework: replacing existing signature
+2024-08-05 12:34:12 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/Razorpay.framework: signed bundle with Mach-O thin (arm64) [com.razorpay.CheckoutOtpelf]
+2024-08-05 12:34:12 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:12 +0000  Entitlements for <IDEDistributionItem: 0x60012212ccc0; bundleID='dev.hermesengine.iphoneos', path='<DVTFilePath:0x600012db5ce0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663f70; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b2b8000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='dev.hermesengine.iphoneos', executablePath='<DVTFilePath:0x600122157c60:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework/hermes'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:12 +0000  Entitlements for <IDEDistributionItem: 0x60012212ccc0; bundleID='dev.hermesengine.iphoneos', path='<DVTFilePath:0x600012db5ce0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663f70; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299a20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='dev.hermesengine.iphoneos', executablePath='<DVTFilePath:0x600122157c60:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework/hermes'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:12 +0000  Writing entitlements for <IDEDistributionItem: 0x60012212ccc0; bundleID='dev.hermesengine.iphoneos', path='<DVTFilePath:0x600012db5ce0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663f70; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='dev.hermesengine.iphoneos', executablePath='<DVTFilePath:0x600122157c60:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/hermes.framework/hermes'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~M5vqom
+2024-08-05 12:34:12 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~M5vqom' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/hermes.framework'
+2024-08-05 12:34:12 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/hermes.framework: replacing existing signature
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/hermes.framework: signed bundle with Mach-O thin (arm64) [dev.hermesengine.iphoneos]
+2024-08-05 12:34:13 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x600122131920; bundleID='com.apple.dt.runtime.swiftCore', path='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661d10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCore', executablePath='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x600122131920; bundleID='com.apple.dt.runtime.swiftCore', path='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661d10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c0b0; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCore', executablePath='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:13 +0000  Writing entitlements for <IDEDistributionItem: 0x600122131920; bundleID='com.apple.dt.runtime.swiftCore', path='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661d10; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c210; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCore', executablePath='<DVTFilePath:0x600016e3da40:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCore.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~h3t7Ve
+2024-08-05 12:34:13 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~h3t7Ve' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib'
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib: replacing existing signature
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCore]
+2024-08-05 12:34:13 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x6001221319e0; bundleID='com.apple.dt.runtime.swiftCoreFoundation', path='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661810; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreFoundation', executablePath='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x6001221319e0; bundleID='com.apple.dt.runtime.swiftCoreFoundation', path='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661810; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c210; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreFoundation', executablePath='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:13 +0000  Writing entitlements for <IDEDistributionItem: 0x6001221319e0; bundleID='com.apple.dt.runtime.swiftCoreFoundation', path='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661810; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c370; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreFoundation', executablePath='<DVTFilePath:0x600026baeb80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~SfEmBl
+2024-08-05 12:34:13 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~SfEmBl' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib: replacing existing signature
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCoreFoundation]
+2024-08-05 12:34:13 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212a640; bundleID='com.apple.dt.runtime.swiftCoreGraphics', path='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6492c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreGraphics', executablePath='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212a640; bundleID='com.apple.dt.runtime.swiftCoreGraphics', path='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6492c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreGraphics', executablePath='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:13 +0000  Writing entitlements for <IDEDistributionItem: 0x60012212a640; bundleID='com.apple.dt.runtime.swiftCoreGraphics', path='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6492c0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299130; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreGraphics', executablePath='<DVTFilePath:0x600026bac200:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~luZskF
+2024-08-05 12:34:13 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~luZskF' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib: replacing existing signature
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCoreGraphics]
+2024-08-05 12:34:13 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212f120; bundleID='com.apple.dt.runtime.swiftCoreImage', path='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e61edf0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreImage', executablePath='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212f120; bundleID='com.apple.dt.runtime.swiftCoreImage', path='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e61edf0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreImage', executablePath='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:13 +0000  Writing entitlements for <IDEDistributionItem: 0x60012212f120; bundleID='com.apple.dt.runtime.swiftCoreImage', path='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e61edf0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299130; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreImage', executablePath='<DVTFilePath:0x600016e36ca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreImage.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~Mov3S2
+2024-08-05 12:34:13 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~Mov3S2' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib'
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib: replacing existing signature
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCoreImage]
+2024-08-05 12:34:13 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212ff00; bundleID='com.apple.dt.runtime.swiftCoreLocation', path='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663930; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreLocation', executablePath='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212ff00; bundleID='com.apple.dt.runtime.swiftCoreLocation', path='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663930; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c210; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreLocation', executablePath='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:13 +0000  Writing entitlements for <IDEDistributionItem: 0x60012212ff00; bundleID='com.apple.dt.runtime.swiftCoreLocation', path='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663930; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c370; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftCoreLocation', executablePath='<DVTFilePath:0x600026bae880:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~mmCOME
+2024-08-05 12:34:13 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~mmCOME' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib'
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib: replacing existing signature
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftCoreLocation]
+2024-08-05 12:34:13 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212f1e0; bundleID='com.apple.dt.runtime.swiftDarwin', path='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663430; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDarwin', executablePath='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:13 +0000  Entitlements for <IDEDistributionItem: 0x60012212f1e0; bundleID='com.apple.dt.runtime.swiftDarwin', path='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663430; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDarwin', executablePath='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:13 +0000  Writing entitlements for <IDEDistributionItem: 0x60012212f1e0; bundleID='com.apple.dt.runtime.swiftDarwin', path='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663430; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299130; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDarwin', executablePath='<DVTFilePath:0x600016e3f9c0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDarwin.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~4heN4N
+2024-08-05 12:34:13 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~4heN4N' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib'
+2024-08-05 12:34:13 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib: replacing existing signature
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftDarwin]
+2024-08-05 12:34:14 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x60012212d920; bundleID='com.apple.dt.runtime.swiftDispatch', path='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6623f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDispatch', executablePath='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x60012212d920; bundleID='com.apple.dt.runtime.swiftDispatch', path='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6623f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c210; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDispatch', executablePath='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:14 +0000  Writing entitlements for <IDEDistributionItem: 0x60012212d920; bundleID='com.apple.dt.runtime.swiftDispatch', path='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6623f0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c370; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftDispatch', executablePath='<DVTFilePath:0x600016e3eca0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftDispatch.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~7V4dvd
+2024-08-05 12:34:14 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~7V4dvd' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib'
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib: replacing existing signature
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftDispatch]
+2024-08-05 12:34:14 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x600122131860; bundleID='com.apple.dt.runtime.swiftFoundation', path='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftFoundation', executablePath='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x600122131860; bundleID='com.apple.dt.runtime.swiftFoundation', path='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftFoundation', executablePath='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:14 +0000  Writing entitlements for <IDEDistributionItem: 0x600122131860; bundleID='com.apple.dt.runtime.swiftFoundation', path='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661180; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299130; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftFoundation', executablePath='<DVTFilePath:0x600026badb00:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftFoundation.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~jP4i5k
+2024-08-05 12:34:14 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~jP4i5k' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib'
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib: replacing existing signature
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftFoundation]
+2024-08-05 12:34:14 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x60012212fde0; bundleID='com.apple.dt.runtime.swiftMetal', path='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e660cd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftMetal', executablePath='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x60012212fde0; bundleID='com.apple.dt.runtime.swiftMetal', path='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e660cd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftMetal', executablePath='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:14 +0000  Writing entitlements for <IDEDistributionItem: 0x60012212fde0; bundleID='com.apple.dt.runtime.swiftMetal', path='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e660cd0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299130; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftMetal', executablePath='<DVTFilePath:0x600016e3df80:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftMetal.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~9FYy4U
+2024-08-05 12:34:14 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~9FYy4U' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib'
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib: replacing existing signature
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftMetal]
+2024-08-05 12:34:14 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x6001221326a0; bundleID='com.apple.dt.runtime.swiftObjectiveC', path='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661040; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b2b8000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftObjectiveC', executablePath='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x6001221326a0; bundleID='com.apple.dt.runtime.swiftObjectiveC', path='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661040; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299a20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftObjectiveC', executablePath='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:14 +0000  Writing entitlements for <IDEDistributionItem: 0x6001221326a0; bundleID='com.apple.dt.runtime.swiftObjectiveC', path='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661040; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftObjectiveC', executablePath='<DVTFilePath:0x600026b9f300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~B4cZI1
+2024-08-05 12:34:14 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~B4cZI1' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib'
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib: replacing existing signature
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftObjectiveC]
+2024-08-05 12:34:14 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x600122131500; bundleID='com.apple.dt.runtime.swiftQuartzCore', path='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663200; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b2b8000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftQuartzCore', executablePath='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x600122131500; bundleID='com.apple.dt.runtime.swiftQuartzCore', path='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663200; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c0b0; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftQuartzCore', executablePath='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:14 +0000  Writing entitlements for <IDEDistributionItem: 0x600122131500; bundleID='com.apple.dt.runtime.swiftQuartzCore', path='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e663200; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b29c210; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftQuartzCore', executablePath='<DVTFilePath:0x600026bac300:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~MRWU6k
+2024-08-05 12:34:14 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~MRWU6k' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib'
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib: replacing existing signature
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftQuartzCore]
+2024-08-05 12:34:14 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x600122130f00; bundleID='com.apple.dt.runtime.swiftUIKit', path='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e648ff0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b2a9a20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftUIKit', executablePath='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x600122130f00; bundleID='com.apple.dt.runtime.swiftUIKit', path='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e648ff0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299a20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftUIKit', executablePath='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:14 +0000  Writing entitlements for <IDEDistributionItem: 0x600122130f00; bundleID='com.apple.dt.runtime.swiftUIKit', path='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e648ff0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftUIKit', executablePath='<DVTFilePath:0x600016e35490:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftUIKit.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~ujMSyc
+2024-08-05 12:34:14 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~ujMSyc' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib'
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib: replacing existing signature
+2024-08-05 12:34:14 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftUIKit]
+2024-08-05 12:34:14 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:14 +0000  Entitlements for <IDEDistributionItem: 0x600122131380; bundleID='com.apple.dt.runtime.swiftos', path='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661fe0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b2b8000; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftos', executablePath='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', hardenedRuntime='0'>'>: {
+}
+2024-08-05 12:34:15 +0000  Entitlements for <IDEDistributionItem: 0x600122131380; bundleID='com.apple.dt.runtime.swiftos', path='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661fe0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299a20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftos', executablePath='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', hardenedRuntime='0'>'> are: {
+}
+2024-08-05 12:34:15 +0000  Writing entitlements for <IDEDistributionItem: 0x600122131380; bundleID='com.apple.dt.runtime.swiftos', path='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e661fe0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299290; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='(null)', teamID='K6GKGFMMS9', identifier='com.apple.dt.runtime.swiftos', executablePath='<DVTFilePath:0x600016e35420:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Frameworks/libswiftos.dylib'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~fSoBSX
+2024-08-05 12:34:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~fSoBSX' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib'
+2024-08-05 12:34:15 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib: replacing existing signature
+2024-08-05 12:34:15 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib: signed Mach-O universal (armv7 armv7s arm64) [com.apple.dt.runtime.swiftos]
+2024-08-05 12:34:15 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:15 +0000  Entitlements for <IDEDistributionItem: 0x600122133180; bundleID='com.foreverbooks.digitext', path='<DVTFilePath:0x600012c73e90:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6610e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b298f20; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='{
+    "application-identifier" = "K6GKGFMMS9.com.foreverbooks.digitext";
+    "com.apple.developer.team-identifier" = K6GKGFMMS9;
+    "get-task-allow" = 1;
+}', teamID='K6GKGFMMS9', identifier='com.foreverbooks.digitext', executablePath='<DVTFilePath:0x600012c7f4f0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Orientation'>', hardenedRuntime='0'>'>: {
+    "application-identifier" = "K6GKGFMMS9.com.foreverbooks.digitext";
+    "com.apple.developer.team-identifier" = K6GKGFMMS9;
+    "get-task-allow" = 1;
+}
+2024-08-05 12:34:15 +0000  Entitlements for <IDEDistributionItem: 0x600122133180; bundleID='com.foreverbooks.digitext', path='<DVTFilePath:0x600012c73e90:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6610e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b299130; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='{
+    "application-identifier" = "K6GKGFMMS9.com.foreverbooks.digitext";
+    "com.apple.developer.team-identifier" = K6GKGFMMS9;
+    "get-task-allow" = 1;
+}', teamID='K6GKGFMMS9', identifier='com.foreverbooks.digitext', executablePath='<DVTFilePath:0x600012c7f4f0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Orientation'>', hardenedRuntime='0'>'> are: {
+    "application-identifier" = "K6GKGFMMS9.com.foreverbooks.digitext";
+    "com.apple.developer.team-identifier" = K6GKGFMMS9;
+    "get-task-allow" = 1;
+}
+2024-08-05 12:34:15 +0000  Writing entitlements for <IDEDistributionItem: 0x600122133180; bundleID='com.foreverbooks.digitext', path='<DVTFilePath:0x600012c73e90:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x60000e6610e0; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x60001b2993f0; name='Apple Development: Lalit Gupta (J5V27NH7WR)', hash='1CB489BD8EAD76C6381DBF5CAC336E205BA3752A', serialNumber='7D111E44EC3EB8D0F4FE1248192956B0', certificateKinds='(
+    "1.2.840.113635.100.6.1.12",
+    "1.2.840.113635.100.6.1.2"
+), issueDate='2024-07-12 09:05:29 +0000''>', entitlements='{
+    "application-identifier" = "K6GKGFMMS9.com.foreverbooks.digitext";
+    "com.apple.developer.team-identifier" = K6GKGFMMS9;
+    "get-task-allow" = 1;
+}', teamID='K6GKGFMMS9', identifier='com.foreverbooks.digitext', executablePath='<DVTFilePath:0x600012c7f4f0:'/Users/swa-adhyayan/Library/Developer/Xcode/Archives/2024-08-05/Orientation 8-5-24, 6.03 PM.xcarchive/Products/Applications/Orientation.app/Orientation'>', hardenedRuntime='0'>'> to: /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~gwvBZu
+2024-08-05 12:34:15 +0000  Running /usr/bin/codesign '-vvv' '--force' '--sign' '1CB489BD8EAD76C6381DBF5CAC336E205BA3752A' '--entitlements' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/entitlements~~~gwvBZu' '--generate-entitlement-der' '--preserve-metadata=identifier,flags,runtime' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app'
+2024-08-05 12:34:15 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app: replacing existing signature
+2024-08-05 12:34:15 +0000  /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app: signed app bundle with Mach-O thin (arm64) [com.foreverbooks.digitext]
+2024-08-05 12:34:15 +0000  /usr/bin/codesign exited with 0
+2024-08-05 12:34:15 +0000  Processing step: IDEDistributionZipODRItemStep
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Skipping step: IDEDistributionZipODRItemStep because it said so
+2024-08-05 12:34:15 +0000  Processing step: IDEDistributionCreateIPAStep
+2024-08-05 12:34:15 +0000  Running /usr/bin/ditto '-V' '-c' '-k' '--norsrc' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root' '/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Packages/Orientation.ipa'
+2024-08-05 12:34:15 +0000  >>> Copying /var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root 
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/_CodeSignature/CodeResources ... 
+2024-08-05 12:34:15 +0000  30340 bytes for ./Payload/Orientation.app/_CodeSignature/CodeResources
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Orientation ... 
+2024-08-05 12:34:15 +0000  4051184 bytes for ./Payload/Orientation.app/Orientation
+copying file ./Payload/Orientation.app/AppIcon60x60@2x.png ... 
+2024-08-05 12:34:15 +0000  11701 bytes for ./Payload/Orientation.app/AppIcon60x60@2x.png
+copying file ./Payload/Orientation.app/AccessibilityResources.bundle/en.lproj/Localizable.strings ... 
+2024-08-05 12:34:15 +0000  518 bytes for ./Payload/Orientation.app/AccessibilityResources.bundle/en.lproj/Localizable.strings
+copying file ./Payload/Orientation.app/AccessibilityResources.bundle/Info.plist ... 
+2024-08-05 12:34:15 +0000  793 bytes for ./Payload/Orientation.app/AccessibilityResources.bundle/Info.plist
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Assets.car ... 
+2024-08-05 12:34:15 +0000  926671 bytes for ./Payload/Orientation.app/Assets.car
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/main.jsbundle ... 
+2024-08-05 12:34:15 +0000  3320416 bytes for ./Payload/Orientation.app/main.jsbundle
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/PrivacyInfo.xcprivacy ... 
+1255 bytes for ./Payload/Orientation.app/PrivacyInfo.xcprivacy
+copying file ./Payload/Orientation.app/LaunchScreen.storyboardc/t9Y-Ki-fbs-view-1wX-L7-0hc.nib ... 
+2048 bytes for ./Payload/Orientation.app/LaunchScreen.storyboardc/t9Y-Ki-fbs-view-1wX-L7-0hc.nib
+copying file ./Payload/Orientation.app/LaunchScreen.storyboardc/UIViewController-t9Y-Ki-fbs.nib ... 
+2024-08-05 12:34:15 +0000  896 bytes for ./Payload/Orientation.app/LaunchScreen.storyboardc/UIViewController-t9Y-Ki-fbs.nib
+copying file ./Payload/Orientation.app/LaunchScreen.storyboardc/Info.plist ... 
+2024-08-05 12:34:15 +0000  258 bytes for ./Payload/Orientation.app/LaunchScreen.storyboardc/Info.plist
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib ... 
+2024-08-05 12:34:15 +0000  253632 bytes for ./Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/_CodeSignature/CodeResources ... 
+2024-08-05 12:34:15 +0000  8072 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/_CodeSignature/CodeResources
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Hash.txt ... 
+2024-08-05 12:34:15 +0000  32 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Hash.txt
+copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/EncryptedOtpelf.js ... 
+2024-08-05 12:34:15 +0000  88512 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/EncryptedOtpelf.js
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Assets.car ... 
+2024-08-05 12:34:15 +0000  150735 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Assets.car
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/PrivacyInfo.xcprivacy ... 
+2024-08-05 12:34:15 +0000  6761 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/PrivacyInfo.xcprivacy
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:15 +0000  2386 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/objects-11.0+.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/runtime.nib ... 
+2024-08-05 12:34:15 +0000  2386 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/UINavigationController-ODs-ga-9IN.nib/runtime.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:15 +0000  1057 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/objects-11.0+.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/runtime.nib ... 
+2024-08-05 12:34:15 +0000  1057 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/OpinionatedAlertVC.nib/runtime.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:15 +0000  1443 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/objects-11.0+.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/runtime.nib ... 
+2024-08-05 12:34:15 +0000  1443 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RazorpayCheckoutVC.nib/runtime.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:15 +0000  13894 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/objects-11.0+.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/runtime.nib ... 
+2024-08-05 12:34:15 +0000  14098 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/QhR-ml-Zo4-view-36U-4g-R9b.nib/runtime.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/objects-11.0+.nib ... 
+2024-08-05 12:34:15 +0000  2694 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/objects-11.0+.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/runtime.nib ... 
+2024-08-05 12:34:15 +0000  2811 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/RBq-mH-fUs-view-vI7-59-shd.nib/runtime.nib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/Info.plist ... 
+2024-08-05 12:34:15 +0000  381 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Checkout.storyboardc/Info.plist
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Razorpay ... 
+2024-08-05 12:34:15 +0000  1467056 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Razorpay
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/CommonAssets/warning.png ... 
+2024-08-05 12:34:15 +0000  496 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/CommonAssets/warning.png
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/CommonAssets/check_mark.png ... 
+2024-08-05 12:34:15 +0000  649 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/CommonAssets/check_mark.png
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/CommonAssets/Razorpay_Logo.png ... 
+2024-08-05 12:34:15 +0000  75526 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/CommonAssets/Razorpay_Logo.png
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/Razorpay.framework/Info.plist ... 
+2024-08-05 12:34:15 +0000  762 bytes for ./Payload/Orientation.app/Frameworks/Razorpay.framework/Info.plist
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib ... 
+2024-08-05 12:34:15 +0000  302640 bytes for ./Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib
+2024-08-05 12:34:15 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftCore.dylib ... 
+2024-08-05 12:34:16 +0000  16915040 bytes for ./Payload/Orientation.app/Frameworks/libswiftCore.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib ... 
+2024-08-05 12:34:16 +0000  646848 bytes for ./Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftUIKit.dylib ... 
+2024-08-05 12:34:16 +0000  477152 bytes for ./Payload/Orientation.app/Frameworks/libswiftUIKit.dylib
+copying file ./Payload/Orientation.app/Frameworks/libswiftMetal.dylib ... 
+2024-08-05 12:34:16 +0000  298096 bytes for ./Payload/Orientation.app/Frameworks/libswiftMetal.dylib
+copying file ./Payload/Orientation.app/Frameworks/libswiftDispatch.dylib ... 
+2024-08-05 12:34:16 +0000  1018912 bytes for ./Payload/Orientation.app/Frameworks/libswiftDispatch.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftos.dylib ... 
+2024-08-05 12:34:16 +0000  299424 bytes for ./Payload/Orientation.app/Frameworks/libswiftos.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib ... 
+2024-08-05 12:34:16 +0000  253776 bytes for ./Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftDarwin.dylib ... 
+2024-08-05 12:34:16 +0000  369728 bytes for ./Payload/Orientation.app/Frameworks/libswiftDarwin.dylib
+copying file ./Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib ... 
+2024-08-05 12:34:16 +0000  256864 bytes for ./Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/hermes.framework/_CodeSignature/CodeResources ... 
+2024-08-05 12:34:16 +0000  1798 bytes for ./Payload/Orientation.app/Frameworks/hermes.framework/_CodeSignature/CodeResources
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/hermes.framework/hermes ... 
+2024-08-05 12:34:16 +0000  3240640 bytes for ./Payload/Orientation.app/Frameworks/hermes.framework/hermes
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/hermes.framework/Info.plist ... 
+815 bytes for ./Payload/Orientation.app/Frameworks/hermes.framework/Info.plist
+copying file ./Payload/Orientation.app/Frameworks/libswiftFoundation.dylib ... 
+2024-08-05 12:34:16 +0000  8479536 bytes for ./Payload/Orientation.app/Frameworks/libswiftFoundation.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib ... 
+2024-08-05 12:34:16 +0000  304112 bytes for ./Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/embedded.mobileprovision ... 
+2024-08-05 12:34:16 +0000  13158 bytes for ./Payload/Orientation.app/embedded.mobileprovision
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeResources ... 
+2024-08-05 12:34:16 +0000  2032 bytes for ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeResources
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeDirectory ... 
+2024-08-05 12:34:16 +0000  188 bytes for ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeDirectory
+copying file ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements-1 ... 
+2024-08-05 12:34:16 +0000  236 bytes for ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements-1
+copying file ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeSignature ... 
+2024-08-05 12:34:16 +0000  4878 bytes for ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeSignature
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements ... 
+2024-08-05 12:34:16 +0000  204 bytes for ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/_CodeSignature/CodeRequirements
+copying file ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/PrivacyInfo.xcprivacy ... 
+2024-08-05 12:34:16 +0000  753 bytes for ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/PrivacyInfo.xcprivacy
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/Info.plist ... 
+2024-08-05 12:34:16 +0000  809 bytes for ./Payload/Orientation.app/ReactNativeBlobUtilPrivacyInfo.bundle/Info.plist
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@3x.png ... 
+2024-08-05 12:34:16 +0000  212 bytes for ./Payload/Orientation.app/assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@3x.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@2x.png ... 
+2024-08-05 12:34:16 +0000  163 bytes for ./Payload/Orientation.app/assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon@2x.png
+copying file ./Payload/Orientation.app/assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon.png ... 
+2024-08-05 12:34:16 +0000  108 bytes for ./Payload/Orientation.app/assets/node_modules/@react-navigation/drawer/src/views/assets/toggle-drawer-icon.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon@3x.png ... 
+2024-08-05 12:34:16 +0000  761 bytes for ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon@3x.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon@2x.png ... 
+2024-08-05 12:34:16 +0000  405 bytes for ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon@2x.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon.png ... 
+2024-08-05 12:34:16 +0000  290 bytes for ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon.png
+copying file ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon-mask.png ... 
+2024-08-05 12:34:16 +0000  913 bytes for ./Payload/Orientation.app/assets/node_modules/@react-navigation/elements/src/assets/back-icon-mask.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/check.png ... 
+2024-08-05 12:34:16 +0000  20230 bytes for ./Payload/Orientation.app/assets/assets/icons/check.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/keypad.png ... 
+2024-08-05 12:34:16 +0000  21895 bytes for ./Payload/Orientation.app/assets/assets/icons/keypad.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/filters_fill.png ... 
+2024-08-05 12:34:16 +0000  6510 bytes for ./Payload/Orientation.app/assets/assets/icons/filters_fill.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/tick.png ... 
+2024-08-05 12:34:16 +0000  11121 bytes for ./Payload/Orientation.app/assets/assets/icons/tick.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/lockQuestion.png ... 
+2024-08-05 12:34:16 +0000  13455 bytes for ./Payload/Orientation.app/assets/assets/icons/lockQuestion.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/filters.png ... 
+2024-08-05 12:34:16 +0000  9514 bytes for ./Payload/Orientation.app/assets/assets/icons/filters.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/eBookLogo.png ... 
+2024-08-05 12:34:16 +0000  32179 bytes for ./Payload/Orientation.app/assets/assets/icons/eBookLogo.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/book.png ... 
+2024-08-05 12:34:16 +0000  35606 bytes for ./Payload/Orientation.app/assets/assets/icons/book.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/down-arrow.png ... 
+2024-08-05 12:34:16 +0000  2806 bytes for ./Payload/Orientation.app/assets/assets/icons/down-arrow.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/store.png ... 
+2024-08-05 12:34:16 +0000  17916 bytes for ./Payload/Orientation.app/assets/assets/icons/store.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/pen.png ... 
+2024-08-05 12:34:16 +0000  7534 bytes for ./Payload/Orientation.app/assets/assets/icons/pen.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/store_fill.png ... 
+2024-08-05 12:34:16 +0000  19131 bytes for ./Payload/Orientation.app/assets/assets/icons/store_fill.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/mobileIcon.png ... 
+2024-08-05 12:34:16 +0000  177865 bytes for ./Payload/Orientation.app/assets/assets/icons/mobileIcon.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/shopping.png ... 
+2024-08-05 12:34:16 +0000  17040 bytes for ./Payload/Orientation.app/assets/assets/icons/shopping.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/person.png ... 
+2024-08-05 12:34:16 +0000  24999 bytes for ./Payload/Orientation.app/assets/assets/icons/person.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/person_fill.png ... 
+2024-08-05 12:34:16 +0000  21302 bytes for ./Payload/Orientation.app/assets/assets/icons/person_fill.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/loginImg.png ... 
+2024-08-05 12:34:16 +0000  67579 bytes for ./Payload/Orientation.app/assets/assets/icons/loginImg.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/search.png ... 
+2024-08-05 12:34:16 +0000  14434 bytes for ./Payload/Orientation.app/assets/assets/icons/search.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/love_fill.png ... 
+2024-08-05 12:34:16 +0000  7062 bytes for ./Payload/Orientation.app/assets/assets/icons/love_fill.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/menu.png ... 
+2024-08-05 12:34:16 +0000  4637 bytes for ./Payload/Orientation.app/assets/assets/icons/menu.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/shopping-cart.png ... 
+2024-08-05 12:34:16 +0000  8617 bytes for ./Payload/Orientation.app/assets/assets/icons/shopping-cart.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/image-gallery.png ... 
+2024-08-05 12:34:16 +0000  13981 bytes for ./Payload/Orientation.app/assets/assets/icons/image-gallery.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/empty-cart.png ... 
+2024-08-05 12:34:16 +0000  10025 bytes for ./Payload/Orientation.app/assets/assets/icons/empty-cart.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/shopping_fill.png ... 
+2024-08-05 12:34:16 +0000  15111 bytes for ./Payload/Orientation.app/assets/assets/icons/shopping_fill.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/interactiveBookLogo.png ... 
+2024-08-05 12:34:16 +0000  36581 bytes for ./Payload/Orientation.app/assets/assets/icons/interactiveBookLogo.png
+copying file ./Payload/Orientation.app/assets/assets/icons/filter.png ... 
+2024-08-05 12:34:16 +0000  10629 bytes for ./Payload/Orientation.app/assets/assets/icons/filter.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/eye.png ... 
+2024-08-05 12:34:16 +0000  12249 bytes for ./Payload/Orientation.app/assets/assets/icons/eye.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/ProfileIcon.png ... 
+2024-08-05 12:34:16 +0000  12672 bytes for ./Payload/Orientation.app/assets/assets/icons/ProfileIcon.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/eyeClose.png ... 
+2024-08-05 12:34:16 +0000  16184 bytes for ./Payload/Orientation.app/assets/assets/icons/eyeClose.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/delete.png ... 
+2024-08-05 12:34:16 +0000  11573 bytes for ./Payload/Orientation.app/assets/assets/icons/delete.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/trash.png ... 
+2024-08-05 12:34:16 +0000  7842 bytes for ./Payload/Orientation.app/assets/assets/icons/trash.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/lockCheckMark.png ... 
+2024-08-05 12:34:16 +0000  49776 bytes for ./Payload/Orientation.app/assets/assets/icons/lockCheckMark.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/backArrow.png ... 
+2024-08-05 12:34:16 +0000  3736 bytes for ./Payload/Orientation.app/assets/assets/icons/backArrow.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/love.png ... 
+2024-08-05 12:34:16 +0000  8787 bytes for ./Payload/Orientation.app/assets/assets/icons/love.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/camera.png ... 
+2024-08-05 12:34:16 +0000  11504 bytes for ./Payload/Orientation.app/assets/assets/icons/camera.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/storeImg.png ... 
+2024-08-05 12:34:16 +0000  368051 bytes for ./Payload/Orientation.app/assets/assets/icons/storeImg.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/right.png ... 
+2024-08-05 12:34:16 +0000  3263 bytes for ./Payload/Orientation.app/assets/assets/icons/right.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/book_fill.png ... 
+2024-08-05 12:34:16 +0000  26792 bytes for ./Payload/Orientation.app/assets/assets/icons/book_fill.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/close.png ... 
+2024-08-05 12:34:16 +0000  3609 bytes for ./Payload/Orientation.app/assets/assets/icons/close.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/EmptyWishlist.png ... 
+2024-08-05 12:34:16 +0000  167169 bytes for ./Payload/Orientation.app/assets/assets/icons/EmptyWishlist.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/assets/assets/icons/mic.png ... 
+2024-08-05 12:34:16 +0000  13011 bytes for ./Payload/Orientation.app/assets/assets/icons/mic.png
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/Info.plist ... 
+2024-08-05 12:34:16 +0000  2038 bytes for ./Payload/Orientation.app/Info.plist
+2024-08-05 12:34:16 +0000  copying file ./Payload/Orientation.app/PkgInfo ... 
+8 bytes for ./Payload/Orientation.app/PkgInfo
+2024-08-05 12:34:16 +0000  /usr/bin/ditto exited with 0
+2024-08-05 12:34:16 +0000  Processing step: IDEDistributionAppStoreInformationStep
+2024-08-05 12:34:16 +0000  Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2024-08-05 12:34:16 +0000  Processing step: IDEDistributionGenerateProcessedDistributionItems
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600026bccc00:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600026bccc00:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreLocation.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e76ae0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600016e76ae0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDarwin.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e74fc0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600016e74fc0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftUIKit.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600026bce400:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600026bce400:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreGraphics.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e763e0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/hermes.framework'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600026bce500:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600026bce500:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftObjectiveC.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600026bcca80:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600026bcca80:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreFoundation.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e77720:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600016e77720:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftMetal.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e76290:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600016e76290:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCore.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600026bcf280:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600026bcf280:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftQuartzCore.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e74e70:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600016e74e70:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftDispatch.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e76bc0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600016e76bc0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftos.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600026bcc680:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600026bcc680:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftFoundation.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e726f0:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/Razorpay.framework'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600016e73100:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib'>
+2024-08-05 12:34:16 +0000  [OPTIONAL] Can't have a profile, not a bundle at <DVTFilePath:0x600016e73100:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app/Frameworks/libswiftCoreImage.dylib'>
+2024-08-05 12:34:16 +0000  IDEDistributionItem init <DVTFilePath:0x600012d84690:'/var/folders/bw/1npc4mvj6fx5ssq6qs_g2xcr0000gn/T/XcodeDistPipeline.~~~sdJb3y/Root/Payload/Orientation.app'>
+2024-08-05 12:34:16 +0000  Processing step: IDEDistributionCreateManifestStep
