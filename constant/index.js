@@ -48,7 +48,7 @@ export const apiRoutes = Object.freeze({
     userAddAddress: "add_user_address",
     userDeleteAddress: "delete_user_address",
     userEditAddressSave: "editAddress",
-    //generateOrder: "generateOrder",
+    generateOrderPaytm: "generateOrder",
     razorPayOrderGenerator: "razorPayOrder",
     paymentStatus: "paymentStatus",
     addToWishlist: "add_to_wishlist",

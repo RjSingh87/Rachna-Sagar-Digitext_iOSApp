@@ -25,9 +25,11 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.yourapp.paytm</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>paytmMIDSobFbq23928001131696</string>
+				<string>paytmRachna00883415851600</string>
 			</array>
 		</dict>
 	</array>
@@ -39,6 +41,9 @@
 	<array>
 		<string>paytm</string>
 		<string>phonepe</string>
+		<string>gpay</string>
+		<string>whatsapp</string>
+		<string>upi</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -58,7 +63,7 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Need microphone access for product search</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Only programs and features that you've allowed to access the microphone can use it. For example : to search for products using voice.</string>
+	<string>Only programs and features that you&apos;ve allowed to access the microphone can use it. For example : to search for products using voice.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

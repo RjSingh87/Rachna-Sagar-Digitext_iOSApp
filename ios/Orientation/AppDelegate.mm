@@ -1,7 +1,5 @@
 #import "AppDelegate.h"
 #import <React/RCTLinkingManager.h>
-#import "../../node_modules/react-native-orientation/iOS/RCTOrientation/Orientation.h"
-
 // #import "RNSplashScreen.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -36,13 +34,7 @@
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
-- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
-    while ([[UIDevice currentDevice] isGeneratingDeviceOrientationNotifications]) {
-        [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
-    }
-  
-    return [Orientation getOrientation];
-  }
+
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
