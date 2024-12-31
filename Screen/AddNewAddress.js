@@ -206,7 +206,7 @@ const AddNewAddress = () => {
         onClickRightIcon={() => { return }}
       />
 
-      <KeyboardAvoidingView style={{ marginBottom: keyboardHeight + 110, }} behavior="padding">
+      <KeyboardAvoidingView style={{ marginBottom: keyboardHeight + 20 }} behavior="padding">
         <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false} contentContainerStyle={[styles.inputContainer]}>
           <View style={styles.emailPass}>
             <Text style={styles.EmaiPass}>Name *</Text>

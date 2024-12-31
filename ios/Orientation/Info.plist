@@ -106,6 +106,10 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>We need camera access to take photos for user profile.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need access to your photo library for user update profile photo.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

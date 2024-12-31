@@ -110,7 +110,7 @@ const OrderSummery = ({ }) => {
 
     try {
       const res = await Services.post(apiRoutes.generateOrderPaytm, payLoad);
-      console.log(res, "RESSS??>")
+      // console.log(res, "RESSS??>")
       if (res.status === "success") {
         const orderId = res.orderID; // Unique Order ID
         const mid = "Rachna00883415851600"; // Paytm MID
@@ -131,11 +131,10 @@ const OrderSummery = ({ }) => {
           restrictAppInvoke,
           urlScheme
         );
-        console.log(result, "Paytm Transition Intialized");
+        // console.log(result, "Paytm Transition Intialized");
         if (result.STATUS === "TXN_SUCCESS" && result.RESPCODE === "01") {
-          await verifyOrder(result?.ORDERID);
-          navigation.goBack();
-          getAllCartItems();
+          await verifyOrder(result?.ORDERID, cartIDs, result?.TXNAMOUNT);
+          // navigation.goBack();
         } else {
           Alert.alert("Payment Failed", result.RESPMSG || "Transaction could not be completed.");
         }
@@ -210,23 +209,23 @@ const OrderSummery = ({ }) => {
   //   }
   // }
 
-  const verifyOrder = async (orderNumber) => {
-    console.log(orderNumber, "verifyOrder")
+  const verifyOrder = async (orderNumber, cartIDs, TXNAMOUNT) => {
+    console.log(orderNumber, "YashverifyOrder")
     const payLoad = {
       "api_token": token,
-      "orderNumber": orderNumber
+      "orderNumber": orderNumber,
+      "cartIDs": cartIDs
     }
-    await Services.post(apiRoutes.verifyOrder, payLoad)
+    console.log(payLoad, "cartIDs")
+    await Services.post(apiRoutes.paymentStatus, payLoad)
       .then((res) => {
-        // console.log(res, "OerderDATA?")
         if (res.status === "success") {
-          setOrderVerifyData(res.data)
+          // console.log(res, "When Success")
+          navigation.navigate("PaymentSuccessScreen", { txnStatus: res.message, txnAmount: TXNAMOUNT })
+          getAllCartItems();
+          // setOrderVerifyData(res.data)
         } else if (res.status === "error") {
-          if (res.message !== undefined) {
-            Alert.alert("Error", res.message)
-          } else {
-            Alert.alert("Error", `${res.data?.code} | ${res.data?.description}`)
-          }
+          Alert.alert("Error", res.message)
         }
       })
       .catch((err) => {

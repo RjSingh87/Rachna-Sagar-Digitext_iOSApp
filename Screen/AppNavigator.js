@@ -38,6 +38,9 @@ import InvoiceViewer from './InvoiceViewer';
 import NewReleases from './NewReleases';
 import YourAccount from './YourAccount';
 import CloseAccount from './CloseAccount';
+import PaymentSuccessScreen from './PaymentSuccessScreen';
+import AllTitleView from './AllTitleView';
+import Bookseller from './Bookseller';
 
 
 const Stack = createNativeStackNavigator();
@@ -77,6 +80,9 @@ const AppNavigator = () => {
           <Stack.Screen name="NewReleases" component={NewReleases} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           <Stack.Screen name="YourAccount" component={YourAccount} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           <Stack.Screen name="CloseAccount" component={CloseAccount} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="PaymentSuccessScreen" component={PaymentSuccessScreen} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="AllTitleView" component={AllTitleView} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="Bookseller" component={Bookseller} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           {/* <Stack.Screen name="User" component={User} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           <Stack.Screen name="Cart" component={Cart} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} /> */}
         </Stack.Navigator>

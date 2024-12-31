@@ -61,7 +61,12 @@ export const apiRoutes = Object.freeze({
     order_invoice_api: "order_invoice_api",
     validateCoupon: "validateCoupon",
     closeAccountPermanently: "delete_user",
-    updateCartQuantity: "updateCartQuantity"
+    updateCartQuantity: "updateCartQuantity",
+    updateUserProfile: "updateUserProfile",
+    getUserProfile: "getUserProfile",
+    updateUserDetails: "updateUserDetails",
+    allBookList: "allBookList",
+    bookSellerList: "bookSellerList"
 })
 
 

@@ -382,6 +382,9 @@ PODS:
     - glog
   - react-native-blob-util (0.19.11):
     - React-Core
+  - react-native-image-picker (7.2.3):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
   - react-native-netinfo (11.2.1):
     - React-Core
   - react-native-pdf (6.7.5):
@@ -574,6 +577,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-blob-util (from `../node_modules/react-native-blob-util`)
+  - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - react-native-razorpay (from `../node_modules/react-native-razorpay`)
@@ -671,6 +675,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-blob-util:
     :path: "../node_modules/react-native-blob-util"
+  react-native-image-picker:
+    :path: "../node_modules/react-native-image-picker"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-pdf:
@@ -768,6 +774,7 @@ SPEC CHECKSUMS:
   React-jsinspector: b86a8abae760c28d69366bbc1d991561e51341ed
   React-logger: ed7c9e01e58529065e7da6bf8318baf15024283e
   react-native-blob-util: 39a20f2ef11556d958dc4beb0aa07d1ef2690745
+  react-native-image-picker: 9963cc078c0d38390bf4aef6f5336c499b6db5ce
   react-native-netinfo: 8a7fd3f7130ef4ad2fb4276d5c9f8d3f28d2df3d
   react-native-pdf: 103940c90d62adfd259f63cca99c7c0c306b514c
   react-native-razorpay: 0272dd684bc9148828c54a72e05059e3e2e8b813

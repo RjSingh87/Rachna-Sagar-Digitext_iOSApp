@@ -6,11 +6,12 @@ import { apiRoutes, rsplTheme, token, CALLBACK_URL, MID, URL_SCHEME, baseURL, AP
 import { useNavigation, useRoute, useIsFocused } from '@react-navigation/native';
 import { MyContext } from '../Store';
 import Services from '../services';
-import Loader from '../constant/Loader';
-import { generateToken } from '../PaytmService';
-import RazorpayCheckout from 'react-native-razorpay';
+// import Loader from '../constant/Loader';
+// import { generateToken } from '../PaytmService';
+// import RazorpayCheckout from 'react-native-razorpay';
 import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6'
+import AllInOneSDKManager from 'paytm_allinone_react-native';
 
 
 const BuyNow = ({ route, singleProduct }) => {
@@ -29,6 +30,7 @@ const BuyNow = ({ route, singleProduct }) => {
   const [promoCode, setPromoCode] = useState({ status: false, code: '', message: '', checkoutPromoCode: '' })
   const [loaderPromoCode, setLoaderPromoCode] = useState(false)
   const [placeOrderLoader, setPlaceOrderLoader] = useState(false)
+
   // const route = useRoute()
   // const { cartSummeryData } = route.params
 
@@ -129,88 +131,77 @@ const BuyNow = ({ route, singleProduct }) => {
 
   const placeOrder = async () => {
     if (selectedAddress == null) {
-      Alert.alert("Address", "Please add/select address.")
-      return
-    } else {
-      setPlaceOrderLoader(true)
-      const cartIDs = []
-      for (let cart of cartList.Data) {
-        cartIDs.push(cart.id)
-      }
-      const lastCartID = cartIDs[cartIDs.length - 1];
-      console.log(lastCartID, "lastorder")
-
-      const payLoad = {
-        api_token: token,
-        addressID: selectedAddress,
-        cartIDs: [lastCartID],
-        userID: userData.data[0]?.id
-      }
-      // console.log(payLoad, "payLoadd???")
-
-      await Services.post(apiRoutes.razorPayOrderGenerator, payLoad)
-        .then((res) => {
-          let orderNumber = ""
-          if (res.status == "success") {
-            // console.log(res, "After successful")
-            orderNumber = res.orderNumber
-            var options = {
-              description: 'Rachna Sagar Private Limited',
-              image: "https://play-lh.googleusercontent.com/nYsABSI-d2E3ID0IXMC50RJxZcvTSvrea5YXPPnoN6NDwrmXcU5hSR5dQjF0gPkyRHA=w480-h960",
-              currency: 'INR',
-              key: API_Key, //'rzp_test_yXSkAOzF1i7ksl', //API_Key,
-              amount: res.amount_due,
-              name: 'Rachna Sagar Private Limited',
-              order_id: res.orderID, // '', //res.orderID,
-              timeout: 380,
-              prefill: {
-                email: 'foreverbook4583@gmail.com',
-                contact: '9717998857',
-                name: ''
-              },
-              theme: { color: rsplTheme.gradientColorRight } //'#53a20e' }
-            }
-
-            RazorpayCheckout.open(options)
-              .then((data) => {
-                verifyOrder(orderNumber, data.razorpay_order_id, data.razorpay_payment_id, data.razorpay_signature)
-              })
-              .catch((error) => {
-                // handle failure
-                // alert(`Error: ${error.code} | ${error.description}`);
-                Alert.alert("Transaction cancelled.")
-              })
-              .finally(() => {
-                setPlaceOrderLoader(false)
-              })
-          } else if (res.status == "error") {
-            Alert.alert("Info", res.message)
-          }
-        })
+      Alert.alert("Address", "Please add/select address.");
+      return;
     }
-  }
 
-  const verifyOrder = async (orderNumber, razorpay_order_id, razorpay_payment_id, razorpay_signature) => {
+    const cartIDs = cartList.Data.map(cart => cart.id);
+
+    const payLoad = {
+      api_token: token,
+      addressID: selectedAddress,
+      cartIDs: cartIDs,
+      userID: userData.data[0]?.id,
+      couponCode: promoCode?.checkoutPromoCode
+    };
+
+    try {
+      const res = await Services.post(apiRoutes.generateOrderPaytm, payLoad);
+      // console.log(res, "RESSS??>")
+      if (res.status === "success") {
+        const orderId = res.orderID; // Unique Order ID
+        const mid = "Rachna00883415851600"; // Paytm MID
+        const txnToken = res.txnToken; // Generated from Paytm API
+        const amount = "1.00"; // Transaction amount
+        const callbackUrl = `https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}` //`https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}`;
+        const isStaging = false; // true for testing, false for production
+        const restrictAppInvoke = false; // Allow Paytm App invoke
+        const urlScheme = "paytmRachna00883415851600"; // URL Scheme for iOS
+
+        const result = await AllInOneSDKManager.startTransaction(
+          orderId,
+          mid,
+          txnToken,
+          amount,
+          callbackUrl,
+          isStaging,
+          restrictAppInvoke,
+          urlScheme
+        );
+        // console.log(result, "Paytm Transition Intialized");
+        if (result.STATUS === "TXN_SUCCESS" && result.RESPCODE === "01") {
+          await verifyOrder(result?.ORDERID, cartIDs, result?.TXNAMOUNT);
+          // navigation.goBack();
+        } else {
+          Alert.alert("Payment Failed", result.RESPMSG || "Transaction could not be completed.");
+        }
+      } else if (res.status === "error") {
+        Alert.alert("Info", res.message);
+      }
+    } catch (err) {
+      Alert.alert("Transaction cancelled.");
+      setPromoCode(prev => ({ ...prev, status: false, code: "", checkoutPromoCode: "" }));
+      console.error("Transaction Failed:", err);
+    }
+  };
+
+  const verifyOrder = async (orderNumber, cartIDs, TXNAMOUNT) => {
+    console.log(orderNumber, "YashverifyOrder")
     const payLoad = {
       "api_token": token,
-      "userID": userData.data[0]?.id,
       "orderNumber": orderNumber,
-      "razorpay_order_id": razorpay_order_id,
-      "razorpay_payment_id": razorpay_payment_id,
-      "razorpay_signature": razorpay_signature
+      "cartIDs": cartIDs
     }
-    console.log(payLoad, "Verify")
-    await Services.post(apiRoutes.verifyOrder, payLoad)
+    console.log(payLoad, "cartIDs")
+    await Services.post(apiRoutes.paymentStatus, payLoad)
       .then((res) => {
-        console.log(res, "OerderDATA?")
-        if (res.status == "success") {
-          setOrderVerifyData(res.data)
-        } else if (res.status == "error") {
-          if (res.message !== undefined) {
-            Alert.alert("Error", res.message)
-          } else {
-            Alert.alert("Error", `${res.data?.code} | ${res.data?.description}`)
-          }
+        if (res.status === "success") {
+          // console.log(res, "When Success")
+          navigation.navigate("PaymentSuccessScreen", { txnStatus: res.message, txnAmount: TXNAMOUNT })
+          getAllCartItems();
+          // setOrderVerifyData(res.data)
+        } else if (res.status === "error") {
+          Alert.alert("Error", res.message)
         }
       })
       .catch((err) => {

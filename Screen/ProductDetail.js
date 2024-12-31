@@ -21,7 +21,7 @@ const ProductDetail = ({ navigation, route }) => {
 
 
 
-	const { item, title, imgArray, productId, } = route.params
+	const { item, title, imgArray, productId, } = route.params || {}
 	const { width, height } = Dimensions.get("window")
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [modalView, setModalView] = useState(false)

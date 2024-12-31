@@ -24,6 +24,7 @@
     "react-native-base64": "^0.2.1",
     "react-native-blob-util": "^0.19.11",
     "react-native-gesture-handler": "^2.13.4",
+    "react-native-image-picker": "^7.2.3",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-pdf": "^6.7.5",
     "react-native-razorpay": "^2.3.0",

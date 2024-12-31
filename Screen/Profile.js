@@ -1,4 +1,4 @@
-import { StyleSheet, Share, Text, View, FlatList, TouchableOpacity, KeyboardAvoidingView, Button, Image, Alert, Modal, TextInput, ScrollView, } from 'react-native'
+import { StyleSheet, Share, Text, View, FlatList, TouchableOpacity, KeyboardAvoidingView, Button, Image, Alert, Modal, TextInput, ScrollView, ActivityIndicator, } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import { apiRoutes, rsplTheme, token } from '../constant'
 import LinearGradient from 'react-native-linear-gradient';
@@ -6,6 +6,7 @@ import { MyContext } from '../Store';
 import { useNavigation } from '@react-navigation/native';
 import Services from '../services';
 import Loader from '../constant/Loader';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const Profile = ({ data }) => {
   const navigation = useNavigation()
@@ -14,11 +15,21 @@ const Profile = ({ data }) => {
   const [popupEditProfileVisible, setEditProfilePopupVisible] = useState(false);
   const [userDeatail, setUserDetails] = useState({ name: "", email: "", mobile: "", address: "", country: "" })
   const [loader, setLoader] = useState(false)
+  const [profileImgLoader, setProfileImgLoader] = useState(false)
+  const [userPickImg, setUserPickImg] = useState()
+
+
+  useEffect(() => {
+    if (userData?.isLogin) {
+      fetchUpdatedProfileImage()
+    }
+  }, [userData?.isLogin])
+
 
   const toggleCameraPopup = () => {
     setPopupVisible(!popupVisible);
   };
-  const toggleEditProfilePopup = () => {
+  const toggleEditProfilePopup = async () => {
     setEditProfilePopupVisible(true);
   };
 
@@ -48,6 +59,78 @@ const Profile = ({ data }) => {
   //     .finally(() => { })
   // }
 
+  const cameraAccess = async (userSelect) => {
+    const options = { mediaType: 'photo', saveToPhotos: true, quality: 1, };
+    try {
+      let result
+      if (userSelect === "camera") {
+        result = await launchCamera(options)
+      } else if (userSelect === "photo gallery") {
+        result = await launchImageLibrary(options)
+      }
+      if (result?.didCancel) {
+        console.log('User cancelled selection.');
+        return;
+      }
+      if (result?.errorCode) {
+        console.log('Error:', result.errorMessage);
+        return;
+      }
+      const selectedImage = result.assets[0];
+      setUserPickImg(selectedImage.uri); // Show the image locally first
+      await uploadImageToServer(selectedImage);// Upload to server
+      setPopupVisible(false)
+    } catch (error) {
+      console.error('Camera/Gallery error:', error);
+    }
+  }
+
+  const uploadImageToServer = async (userImg) => {
+    try {
+      setProfileImgLoader(true)
+      const formData = new FormData();
+      formData.append("profileImg", {
+        uri: userImg?.uri,
+        type: userImg?.type,
+        name: userImg?.fileName
+      })
+      formData.append("userID", userData.data[0].id.toString())
+      formData.append("api_token", token)
+      const result = await Services.formMethod(apiRoutes.updateUserProfile, formData)
+      if (result.status === 'success') {
+        setProfileImgLoader(false)
+        fetchUpdatedProfileImage()
+      } else if (result.status === "failed") {
+        Alert.alert("Info", result.message)
+        fetchUpdatedProfileImage()
+        setProfileImgLoader(false)
+      }
+    } catch (err) {
+      console.error("Error uploading image:", err);
+    }
+  }
+
+  const fetchUpdatedProfileImage = async () => {
+    try {
+      const payLoad = {
+        "api_token": token,
+        "userID": userData.data[0].id
+      }
+      const result = await Services.post(apiRoutes.getUserProfile, payLoad)
+      if (result.status === 'success') {
+        const updatedImageUrl = result.userData[0]?.image
+        setUserPickImg(updatedImageUrl)
+      } else if (result.status === 'failed') {
+        Alert.alert("Failed", result.message)
+      }
+    } catch (error) {
+      Alert.alert("Error:", error)
+    }
+  }
+
+
+
+
   const CameraPopup = ({ isVisible, onClose }) => {
     return (
       <Modal
@@ -57,12 +140,13 @@ const Profile = ({ data }) => {
         onRequestClose={onClose}
       >
         <View style={styles.modalContainer}>
+          <TouchableOpacity onPress={onClose} style={{ width: "100%", height: "100%" }} />
           <View style={styles.modalContent}>
-            <TouchableOpacity style={styles.option} onPress={() => console.log('Camera')}>
+            <TouchableOpacity style={styles.option} onPress={() => cameraAccess("camera")}>
               <Image style={styles.iconGallery} source={require("../assets/icons/camera.png")} />
               <Text style={styles.userCamGallery}>Camera</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.option} onPress={() => console.log('Gallery')}>
+            <TouchableOpacity style={styles.option} onPress={() => cameraAccess("photo gallery")}>
               <Image style={styles.iconGallery} source={require("../assets/icons/image-gallery.png")} />
               <Text style={styles.userCamGallery}>Gallery Photo</Text>
             </TouchableOpacity>
@@ -96,10 +180,25 @@ const Profile = ({ data }) => {
   }
 
 
-  const saveProfile = () => {
-    setEditProfilePopupVisible(false)
-    setUserDetails((prev) => { return { ...prev, name: "", email: "", mobile: "", address: "" } })
-    // Implement logic to save profile data
+  const saveProfile = async () => {
+    try {
+      const payLoad = {
+        "api_token": token,
+        "userID": userData.data[0].id,
+        "userName": userDeatail.name,
+        "email": userDeatail.email,
+        "contactNo": userDeatail.mobile
+      }
+      const result = await Services.post(apiRoutes.updateUserDetails, payLoad)
+      if (result.status === "success") {
+        setEditProfilePopupVisible(false)
+        setUserDetails((prev) => { return { ...prev, name: "", email: "", mobile: "", address: "" } })
+      } else if (result.status === "failed") {
+        Alert.alert("Info", result.message)
+      }
+    } catch (error) {
+      console.log(error, "error?userData.??")
+    }
   };
 
   const onShare = async () => {
@@ -144,19 +243,27 @@ const Profile = ({ data }) => {
 
 
 
+
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
         <View style={styles.profileBox}>
-          <Image style={styles.profileIcon} source={require("../assets/icons/ProfileIcon.png")} />
+          <View style={{ borderWidth: 2, borderColor: rsplTheme.rsplWhite, width: "95%", height: "95%", borderRadius: 100, overflow: "hidden", alignItems: "center", justifyContent: "center" }}>
+            {profileImgLoader ?
+              <ActivityIndicator size={"large"} color={rsplTheme.rsplWhite} /> :
+              <Image style={styles.profileIcon} source={userPickImg == undefined ? require("../assets/icons/ProfileIcon.png") : { uri: `${userPickImg}` }} />
+            }
+          </View>
+
+
+          <TouchableOpacity onPress={(() => { toggleCameraPopup() })} style={styles.cameraBox}>
+            <Image style={styles.cameraIcon} source={require("../assets/icons/camera.png")} />
+          </TouchableOpacity>
+          <CameraPopup isVisible={popupVisible} onClose={toggleCameraPopup} />
+
         </View>
 
-        {/* cameraIcon UI disable for apple term condition 26 August 2024 */}
-        {/* <TouchableOpacity onPress={(() => { toggleCameraPopup() })} style={styles.cameraBox}>
-          <Image style={styles.cameraIcon} source={require("../assets/icons/camera.png")} />
-        </TouchableOpacity>
-        <CameraPopup isVisible={popupVisible} onClose={toggleCameraPopup} /> */}
-        {/* ---------------------------------------------------------------- */}
 
         <Text style={styles.profileName}>{data?.name}</Text>
 
@@ -261,7 +368,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 120 / 2,
-    borderWidth: 3,
+    // borderWidth: 3,
     borderColor: rsplTheme.rsplRed,
     backgroundColor: rsplTheme.gradientColorRight,
     alignSelf: "center",
@@ -271,13 +378,14 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 3,
     alignItems: "center",
-    justifyContent: "flex-end",
-    overflow: "hidden",
+    justifyContent: "center",
+    // overflow: "hidden",
   },
   profileIcon: {
     width: "100%",
-    height: 100,
-    resizeMode: "contain",
+    height: "100%",
+    resizeMode: "cover",
+    // marginBottom: -5,
   },
   linearGradient: {
     // flex: 1,
@@ -363,8 +471,8 @@ const styles = StyleSheet.create({
   cameraBox: {
     flex: 1,
     position: "absolute",
-    top: 90,
-    left: "63%",
+    top: 85,
+    left: "70%",
     width: 30,
     height: 30,
     borderRadius: 30 / 2,
@@ -376,10 +484,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.20,
     shadowRadius: 2,
     elevation: 5,
+    zIndex: 100,
   },
   cameraIcon: {
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
     resizeMode: "contain",
     tintColor: rsplTheme.gradientColorLeft
   },

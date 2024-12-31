@@ -24,6 +24,7 @@ const YourAccount = ({ route }) => {
     await Services.post(apiRoutes.orderlist, payLoad)
       .then((res) => {
         if (res.status == "success") {
+          // console.log(res, "res>LPP?")
           navigation.navigate("ViewOrderList", { orderListData: res.data })
         } else if (res.status == "error") {
           Alert.alert(`${res.message}`);

@@ -7,6 +7,9 @@ import LinearGradient from 'react-native-linear-gradient'
 import Banner from './Banner'
 import NewReleases from './NewReleases'
 import NoInternetConn from './NoInternetConn'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import Entypo from 'react-native-vector-icons/Entypo'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 
 const WelcomStore = () => {
@@ -41,9 +44,53 @@ const WelcomStore = () => {
             </TouchableOpacity>
           </LinearGradient>
 
-          <View style={styles.storeImgBox}>
+          {/* old UI design */}
+          {/* <View style={styles.storeImgBox}>
             <Image style={styles.storeImg} source={require("../assets/icons/storeImg.png")} />
+          </View> */}
+
+
+          <View style={{ flex: 1, minHeight: "55%", padding: 10, justifyContent: "center", }}>
+            <View style={{ flexDirection: "row", padding: 10, justifyContent: "space-between" }}>
+
+              <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
+                <TouchableOpacity style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
+                  <MaterialIcons name="category" size={45} color={rsplTheme.rsplWhite} />
+                  <Text style={{ fontWeight: 500, color: rsplTheme.rsplWhite, fontSize: 20, textAlign: "center" }}>Shop By Category</Text>
+                </TouchableOpacity>
+              </LinearGradient>
+
+              <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
+                <TouchableOpacity style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
+                  <Entypo name="new" size={45} color={rsplTheme.rsplWhite} />
+                  <Text style={{ fontWeight: 500, color: rsplTheme.rsplWhite, fontSize: 20, textAlign: "center" }}>New Release</Text>
+                </TouchableOpacity>
+              </LinearGradient>
+
+
+            </View>
+
+            <View style={{ flexDirection: "row", padding: 10, justifyContent: "space-between" }}>
+
+              <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
+                <TouchableOpacity onPress={(() => { navigation.navigate("AllTitleView") })} style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
+                  <MaterialIcons name="menu-book" size={45} color={rsplTheme.rsplWhite} />
+                  <Text style={{ fontWeight: 500, color: rsplTheme.rsplWhite, fontSize: 20, textAlign: "center" }}>All Books</Text>
+                </TouchableOpacity>
+              </LinearGradient>
+
+              <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
+                <TouchableOpacity onPress={(() => { navigation.navigate("Bookseller") })} style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
+                  <Ionicons name="location" size={45} color={rsplTheme.rsplWhite} />
+                  <Text style={{ fontWeight: 500, color: rsplTheme.rsplWhite, fontSize: 20, textAlign: "center" }}>Bookseller</Text>
+                </TouchableOpacity>
+              </LinearGradient>
+
+            </View>
           </View>
+
+
+
 
         </ScrollView>
       </View>
