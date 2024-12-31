@@ -1,4 +1,4 @@
-import { ActivityIndicator, Alert, FlatList, StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, Alert, FlatList, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React, { useCallback, useEffect, useState } from 'react'
 import Header from '../comman/Header'
 import { apiRoutes, rsplTheme, token } from '../constant'
@@ -6,6 +6,9 @@ import Services from '../services'
 const Bookseller = ({ navigation }) => {
   const [booksellerData, setBookSellerData] = useState([])
   const [booksellerLoader, setBookSellerLoader] = useState(false)
+  const [page, setPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchDataOfBookSeller()
@@ -15,53 +18,96 @@ const Bookseller = ({ navigation }) => {
   const fetchDataOfBookSeller = async () => {
     try {
       setBookSellerLoader(true)
+      setLoading(true)
       const payLoad = { "api_token": token }
-      const result = await Services.post(apiRoutes.allBookList, payLoad)
+      let urlQuery = `?page=${page}&limit=10`
+      const result = await Services.post(apiRoutes.bookSellerList + `${urlQuery}`, payLoad)
       if (result.status === "success") {
-        console.log(result.data, "Data;..resultsuccessful")
+        const newData = result?.data?.data;
+        setBookSellerData((prevData) => Array.isArray(prevData) ? [...prevData, ...newData] : newData);
+        setPage((prevPage) => prevPage + 1);
         setBookSellerLoader(false)
-        setBookSellerData(result?.data || [])
+        setLoading(false)
       } else if (result.status === "failed") {
         Alert.alert("Info:", result.message || "Fetch error occurred")
       }
 
     } catch (error) {
       Alert.alert("Error:", error.message || "Something went wrong")
-
-
     }
   }
 
   const renderItem = useCallback(({ item }) => {
-    console.log(item, "bookselller")
+    // console.log(item, "bookselller")
     return (
-      <TouchableOpacity onPress={(() => {
-        navigation.navigate("ProductDetail",
-          {
-            item: [item],
-            productId: item?.productId,
-            imgArray: [
-              { item: item?.front_image },
-              { item: item?.back_image }
-            ],
-            title: "Product details"
-          }
-        )
-      })} style={styles.card}>
-        <Image
-          source={{ uri: `${imgBaseUrl}${item.front_image}` }}
-          // source={`${imgBaseUrl}${item.front_image}` == undefined ? require("../assets/icons/empty-cart.png") : { uri: `${imgBaseUrl}${item.front_image}` }}
-          style={styles.image}
-          resizeMode="contain"
-        />
+      <View style={styles.card}>
+
         <Text style={styles.title}>{item?.shop_name}</Text>
-      </TouchableOpacity>
+
+        <View style={{ flex: 1, flexDirection: "row", marginVertical: 4 }}>
+          <View style={{ width: 130 }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>Shop Name</Text>
+          </View>
+          <View style={{ flex: 1 }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>{`${item.shop_name}`}</Text>
+          </View>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: "row", marginVertical: 4 }}>
+          <View style={{ width: 130 }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>Address</Text>
+          </View>
+          <View style={{ flex: 1, }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>{`${item.address1}, ${item.address2}`}</Text>
+          </View>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: "row", marginVertical: 4 }}>
+          <View style={{ width: 130 }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>Pincode</Text>
+          </View>
+          <View style={{ flex: 1, }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>{`${item.pincode}`}</Text>
+          </View>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: "row", marginVertical: 4 }}>
+          <View style={{ width: 130 }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>Contact Number</Text>
+          </View>
+          <View style={{ flex: 1, }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>{`${item.phone1}, ${item.phone3}`}</Text>
+          </View>
+        </View>
+
+        <View style={{ flex: 1, flexDirection: "row", marginVertical: 4 }}>
+          <View style={{ width: 130 }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>Email Id</Text>
+          </View>
+          <View style={{ flex: 1, }}>
+            <Text style={{ color: rsplTheme.jetGrey }}>{`${item.email}`}</Text>
+          </View>
+        </View>
+
+
+      </View>
     )
 
   }, [booksellerData])
 
+  const onEndReached = useCallback(() => {
+    fetchDataOfBookSeller()
+    console.log("User end")
+  }, [booksellerData])
 
-  // console.log(booksellerData, "booksellerData")
+  const renderFooter = () => {
+    if (!loading) return null;
+    return <ActivityIndicator size="large" color="green" />;
+  };
+
+
+
+  console.log(booksellerData, "RjSingh???")
 
 
 
@@ -70,7 +116,7 @@ const Bookseller = ({ navigation }) => {
       <Header
         leftIcon={require("../assets/icons/backArrow.png")}
         // rightIcon={require('../assets/icons/pen.png')}
-        title={"All Books"}
+        title={"Book Sellers"}
         onClickLeftIcon={() => { navigation.goBack(); }}
         onClickRightIcon={() => { return }}
       />
@@ -80,8 +126,13 @@ const Bookseller = ({ navigation }) => {
           <ActivityIndicator color={rsplTheme.rsplRed} size={"large"} /> :
           <FlatList
             data={booksellerData}
+            // data={booksellerData?.data}
             renderItem={renderItem}
-            keyExtractor={(item) => { item.id }}
+            keyExtractor={(item, index) => { `${item.id + 4}-${index}` }}
+            onEndReached={onEndReached}
+            onEndReachedThreshold={0.5}
+            ListFooterComponent={renderFooter}
+
           />
 
         }
@@ -116,5 +167,11 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     marginBottom: 10,
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: rsplTheme.jetGrey,
+    marginBottom: 10
   },
 })
