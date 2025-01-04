@@ -10,13 +10,14 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const Profile = ({ data }) => {
   const navigation = useNavigation()
-  const { logout, userData } = useContext(MyContext)
+  const { logout, login, userData, setUserDate } = useContext(MyContext)
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupEditProfileVisible, setEditProfilePopupVisible] = useState(false);
   const [userDeatail, setUserDetails] = useState({ name: "", email: "", mobile: "", address: "", country: "" })
   const [loader, setLoader] = useState(false)
   const [profileImgLoader, setProfileImgLoader] = useState(false)
   const [userPickImg, setUserPickImg] = useState()
+  const [saveLoader, setSaveLoader] = useState(false)
 
 
   useEffect(() => {
@@ -29,7 +30,13 @@ const Profile = ({ data }) => {
   const toggleCameraPopup = () => {
     setPopupVisible(!popupVisible);
   };
-  const toggleEditProfilePopup = async () => {
+  const toggleEditProfilePopup = () => {
+    setUserDetails({
+      name: data?.name || "",       // Set initial name
+      email: data?.email || "",     // Set initial email
+      mobile: data?.phone || "",   // Set initial mobile
+    });
+
     setEditProfilePopupVisible(true);
   };
 
@@ -181,6 +188,7 @@ const Profile = ({ data }) => {
 
 
   const saveProfile = async () => {
+    setLoader(true)
     try {
       const payLoad = {
         "api_token": token,
@@ -191,13 +199,25 @@ const Profile = ({ data }) => {
       }
       const result = await Services.post(apiRoutes.updateUserDetails, payLoad)
       if (result.status === "success") {
-        setEditProfilePopupVisible(false)
+        const updatedUserData = result.userData[0]; // Update user data from API
+        setUserDate({ ...userData, data: [updatedUserData] }); // Update global state
+        setUserDetails({
+          name: updatedUserData.name || "",
+          email: updatedUserData.email || "",
+          mobile: updatedUserData.phone || "",
+        });
+        Alert.alert("Success", "Profile updated successfully!");
+        setEditProfilePopupVisible(false); // Close modal
+
         setUserDetails((prev) => { return { ...prev, name: "", email: "", mobile: "", address: "" } })
       } else if (result.status === "failed") {
+        setLoader(false)
         Alert.alert("Info", result.message)
       }
     } catch (error) {
       console.log(error, "error?userData.??")
+    } finally {
+      setLoader(false);
     }
   };
 

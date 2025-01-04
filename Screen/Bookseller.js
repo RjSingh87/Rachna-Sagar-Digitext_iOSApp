@@ -6,9 +6,11 @@ import Services from '../services'
 const Bookseller = ({ navigation }) => {
   const [booksellerData, setBookSellerData] = useState([])
   const [booksellerLoader, setBookSellerLoader] = useState(false)
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(0);
   const [hasMore, setHasMore] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
+
+  let limit = 100
 
   useEffect(() => {
     fetchDataOfBookSeller()
@@ -16,24 +18,26 @@ const Bookseller = ({ navigation }) => {
 
 
   const fetchDataOfBookSeller = async () => {
+    if (loading || !hasMore) return; // Avoid multiple or unnecessary calls
+    setLoading(true);
     try {
-      setBookSellerLoader(true)
-      setLoading(true)
       const payLoad = { "api_token": token }
-      let urlQuery = `?page=${page}&limit=10`
+      let urlQuery = `?page=${page}&limit=${limit}` //chunk data with pagination API
       const result = await Services.post(apiRoutes.bookSellerList + `${urlQuery}`, payLoad)
       if (result.status === "success") {
-        const newData = result?.data?.data;
-        setBookSellerData((prevData) => Array.isArray(prevData) ? [...prevData, ...newData] : newData);
+        const newData = result?.data?.data || [];
+        if (newData.length === 0) setHasMore(false);
+        setBookSellerData((prevData) => [...prevData, ...newData]);
         setPage((prevPage) => prevPage + 1);
-        setBookSellerLoader(false)
-        setLoading(false)
       } else if (result.status === "failed") {
         Alert.alert("Info:", result.message || "Fetch error occurred")
       }
-
     } catch (error) {
       Alert.alert("Error:", error.message || "Something went wrong")
+      return
+    } finally {
+      setLoading(false)
+      setBookSellerLoader(false)
     }
   }
 
@@ -89,25 +93,25 @@ const Bookseller = ({ navigation }) => {
           </View>
         </View>
 
-
       </View>
     )
 
-  }, [booksellerData])
+  }, [])
 
-  const onEndReached = useCallback(() => {
-    fetchDataOfBookSeller()
-    console.log("User end")
-  }, [booksellerData])
+  const onEndReached = () => {
+    if (!loading && hasMore) {
+      fetchDataOfBookSeller();
+    }
+  }
 
-  const renderFooter = () => {
+  const renderFooter = useCallback(() => {
     if (!loading) return null;
-    return <ActivityIndicator size="large" color="green" />;
-  };
+    return <ActivityIndicator style={{ marginVertical: 12 }} size="large" color={rsplTheme.rsplRed} />;
+  }, [loading]);
 
 
-
-  console.log(booksellerData, "RjSingh???")
+  // console.log(booksellerData, "RjSingh???")
+  // console.log(page, "page???")
 
 
 
@@ -122,20 +126,18 @@ const Bookseller = ({ navigation }) => {
       />
 
       <View style={{ flex: 1 }}>
-        {booksellerLoader ?
-          <ActivityIndicator color={rsplTheme.rsplRed} size={"large"} /> :
+        {booksellerLoader ? (
+          <ActivityIndicator color={rsplTheme.rsplRed} size="large" />
+        ) : (
           <FlatList
             data={booksellerData}
-            // data={booksellerData?.data}
             renderItem={renderItem}
-            keyExtractor={(item, index) => { `${item.id + 4}-${index}` }}
+            keyExtractor={(item, index) => `${item.id}-${index}`} // Combine id and index to make it unique
             onEndReached={onEndReached}
             onEndReachedThreshold={0.5}
             ListFooterComponent={renderFooter}
-
           />
-
-        }
+        )}
       </View>
 
 
@@ -172,6 +174,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600",
     color: rsplTheme.jetGrey,
-    marginBottom: 10
+    marginBottom: 10,
   },
 })

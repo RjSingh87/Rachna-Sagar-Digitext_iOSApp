@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
 		// height: 50,
 		paddingVertical: 8,
 		paddingHorizontal: 8,
-		backgroundColor: rsplTheme.rsplLightGrey,
+		// backgroundColor: rsplTheme.rsplLightGrey,
 		// borderRadius: 10,
 		fontSize: 18,
 		color: rsplTheme.textColorBold

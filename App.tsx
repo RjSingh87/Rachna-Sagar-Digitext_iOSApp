@@ -1,6 +1,5 @@
 import { StyleSheet, Alert, Text, View, SafeAreaView, TouchableOpacity, StatusBar } from 'react-native'
 import React, { useEffect } from 'react';
-import Orientation from 'react-native-orientation'
 import * as ScreenOrientation from "expo-screen-orientation";
 import Dashboard from './Screen/Dashboard';
 import Login from './Screen/Login';
@@ -13,8 +12,8 @@ import ProductDetail from './Screen/ProductDetail';
 import AppNavigator from './Screen/AppNavigator';
 import SplashScreen from 'react-native-splash-screen';
 import LinearGradient from 'react-native-linear-gradient';
-import Store from './Store';
 import AppMain from './Screen/AppMain';
+import Store from './Store';
 
 
 

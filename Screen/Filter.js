@@ -8,7 +8,10 @@ import Services from '../services'
 import NoInternetConn from './NoInternetConn'
 // import Dashboard from './Dashboard'
 
-const Filter = () => {
+const Filter = ({ route }) => {
+  // console.log(route.params, "ScreenName")
+  const { screenId, screenName } = route?.params || {};
+
   const navigation = useNavigation()
   const [filterType, setFilterType] = useState(["Select boards", "Select Class", "Type of Books", "Select Subjects"])
   const [loading, setLoading] = useState(false)
@@ -269,10 +272,10 @@ const Filter = () => {
   return (
     <View style={styles.container}>
       <Header
-        leftIcon={require("../assets/icons/menu.png")}
+        leftIcon={screenName ? require("../assets/icons/backArrow.png") : require("../assets/icons/menu.png")}
         rightIcon={require('../assets/icons/filter.png')}
         title={"Shop By Category"}
-        onClickLeftIcon={() => { navigation.openDrawer(); }}
+        onClickLeftIcon={() => { screenName ? navigation.goBack() : navigation.openDrawer(); }}
         onClickRightIcon={() => { setFilterShowHide((prev) => { return { ...prev, status: !filterShowHide.status } }) }}
       />
 

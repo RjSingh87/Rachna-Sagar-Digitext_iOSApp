@@ -25,11 +25,15 @@ const WelcomStore = () => {
         leftIcon={require("../assets/icons/menu.png")}
         // rightIcon={require('../assets/icons/shopping-cart.png')}
         // title={showStore ? "Rachna Sagar DigiText" : "NEW RELEASES"}
-        title={"Rachna Sagar DigiText"}
+        title={" Rachna Sagar DigiText"}
         onClickLeftIcon={() => { navigation.openDrawer(); }}
         onClickRightIcon={() => { return }}
       />
       <NoInternetConn />
+
+      <View style={{ position: "absolute", top: 16, left: 70, width: 30, height: 30, borderRadius: 30 / 2, alignItems: "center", justifyContent: "center", backgroundColor: rsplTheme.rsplWhite }}>
+        <Image style={{ width: 20, height: 20, resizeMode: "contain" }} source={require("../assets/RSPL.png")} />
+      </View>
 
 
       <View style={{ flex: 1, }}>
@@ -54,14 +58,14 @@ const WelcomStore = () => {
             <View style={{ flexDirection: "row", padding: 10, justifyContent: "space-between" }}>
 
               <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
-                <TouchableOpacity style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
+                <TouchableOpacity onPress={(() => { navigation.navigate("Filter", { "screenId": 1, "screenName": "Filter" }) })} style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
                   <MaterialIcons name="category" size={45} color={rsplTheme.rsplWhite} />
                   <Text style={{ fontWeight: 500, color: rsplTheme.rsplWhite, fontSize: 20, textAlign: "center" }}>Shop By Category</Text>
                 </TouchableOpacity>
               </LinearGradient>
 
               <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
-                <TouchableOpacity style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
+                <TouchableOpacity onPress={(() => { navigation.navigate("NewReleases") })} style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
                   <Entypo name="new" size={45} color={rsplTheme.rsplWhite} />
                   <Text style={{ fontWeight: 500, color: rsplTheme.rsplWhite, fontSize: 20, textAlign: "center" }}>New Release</Text>
                 </TouchableOpacity>
@@ -80,7 +84,7 @@ const WelcomStore = () => {
               </LinearGradient>
 
               <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
-                <TouchableOpacity onPress={(() => { navigation.navigate("Bookseller") })} style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
+                <TouchableOpacity onPress={(() => { navigation.navigate("BooksellerStatewise") })} style={{ height: 150, justifyContent: "space-evenly", alignItems: "center", padding: 15, borderRadius: 20, }}>
                   <Ionicons name="location" size={45} color={rsplTheme.rsplWhite} />
                   <Text style={{ fontWeight: 500, color: rsplTheme.rsplWhite, fontSize: 20, textAlign: "center" }}>Bookseller</Text>
                 </TouchableOpacity>

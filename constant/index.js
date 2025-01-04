@@ -66,7 +66,8 @@ export const apiRoutes = Object.freeze({
     getUserProfile: "getUserProfile",
     updateUserDetails: "updateUserDetails",
     allBookList: "allBookList",
-    bookSellerList: "bookSellerList"
+    bookSellerList: "bookSellerList",
+    booksellerListStatewise: "bookSellerListStateWise" // "booksellerListStatewise"
 })
 
 

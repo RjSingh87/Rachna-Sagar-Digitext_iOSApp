@@ -225,6 +225,7 @@ export default Store = ({ children }) => {
       value={{
         isConnected: isConnected,
         userData: userData,
+        setUserDate: setUserDate,
         login: login,
         logout: logout,
         addToCart: addToCart,

@@ -37,14 +37,17 @@ const NewReleases = () => {
 	};
 
 	useEffect(() => {
-		newReleasesTitle()
+		newReleasesTitle();
 
 		Voice.onSpeechStart = onSpeechStart;
 		Voice.onSpeechEnd = onSpeechEnd;
 		Voice.onSpeechResults = onSpeechResults;
-		Voice.onSpeechError = (error) => { console.log("onSpeechError:", error) };
-		return () => { Voice.destroy().then(Voice.removeAllListeners) }
-	}, [])
+		Voice.onSpeechError = (error) => console.log("Speech Error:", error);
+
+		return () => {
+			Voice.destroy().then(() => Voice.removeAllListeners());
+		};
+	}, []);
 
 
 	const onSpeechStart = (event) => {
@@ -67,46 +70,65 @@ const NewReleases = () => {
 	}
 
 	const startListening = async () => {
-		setIsListening(true)
 		try {
-			await Voice.start("en-US",)
-			setTimeout(() => {
-				setIsListening(false)
-			}, 5000);
-		} catch (er) {
-			console.log("Start Listening error:", er)
+			setIsListening(true);
+			await Voice.start("en-US");
+			setTimeout(stopListening, 5000);
+		} catch (error) {
+			console.log("Start Listening Error:", error);
+			setIsListening(false);
 		}
-		setTimeout(() => {
-			setIsListening(false)
-		}, 5000);
-	}
+	};
 
 	const stopListening = async () => {
 		try {
 			await Voice.stop();
-			Voice.removeAllListeners();
 			setIsListening(false);
 		} catch (error) {
-			console.log("Stop Listening error:", error)
+			console.log("Stop Listening Error:", error);
 		}
-	}
+	};
 
 
 
 
 	// this function is search filter with API based
-	const SearchFilter = async (text) => {
+
+	// const SearchFilter = async (text) => {
+	// 	setSearch(text);
+	// 	const newData = data.filter(item =>
+	// 		item?.Title.toLowerCase().includes(text.toLowerCase())
+	// 	);
+	// 	if (!newData.length) {
+	// 		setError(`Your search : ${text} did not match any product.`)
+	// 	} else {
+	// 		setOldData(newData);
+	// 		setError("")
+	// 	}
+	// }
+
+
+	const SearchFilter = (text) => {
 		setSearch(text);
-		const newData = data.filter(item =>
-			item?.Title.toLowerCase().includes(text.toLowerCase())
-		);
-		if (!newData.length) {
-			setError(`Your search : ${text} did not match any product.`)
-		} else {
-			setOldData(newData);
-			setError("")
+
+		if (!text) {
+			setData(oldData);
+			setError("");
+			return;
 		}
-	}
+
+		const filtered = oldData.filter(item =>
+			item.Title.toLowerCase().includes(text.toLowerCase())
+		);
+
+		setData(filtered);
+
+		if (!filtered.length) {
+			setError(`Your search: "${text}" did not match any products.`);
+		} else {
+			setError("");
+		}
+	};
 
 
 	const newReleasesTitle = async () => {
@@ -314,7 +336,6 @@ const styles = StyleSheet.create({
 		// height: 50,
 		paddingVertical: 8,
 		paddingHorizontal: 8,
-		backgroundColor: rsplTheme.rsplLightGrey,
 		// borderRadius: 10,
 		fontSize: 18,
 		color: rsplTheme.textColorBold
