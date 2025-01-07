@@ -307,11 +307,11 @@ const Cart = () => {
               // onEndReached={loadMoreData}
               onEndReachedThreshold={0.1} // Trigger onEndReached when the end is reached at 90% of the list
               showsVerticalScrollIndicator={false}
-              ListHeaderComponent={
-                <>
-                  <Text style={styles.cartLength}>{`Cart Item ${cartList.Data.length}`}</Text>
-                </>
-              }
+              // ListHeaderComponent={
+              //   <>
+              //     <Text style={styles.cartLength}>{`Cart Item ${cartList.Data.length}`}</Text>
+              //   </>
+              // }
               // ListFooterComponent={<CartSummery totalItem={cartList.Data} />}
               stickyHeaderIndices={[cartList.Data.length]}
               contentContainerStyle={{ flexGrow: 1 }}
@@ -323,8 +323,8 @@ const Cart = () => {
             // }
             />
             <View style={{ position: "absolute", bottom: 0, left: 0, right: 0, backgroundColor: rsplTheme.rsplWhite }}>
-              <View style={{ flexDirection: "row", padding: 5, alignItems: "center", justifyContent: "center" }}>
-                <Text style={{ width: "50%", padding: 10, color: rsplTheme.textColorBold, fontSize: 18, fontWeight: "600" }}>{`\u20B9 ${grandTotal?.total}`}</Text>
+              <View style={{ flexDirection: "row", padding: 5, alignItems: "center", justifyContent: "center", }}>
+                <Text style={{ width: "50%", padding: 10, color: rsplTheme.textColorBold, fontSize: 18, fontWeight: "600" }}><Text style={{ fontSize: 12, color: rsplTheme.jetGrey }}>{`Cart Item ${cartList.Data.length}`}</Text> {"\n"} {`\u20B9 ${grandTotal?.total}`}</Text>
                 <TouchableOpacity onPress={(() => { navigation.navigate("OrderSummery") })} style={{ flex: 1, backgroundColor: rsplTheme.gradientColorRight, padding: 10, borderRadius: 6 }}>
                   <Text style={{ textAlign: "center", fontSize: 16, color: rsplTheme.rsplWhite, fontWeight: "600" }}>Proceed</Text>
                 </TouchableOpacity>

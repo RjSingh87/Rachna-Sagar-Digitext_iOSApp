@@ -219,6 +219,14 @@ const AddNewAddress = () => {
                 <Text style={[styles.countryStateCity, { width: 70, fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.country_code == null ? "Select country" : selectItem.country?.country_code}`}</Text>
                 <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
               </TouchableOpacity>
+
+              {selectItem?.country?.country_code == "IND" ?
+                <View style={{ borderWidth: 0, alignItems: "center", justifyContent: "center", marginRight: 8, }}>
+                  <Text style={{ fontSize: 15, }}>+91</Text>
+                </View> : null
+              }
+
+
               <TextInput
                 returnKeyType={'done'}
                 onChangeText={(text) => {
@@ -228,13 +236,14 @@ const AddNewAddress = () => {
                 value={validation.mobile}
                 keyboardType='numeric'
                 maxLength={10}
-                placeholder='Enter your mobile no.'
+                placeholder={'Enter your mobile no.'}
                 style={[styles.txtInput, { flex: 1, }]} />
+
             </View>
           </View>
 
           <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>Address *</Text>
+            <Text style={styles.EmaiPass}>Flat, House no., Building, Company, Apartment, Street, Village</Text>
             <TextInput onChangeText={(text) => { setValidation((prev) => { return { ...prev, address: text } }) }} value={validation.address} placeholder='Enter your address' style={styles.txtInput} />
           </View>
 
@@ -353,7 +362,7 @@ export default AddNewAddress
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: rsplTheme.rsplWhite
+    // backgroundColor: rsplTheme.rsplWhite
   },
   inputContainer: {
     // flex: 1,
@@ -408,7 +417,7 @@ const styles = StyleSheet.create({
     color: rsplTheme.textColorBold,
     fontWeight: "500",
     fontSize: 16,
-    borderWidth: .5,
+    borderWidth: .3,
     borderColor: rsplTheme.jetGrey
   },
   loader: {

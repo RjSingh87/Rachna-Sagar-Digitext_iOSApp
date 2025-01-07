@@ -27,23 +27,23 @@ export default Header
 const styles = StyleSheet.create({
   header: {
     width: width,
-    height: 65,
+    height: 50,
     backgroundColor: rsplTheme.rsplBackgroundColor,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingLeft: 15,
-    paddingRight: 15
+    paddingLeft: 10,
+    paddingRight: 10
   },
   btn: {
-    width: 40,
-    height: 40,
+    width: 25,
+    height: 25,
     justifyContent: "center",
     alignItems: "center",
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
     tintColor: rsplTheme.rsplWhite
   },
   title: {

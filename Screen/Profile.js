@@ -514,7 +514,7 @@ const styles = StyleSheet.create({
   },
   editBox: {
     position: "absolute",
-    top: "-7%",
+    top: "-5%",
     left: "92%",
     width: 30,
     height: 30,

@@ -825,16 +825,16 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		top: 5,
 		right: "3.5%",
-		width: 22,
-		height: 22,
-		borderRadius: 22 / 2,
+		width: 18,
+		height: 18,
+		borderRadius: 18 / 2,
 		backgroundColor: rsplTheme.rsplWhite,
 		borderWidth: .5,
 		alignItems: "center",
 		justifyContent: "center",
 	},
 	cartLengthValue: {
-		fontSize: 12,
+		fontSize: 10,
 		color: rsplTheme.textColorBold
 	}
 

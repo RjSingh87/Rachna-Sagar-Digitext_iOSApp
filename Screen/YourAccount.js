@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   },
   dataContainer: {
     marginTop: 10,
-    borderWidth: 1,
+    borderWidth: .3,
     borderRadius: 6,
     borderColor: rsplTheme.jetGrey,
     backgroundColor: rsplTheme.OFFWhite

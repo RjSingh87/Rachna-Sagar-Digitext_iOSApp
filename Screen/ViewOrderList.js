@@ -10,14 +10,15 @@ const ViewOrderList = ({ route }) => {
   // console.log(route.params, "funf....")
   const navigation = useNavigation()
   const { orderListData } = route.params;
+  const sortedData = [...orderListData].sort((a, b) => new Date(b.invoiceDate) - new Date(a.invoiceDate));
 
   const OrderListProduct = ({ product }) => {
-    let productTitle = product.orderDetail?.getProduct?.product_title
+    let productTitle = product.orderDetail?.getProduct?.product_title || 'Unknown Product';
     let productImage = product.orderDetail?.getProduct?.main_image
     // console.log(product, "Img???")
     return (
       <TouchableOpacity onPress={(() => { navigation.navigate("OrderListDetail", { OrderListData: product }) })} style={styles.containers}>
-        <Image source={{ uri: productImage }} style={styles.image} />
+        <Image source={productImage ? { uri: productImage } : require("../assets/RSPL.png")} style={[styles.image, { width: !productImage ? 50 : 80 }]} />
         <View style={styles.infoContainer}>
           <Text numberOfLines={2} ellipsizeMode='tail' style={styles.title}>{productTitle}</Text>
           <Text style={styles.price}>{`Paid on: ${product.orderDate}`}</Text>
@@ -49,7 +50,7 @@ const ViewOrderList = ({ route }) => {
       {!orderListData.length ?
         <Text>Order list not found.</Text> :
         <FlatList
-          data={orderListData}
+          data={sortedData}
           keyExtractor={item => `${item.Order_Number}`}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (

@@ -1,21 +1,46 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView, } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Text, View, Animated, TouchableOpacity, Image, ScrollView, } from 'react-native'
+import React, { useState, useEffect, useRef } from 'react'
 import Header from '../comman/Header'
 import { useNavigation } from '@react-navigation/native'
 import { rsplTheme } from '../constant'
 import LinearGradient from 'react-native-linear-gradient'
 import Banner from './Banner'
-import NewReleases from './NewReleases'
+// import NewReleases from './NewReleases'
 import NoInternetConn from './NoInternetConn'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import Entypo from 'react-native-vector-icons/Entypo'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import BreakingNews from './BreakingNews'
 
 
 const WelcomStore = () => {
   const navigation = useNavigation()
 
-  const [showStore, setShowStore] = useState(true)
+  const flipAnim = useRef(new Animated.Value(0)).current; // Initial animated value
+
+  useEffect(() => {
+    // Define flipping animation
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(flipAnim, {
+          toValue: 1,
+          duration: 1000, // Flip duration
+          useNativeDriver: true,
+        }),
+        Animated.timing(flipAnim, {
+          toValue: 0,
+          duration: 1000, // Flip back duration
+          useNativeDriver: true,
+        }),
+      ])
+    ).start(); // Start the animation loop
+  }, [flipAnim]);
+
+  // Interpolate the flip animation value
+  const flipInterpolate = flipAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'], // Rotate from 0 to 180 degrees
+  });
 
 
 
@@ -25,15 +50,35 @@ const WelcomStore = () => {
         leftIcon={require("../assets/icons/menu.png")}
         // rightIcon={require('../assets/icons/shopping-cart.png')}
         // title={showStore ? "Rachna Sagar DigiText" : "NEW RELEASES"}
-        title={" Rachna Sagar DigiText"}
+        // title={" RACHNA SAGAR PVT. LTD."}
         onClickLeftIcon={() => { navigation.openDrawer(); }}
         onClickRightIcon={() => { return }}
       />
       <NoInternetConn />
 
-      <View style={{ position: "absolute", top: 16, left: 70, width: 30, height: 30, borderRadius: 30 / 2, alignItems: "center", justifyContent: "center", backgroundColor: rsplTheme.rsplWhite }}>
-        <Image style={{ width: 20, height: 20, resizeMode: "contain" }} source={require("../assets/RSPL.png")} />
+      <View style={{ position: "absolute", top: 8, left: 55, width: "82%", }}>
+        {/* <Image style={{ width: 25, height: 25, resizeMode: "contain" }} source={require("../assets/RSPL.png")} /> */}
+        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-evenly" }}>
+          <View style={{ width: 35, height: 35, borderRadius: 35 / 2, alignItems: "center", justifyContent: "center", backgroundColor: rsplTheme.rsplWhite }}>
+            <Animated.Image
+              source={require('../assets/RSPL.png')}
+              style={[styles.image,
+                // {
+                //   transform: [{ rotateY: flipInterpolate }],
+                // },
+              ]}
+            />
+          </View>
+          <BreakingNews />
+        </View>
       </View>
+
+
+      {/* 
+      <View style={{ position: "absolute", left: 113, borderWidth: 1, top: 10, right: 0, width: "70%" }}>
+        <BreakingNews />
+      </View> */}
+
 
 
       <View style={{ flex: 1, }}>
@@ -54,7 +99,7 @@ const WelcomStore = () => {
           </View> */}
 
 
-          <View style={{ flex: 1, minHeight: "55%", padding: 10, justifyContent: "center", }}>
+          <View style={{ flex: 1, padding: 10, justifyContent: "center", }}>
             <View style={{ flexDirection: "row", padding: 10, justifyContent: "space-between" }}>
 
               <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={{ width: "47%", alignSelf: "center", borderRadius: 15, }}>
@@ -110,11 +155,12 @@ export default WelcomStore
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: rsplTheme.rsplWhite
+    backgroundColor: rsplTheme.rsplWhite,
+    paddingBottom: 60
   },
   banner: {
     width: "100%",
-    height: 210,
+    height: 225,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
     justifyContent: "center",
@@ -172,5 +218,11 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 12,
     borderWidth: 1,
+  },
+  image: {
+    width: 28,
+    height: 28,
+    borderRadius: 8,
+    resizeMode: "contain"
   }
 })

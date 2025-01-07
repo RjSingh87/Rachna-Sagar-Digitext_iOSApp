@@ -170,7 +170,7 @@ const NewReleases = () => {
 
 	const renderItem = ({ item }) => {
 		return (
-			<TouchableOpacity onPress={(() => { navigation.navigate("NewReleaseBooks", { id: item.id, name: "New Releases Books", title: "New Releases Books" }) })} style={styles.productItem}>
+			<TouchableOpacity onPress={(() => { navigation.navigate("NewReleaseBooks", { id: item.id, name: "New Releases Books", title: `${item.Title}` }) })} style={styles.productItem}>
 				<Image source={{ uri: item.image_Path }} style={styles.productImage} />
 				<Text style={styles.productName}>{item.Title}</Text>
 			</TouchableOpacity>
@@ -206,8 +206,8 @@ const NewReleases = () => {
 			<NoInternetConn />
 
 
-
-			<View style={styles.container}>
+			{/* Search UI Design */}
+			{/* <View style={styles.container}>
 				<Image style={styles.searchIcon} source={require("../assets/icons/search.png")} />
 				<TextInput
 					ref={searchRef}
@@ -241,15 +241,16 @@ const NewReleases = () => {
 						</TouchableOpacity>
 					)}
 
-			</View>
+			</View> */}
 
 			<View style={styles.listContainer}>
-				{error &&
+
+				{/* {error &&
 					<>
 						<Text style={styles.error}>{error}</Text>
 						<Text style={styles.suggestion}>Suggestions:</Text>
 					</>
-				}
+				} */}
 				<FlatList
 					data={oldData}
 					scrollEnabled={true}

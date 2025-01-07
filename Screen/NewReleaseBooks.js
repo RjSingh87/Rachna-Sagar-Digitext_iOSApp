@@ -187,7 +187,8 @@ const NewReleaseBooks = ({ route }) => {
 
 			<NoInternetConn />
 
-			<View style={styles.searchContainer}>
+			{/* Search UI design comment on 6-01-2025 by raju */}
+			{/* <View style={styles.searchContainer}>
 				<Image style={styles.searchIcon} source={require("../assets/icons/search.png")} />
 				<TextInput
 					ref={searchRef}
@@ -223,19 +224,19 @@ const NewReleaseBooks = ({ route }) => {
 							<Image style={styles.closeIcon} source={require("../assets/icons/close.png")} />
 						</TouchableOpacity>
 					)}
-			</View>
+			</View> */}
 
 
 
 
 
 			<View style={{ flex: 1, }}>
-				{error &&
+				{/* {error &&
 					<>
 						<Text style={styles.error}>{error}</Text>
 						<Text style={styles.suggestion}>Suggestions:</Text>
 					</>
-				}
+				} */}
 				<FlatList
 					data={oldNewRelesesAllBook}
 					scrollEnabled={true}

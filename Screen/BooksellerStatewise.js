@@ -207,7 +207,7 @@ const BooksellerStatewise = () => {
       <View style={[styles.inputContainer]}>
 
         <View style={styles.emailPass}>
-          <Text style={styles.EmaiPass}>State *</Text>
+          <Text style={styles.EmaiPass}>State</Text>
           <TouchableOpacity onPress={(() => { handleCityStateCountry(1) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
             <Text style={[styles.countryStateCity, { fontSize: selectItem.state !== null ? 15 : 14, fontWeight: selectItem.state !== null ? "500" : "normal", color: selectItem.state !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.state?.state_title == null ? "Select state" : selectItem.state?.state_title}`}</Text>
             {commonLoader?.stateLoader ?
@@ -218,7 +218,7 @@ const BooksellerStatewise = () => {
         </View>
 
         <View style={styles.emailPass}>
-          <Text style={styles.EmaiPass}>City *</Text>
+          <Text style={styles.EmaiPass}>City</Text>
           <TouchableOpacity onPress={(() => { handleCityStateCountry(2) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
             <Text style={[styles.countryStateCity, { fontSize: selectItem.city !== null ? 15 : 14, fontWeight: selectItem.city !== null ? "500" : "normal", color: selectItem.city !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.city?.city_title == null ? "Select city" : selectItem.city?.city_title}`}</Text>
             {commonLoader?.cityLoader ?
@@ -337,7 +337,7 @@ const styles = StyleSheet.create({
   EmaiPass: {
     fontSize: 16,
     paddingBottom: 6,
-    color: rsplTheme.textColorLight
+    color: rsplTheme.jetGrey
   },
   countryStateCity: {
     color: rsplTheme.jetGrey,
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
     color: rsplTheme.textColorBold,
     fontWeight: "500",
     fontSize: 15,
-    borderWidth: .5,
+    borderWidth: .3,
     borderColor: rsplTheme.jetGrey
   },
   loader: {

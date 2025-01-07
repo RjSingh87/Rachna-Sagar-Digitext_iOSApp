@@ -390,7 +390,7 @@ const OrderSummery = ({ }) => {
                     <View style={[styles.button, { marginLeft: 10, marginRight: 10, }]}>
                       <Text selectable={true} style={styles.userName}>{item.name}</Text>
                       <Text selectable={true} style={styles.userAdd}>{item.address}, {item.landmark}, {item.state} {item.city} {item.country} {item.pincode} </Text>
-                      <Text selectable={true} style={styles.userMob}>{item.mobile}</Text>
+                      <Text selectable={true} style={styles.userMob}>+91 {item.mobile}</Text>
                     </View>
                   </TouchableOpacity>
 
