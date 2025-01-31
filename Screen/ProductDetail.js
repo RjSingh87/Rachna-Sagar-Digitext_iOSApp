@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 
 
 const ProductDetail = ({ navigation, route }) => {
-	const { userData, logout, addToCart, setSelectedTab, addToCartPopup, setAddToCartPopup, cartList } = useContext(MyContext)
+	const { userData, logout, addToCart, setSelectedTab, addToCartPopup, setAddToCartPopup, cartList, getWishListProduct } = useContext(MyContext)
 
 
 
@@ -29,11 +29,16 @@ const ProductDetail = ({ navigation, route }) => {
 	const [loading, setLoading] = useState(false)
 	const [activeButton, setActiveButton] = useState("Paperback")
 	const [addWishListMessage, setAddWishListMessage] = useState({ isVisible: false, message: "" })
+	const [lastCartId, setLastCartId] = useState(null)
 
 
 	const viewCartIds = []
 	for (const key in cartList.Data) {
+		// console.log(cartList.Data, "cartList.Data")
 		viewCartIds.push(cartList.Data[key].productId)
+		if (cartList.Data[key].productId == productId && lastCartId == null) {
+			setLastCartId(cartList?.Data[key]?.id)
+		}
 	}
 
 
@@ -133,7 +138,7 @@ const ProductDetail = ({ navigation, route }) => {
 			navigation.navigate("Main")
 		} else {
 			addToCart(navigation, productId, activeButton, "buyNow")
-			navigation.navigate("BuyNow", { productId, singleProduct, activeButton })
+			navigation.navigate("BuyNow", { productId, singleProduct, activeButton, lastCartId })
 		}
 	}
 
@@ -152,6 +157,7 @@ const ProductDetail = ({ navigation, route }) => {
 					getSingleProductList()
 					setTimeout(() => {
 						setAddWishListMessage((prev) => { return { ...prev, isVisible: false } })
+						getWishListProduct()
 					}, 2000)
 				}
 			})
@@ -179,6 +185,7 @@ const ProductDetail = ({ navigation, route }) => {
 					getSingleProductList()
 					setTimeout(() => {
 						setAddWishListMessage((prev) => { return { ...prev, isVisible: false } })
+						getWishListProduct()
 					}, 2000)
 				}
 			})
@@ -823,13 +830,13 @@ const styles = StyleSheet.create({
 	},
 	cartNotiFi: {
 		position: "absolute",
-		top: 5,
-		right: "3.5%",
+		top: 8,
+		right: "4%",
 		width: 18,
 		height: 18,
 		borderRadius: 18 / 2,
 		backgroundColor: rsplTheme.rsplWhite,
-		borderWidth: .5,
+		borderWidth: .2,
 		alignItems: "center",
 		justifyContent: "center",
 	},

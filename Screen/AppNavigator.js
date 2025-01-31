@@ -43,6 +43,11 @@ import AllTitleView from './AllTitleView';
 import Bookseller from './Bookseller';
 import Filter from './Filter';
 import BooksellerStatewise from './BooksellerStatewise';
+import ContactUs from './ContactUs';
+import SavedAddress from './SavedAddress';
+import PinchZoomPanWithBoundaries from './PinchZoomPanWithBoundaries';
+import EditAddress from './EditAddress';
+import SearchScreen from './SearchScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -87,6 +92,11 @@ const AppNavigator = () => {
           <Stack.Screen name="Bookseller" component={Bookseller} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           <Stack.Screen name="Filter" component={Filter} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           <Stack.Screen name="BooksellerStatewise" component={BooksellerStatewise} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="ContactUs" component={ContactUs} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="SavedAddress" component={SavedAddress} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="PinchZoomPanWithBoundaries" component={PinchZoomPanWithBoundaries} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="EditAddress" component={EditAddress} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
+          <Stack.Screen name="SearchScreen" component={SearchScreen} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           {/* <Stack.Screen name="User" component={User} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} />
           <Stack.Screen name="Cart" component={Cart} options={({ route }) => ({ title: `${route.params?.name}`, headerShown: false, headerTintColor: rsplTheme.rsplWhite, headerBackTitleVisible: false, headerStyle: { backgroundColor: rsplTheme.gradientColorRight } })} /> */}
         </Stack.Navigator>

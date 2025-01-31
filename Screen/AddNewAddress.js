@@ -2,10 +2,11 @@ import { StyleSheet, Text, View, Modal, TextInput, TouchableOpacity, Keyboard, A
 import React, { useContext, useState, useEffect } from 'react'
 import Header from '../comman/Header';
 import { apiRoutes, rsplTheme, token } from '../constant';
-import { TabRouter, useNavigation } from '@react-navigation/native';
-import Loader from '../constant/Loader';
+import { useNavigation } from '@react-navigation/native';
 import Services from '../services';
 import { MyContext } from '../Store';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
 
 
 const AddNewAddress = () => {
@@ -13,7 +14,7 @@ const AddNewAddress = () => {
   const { userData } = useContext(MyContext)
   const [commonLoader, setCommonLoading] = useState({ countryLoader: false, stateLoader: false, cityLoader: false, saveAddressLoader: false })
   const [selectItem, setSelectItem] = useState({ country: null, state: null, city: null, categoryId: null })
-  const [validation, setValidation] = useState({ name: "", mobile: "", email: "", address: "", zipPincode: "", landmark: "", status: false })
+  const [validation, setValidation] = useState({ name: "", mobile: "", email: "", address: "", zipPincode: "", landmark: "", cityTown: "", state: "", status: false })
   const [cityStateCountry, setCityStateCountry] = useState({ status: false, list: [], type: "" })
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
@@ -36,51 +37,85 @@ const AddNewAddress = () => {
   }, []);
 
   const saveProfile = async () => {
-    // console.log(selectItem.country?.countryNameLang1, "Count")
-    // return
-    if (validation.name.trim() == "" || validation.mobile.trim() == "" || validation.address.trim() == "" || validation.zipPincode.trim() == "" || validation.landmark.trim() == "" || selectItem.country?.country_title == null || selectItem.state?.state_title == null || selectItem.city?.city_title == null) {
-      Alert.alert("Info", "Please fill all fields.")
-      return
-    } else if (validation.mobile.length !== 10) {
-      Alert.alert("Mobile Number", "Please enter a valid mobile number")
-      return
-    } else if (validation.zipPincode.length !== 6) {
-      Alert.alert("Zip Code", "Please enter a valid zip code")
-      return
+    // Check if all required fields are filled
+    if (
+      validation.name.trim() === "" ||
+      validation.mobile.trim() === "" ||
+      validation.address.trim() === "" ||
+      validation.zipPincode.trim() === "" ||
+      validation.landmark.trim() === "" ||
+      selectItem.country?.country == null ||
+      validation.cityTown.trim() === "" ||
+      validation.state.trim() === "") {
+      Alert.alert("Info", "Please fill all fields.");
+      return;
     }
+
+    // Validate mobile number length
+    else if (validation.mobile.length !== 10) {
+      Alert.alert("Mobile Number", "Please enter a valid mobile number.");
+      return;
+    }
+
+    // Validate zip code length
+    else if (validation.zipPincode.length !== 6) {
+      Alert.alert("Zip Code", "Please enter a valid zip code.");
+      return;
+    }
+
+    // Validate city/town and state to contain only letters and spaces
+    const citytownAndStateRegex = /^[A-Za-z\s]+$/;
+
+    if (!citytownAndStateRegex.test(validation?.cityTown)) {
+      Alert.alert("City/Town", "City must only contain letters and spaces.");
+      return;
+    }
+
+    if (!citytownAndStateRegex.test(validation?.state)) {
+      Alert.alert("State", "State must only contain letters and spaces.");
+      return;
+    }
+
+    // Proceed with API call if validation is successful
     else {
-      setCommonLoading((prev) => { return { ...prev, saveAddressLoader: true } })
+      setCommonLoading((prev) => { return { ...prev, saveAddressLoader: true } });
+
       const payLoad = {
         "api_token": token,
         "userID": userData.data[0]?.id,
-        "country": selectItem.country?.countryNameLang1,
-        "city": selectItem.city?.city_title,
-        "state": selectItem.state?.state_title,
+        "country": selectItem.country?.country,
+        "city": validation.cityTown,
+        "state": validation.state,
         "name": validation?.name,
         "mobile": validation?.mobile,
         "address": validation?.address,
         "landmark": validation?.landmark,
         "pincode": validation?.zipPincode
+      };
+
+      try {
+        const res = await Services.post(apiRoutes.userAddAddress, payLoad);
+
+        if (res.status === "success") {
+          Alert.alert("Info", res.message);
+          setValidation((prev) => { return { ...prev, name: "", email: "", mobile: "", address: "" } });
+          navigation.goBack();
+        } else if (res.status === "failed") {
+          Alert.alert("Info", res.message);
+        }
+      } catch (err) {
+        console.log("Error:", err); // Log the error for debugging purposes
+        if (err.message === "TypeError: Network request failed") {
+          Alert.alert("Network Error", `Please try again.`);
+        } else {
+          Alert.alert("Error", `${err.message || 'Something went wrong'}`);
+        }
+      } finally {
+        setCommonLoading((prev) => { return { ...prev, saveAddressLoader: false } });
       }
-      await Services.post(apiRoutes.userAddAddress, payLoad)
-        .then((res) => {
-          if (res.status === "success") {
-            Alert.alert("Info", res.message)
-            setValidation((prev) => { return { ...prev, name: "", email: "", mobile: "", address: "" } })
-            navigation.goBack()
-          } else {
-            Alert.alert("Info", res.message)
-            return
-          }
-        })
-        .catch((err) => {
-          if (err.message == "TypeError: Network request failed") {
-            Alert.alert("Network Error", `Please try again.`)
-          } else { Alert.alert("Error", `${err.message}`) }
-        })
-        .finally(() => { setCommonLoading((prev) => { return { ...prev, saveAddressLoader: false } }) })
     }
   };
+
 
 
   const handleCityStateCountry = (id) => {
@@ -102,20 +137,30 @@ const AddNewAddress = () => {
     const payLoad = {
       "api_token": token,
     }
-    await Services.post(apiRoutes.countryList, payLoad)
-      .then((res) => {
-        if (res.status === "success" && res.result.length != 0) {
-          setCityStateCountry((prev) => { return { ...prev, status: true, list: res.result, type: "Country" } })
-        } else if (res.status == "failed") {
-          Alert.alert(res.message)
-        }
-      })
-      .catch((err) => {
-        if (err.message == "TypeError: Network request failed") {
-          Alert.alert("Network Error", `Please try again.`)
-        } else { Alert.alert("Error", `${err.message}`) }
-      })
-      .finally(() => { setCommonLoading((prev) => { return { ...prev, countryLoader: false } }) })
+
+    try {
+      const res = await Services.post(apiRoutes.countryList, payLoad);
+
+      if (res.status === "success" && res.result.length !== 0) {
+        // Use localeCompare for better alphabetic sorting
+        const sortedResult = res.result.sort((a, b) => {
+          return a.country.localeCompare(b.country);
+        });
+        setCityStateCountry((prev) => {
+          return { ...prev, status: true, list: sortedResult, type: "Country" }
+        });
+      } else if (res.status === "failed") {
+        Alert.alert(res.message);
+      }
+    } catch (err) {
+      if (err.message === "TypeError: Network request failed") {
+        Alert.alert("Network Error", "Please try again.");
+      } else {
+        Alert.alert("Error", err.message || "Something went wrong.");
+      }
+    } finally {
+      setCommonLoading((prev) => { return { ...prev, countryLoader: false } });
+    }
   }
 
   const getStateOfIndia = async () => {
@@ -196,164 +241,189 @@ const AddNewAddress = () => {
 
 
   return (
-    <View style={styles.container}>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f5f5f5', }} edges={["left", "right"]}>
 
-      <Header
-        leftIcon={require("../assets/icons/backArrow.png")}
-        // rightIcon={require('../assets/icons/shopping-cart.png')}
-        title={"Add Address"}
-        onClickLeftIcon={() => { navigation.goBack(); }}
-        onClickRightIcon={() => { return }}
-      />
+        <View style={styles.container}>
 
-      <KeyboardAvoidingView style={{ marginBottom: keyboardHeight + 20 }} behavior="padding">
-        <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false} contentContainerStyle={[styles.inputContainer]}>
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>Name *</Text>
-            <TextInput onChangeText={(text) => { setValidation((prev) => { return { ...prev, name: text } }) }} value={validation.name} placeholder='Enter your name' style={styles.txtInput} />
-          </View>
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>Mobile *</Text>
-            <View style={{ flexDirection: "row", flex: 1, }}>
-              <TouchableOpacity onPress={(() => { handleCityStateCountry(4) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between", width: 120, marginRight: 10, }]}>
-                <Text style={[styles.countryStateCity, { width: 70, fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.country_code == null ? "Select country" : selectItem.country?.country_code}`}</Text>
-                <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
-              </TouchableOpacity>
+          <Header
+            leftIcon={require("../assets/icons/backArrow.png")}
+            // rightIcon={require('../assets/icons/shopping-cart.png')}
+            title={"Add Address"}
+            onClickLeftIcon={() => { navigation.goBack(); }}
+            onClickRightIcon={() => { return }}
+          />
 
-              {selectItem?.country?.country_code == "IND" ?
-                <View style={{ borderWidth: 0, alignItems: "center", justifyContent: "center", marginRight: 8, }}>
-                  <Text style={{ fontSize: 15, }}>+91</Text>
-                </View> : null
-              }
+          <KeyboardAvoidingView style={{ marginBottom: keyboardHeight + 20 }} behavior="padding">
+            <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false} contentContainerStyle={[styles.inputContainer]}>
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>Name</Text>
+                <TextInput onChangeText={(text) => { setValidation((prev) => { return { ...prev, name: text } }) }} value={validation.name} placeholder='Enter your name' style={styles.txtInput} />
+              </View>
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>Mobile</Text>
+                <View style={{ flexDirection: "row", flex: 1, }}>
 
+                  {/* <TouchableOpacity onPress={(() => { handleCityStateCountry(4) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between", width: 120, marginRight: 10, }]}>
+                    <Text style={[styles.countryStateCity, { width: 70, fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.country_code == null ? "Select country" : selectItem.country?.country_code}`}</Text>
+                    <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
+                  </TouchableOpacity> */}
 
-              <TextInput
-                returnKeyType={'done'}
-                onChangeText={(text) => {
-                  const formattedText = text.replace(/[^0-9]/g, '');
-                  setValidation((prev) => { return { ...prev, mobile: formattedText } })
-                }}
-                value={validation.mobile}
-                keyboardType='numeric'
-                maxLength={10}
-                placeholder={'Enter your mobile no.'}
-                style={[styles.txtInput, { flex: 1, }]} />
+                  {selectItem?.country?.country_code ?
+                    <View style={{ borderWidth: 0, alignItems: "center", justifyContent: "center", marginRight: 8, }}>
+                      <Text style={{ fontSize: 15, }}>{selectItem?.country?.cCode}</Text>
+                    </View> : null
+                  }
 
-            </View>
-          </View>
+                  <TextInput
+                    returnKeyType={'done'}
+                    onChangeText={(text) => {
+                      const formattedText = text.replace(/[^0-9]/g, '');
+                      setValidation((prev) => { return { ...prev, mobile: formattedText } })
+                    }}
+                    value={validation.mobile}
+                    keyboardType='numeric'
+                    maxLength={10}
+                    placeholder={'Enter your mobile no.'}
+                    style={[styles.txtInput, { flex: 1, }]} />
 
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>Flat, House no., Building, Company, Apartment, Street, Village</Text>
-            <TextInput onChangeText={(text) => { setValidation((prev) => { return { ...prev, address: text } }) }} value={validation.address} placeholder='Enter your address' style={styles.txtInput} />
-          </View>
-
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>Zip / Pincode *</Text>
-            <TextInput
-              maxLength={6}
-              returnKeyType={'done'}
-              onChangeText={(text) => {
-                const formattedText = text.replace(/[^0-9]/g, '');
-                setValidation((prev) => { return { ...prev, zipPincode: formattedText } })
-              }}
-              value={validation.zipPincode}
-              keyboardType='numeric'
-              placeholder='Enter your zip/pincode'
-              style={styles.txtInput} />
-          </View>
-
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>Landmark *</Text>
-            <TextInput returnKeyType={'done'} onChangeText={(text) => { setValidation((prev) => { return { ...prev, landmark: text } }) }} value={validation.landmark} placeholder='Enter your landmark' style={styles.txtInput} />
-          </View>
-
-
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>Country *</Text>
-            <TouchableOpacity onPress={(() => { handleCityStateCountry(1) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
-              <Text style={[styles.countryStateCity, { fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.country_code == null ? "Select country" : selectItem.country?.country_code}`}</Text>
-              {commonLoader?.countryLoader ?
-                <ActivityIndicator /> :
-                <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
-              }
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>State *</Text>
-            <TouchableOpacity onPress={(() => { handleCityStateCountry(2) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
-              <Text style={[styles.countryStateCity, { fontSize: selectItem.state !== null ? 18 : 14, fontWeight: selectItem.state !== null ? "500" : "normal", color: selectItem.state !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.state?.state_title == null ? "Select state" : selectItem.state?.state_title}`}</Text>
-              {commonLoader?.stateLoader ?
-                <ActivityIndicator /> :
-                <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
-              }
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.emailPass}>
-            <Text style={styles.EmaiPass}>City *</Text>
-            <TouchableOpacity onPress={(() => { handleCityStateCountry(3) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
-              <Text style={[styles.countryStateCity, { fontSize: selectItem.city !== null ? 18 : 14, fontWeight: selectItem.city !== null ? "500" : "normal", color: selectItem.city !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.city?.city_title == null ? "Select city" : selectItem.city?.city_title}`}</Text>
-              {commonLoader?.cityLoader ?
-                <ActivityIndicator /> :
-                <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
-              }
-            </TouchableOpacity>
-          </View>
-
-          {commonLoader.saveAddressLoader ?
-            <ActivityIndicator /> :
-            <Button title='Save Address' onPress={saveProfile} />
-          }
-
-        </ScrollView>
-      </KeyboardAvoidingView>
-
-
-
-
-      <Modal
-        animationType='slide'
-        transparent={true}
-        visible={cityStateCountry.status}
-      >
-        <View style={styles.modalContainer}>
-          <TouchableOpacity style={{ width: "100%", flex: 1, }} onPress={(() => { setCityStateCountry((prev) => { return { ...prev, status: false } }) })} />
-          <View style={styles.greyDesign}></View>
-          <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
-            {cityStateCountry.list?.map((item, index) => {
-              let allListItem = ""
-              let radioBtnColor = ""
-              if (cityStateCountry.type === "Country") {
-                // allListItem = `${item.concatenatedCode}`
-                allListItem = `${item.country_title}`
-                radioBtnColor = item.id == selectItem.country?.id
-              } else if (cityStateCountry.type === "State") {
-                allListItem = `${item.state_title}`
-                radioBtnColor = item.id == selectItem.state?.id
-              } else if (cityStateCountry.type === "City") {
-                allListItem = `${item.city_title}`
-                radioBtnColor = item.id == selectItem.city?.id
-              }
-
-              const backgroundColor = radioBtnColor ? rsplTheme.gradientColorRight : "transparent";
-              const width = radioBtnColor ? 8 : 16
-              const height = radioBtnColor ? 8 : 16
-              const borderRadius = radioBtnColor ? 4 : 8
-
-              return (
-                <View style={styles.itemContainer} key={index.toString()}>
-                  <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", }} onPress={(() => { SetValue(item) })}>
-                    <View style={{ width: 16, height: 16, borderRadius: 8, borderWidth: 1.5, borderColor: rsplTheme.jetGrey, alignItems: "center", justifyContent: "center" }}><View style={{ width, height, borderRadius, backgroundColor }}></View></View>
-                    <Text style={{ color: rsplTheme.jetGrey, fontSize: 20, marginLeft: 8, }}> {allListItem}</Text>
-                  </TouchableOpacity>
                 </View>
-              )
-            })}
-          </ScrollView>
+              </View>
+
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>Country</Text>
+                <TouchableOpacity onPress={(() => { handleCityStateCountry(1) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
+                  <Text style={[styles.countryStateCity, { fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.id == undefined ? "Select country" : selectItem.country?.country}`}</Text>
+                  {commonLoader?.countryLoader ?
+                    <ActivityIndicator /> :
+                    < Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
+                  }
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>State</Text>
+                <TextInput returnKeyType={'done'} onChangeText={(text) => { setValidation((prev) => { return { ...prev, state: text } }) }} value={validation.state} placeholder='Enter your state' style={styles.txtInput} />
+              </View>
+
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>City/Town</Text>
+                <TextInput returnKeyType={'done'} onChangeText={(text) => { setValidation((prev) => { return { ...prev, cityTown: text } }) }} value={validation.cityTown} placeholder='Enter your city/town' style={styles.txtInput} />
+              </View>
+
+
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>Address(Area & Street)</Text>
+                <TextInput onChangeText={(text) => { setValidation((prev) => { return { ...prev, address: text } }) }} value={validation.address} placeholder='Enter your address' style={styles.txtInput} />
+              </View>
+
+
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>Landmark</Text>
+                <TextInput returnKeyType={'done'} onChangeText={(text) => { setValidation((prev) => { return { ...prev, landmark: text } }) }} value={validation.landmark} placeholder='Enter your landmark' style={styles.txtInput} />
+              </View>
+
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>Pin code</Text>
+                <TextInput
+                  maxLength={6}
+                  returnKeyType={'done'}
+                  onChangeText={(text) => {
+                    const formattedText = text.replace(/[^0-9]/g, '');
+                    setValidation((prev) => { return { ...prev, zipPincode: formattedText } })
+                  }}
+                  value={validation.zipPincode}
+                  keyboardType='numeric'
+                  placeholder='Enter your zip/pincode'
+                  style={styles.txtInput} />
+              </View>
+
+
+
+
+
+
+
+
+
+              {/* //State and City UI desable  20-01-2025 */}
+              {/* <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>State *</Text>
+                <TouchableOpacity onPress={(() => { handleCityStateCountry(2) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
+                  <Text style={[styles.countryStateCity, { fontSize: selectItem.state !== null ? 18 : 14, fontWeight: selectItem.state !== null ? "500" : "normal", color: selectItem.state !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.state?.state_title == null ? "Select state" : selectItem.state?.state_title}`}</Text>
+                  {commonLoader?.stateLoader ?
+                    <ActivityIndicator /> :
+                    <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
+                  }
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.emailPass}>
+                <Text style={styles.EmaiPass}>City *</Text>
+                <TouchableOpacity onPress={(() => { handleCityStateCountry(3) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
+                  <Text style={[styles.countryStateCity, { fontSize: selectItem.city !== null ? 18 : 14, fontWeight: selectItem.city !== null ? "500" : "normal", color: selectItem.city !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.city?.city_title == null ? "Select city" : selectItem.city?.city_title}`}</Text>
+                  {commonLoader?.cityLoader ?
+                    <ActivityIndicator /> :
+                    <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
+                  }
+                </TouchableOpacity>
+              </View> */}
+
+              {commonLoader.saveAddressLoader ?
+                <ActivityIndicator /> :
+                <Button title='Save Address' onPress={saveProfile} />
+              }
+
+            </ScrollView>
+          </KeyboardAvoidingView>
+
+
+
+
+          <Modal
+            animationType='slide'
+            transparent={true}
+            visible={cityStateCountry.status}
+          >
+            <View style={styles.modalContainer}>
+              <TouchableOpacity style={{ width: "100%", flex: 1, }} onPress={(() => { setCityStateCountry((prev) => { return { ...prev, status: false } }) })} />
+              <View style={styles.greyDesign}></View>
+              <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+                {cityStateCountry.list?.map((item, index) => {
+                  let allListItem = ""
+                  let radioBtnColor = ""
+                  if (cityStateCountry.type === "Country") {
+                    // allListItem = `${item.concatenatedCode}`
+                    allListItem = `${item?.country}`
+                    radioBtnColor = item.id == selectItem.country?.id
+                  } else if (cityStateCountry.type === "State") {
+                    allListItem = `${item.state_title}`
+                    radioBtnColor = item.id == selectItem.state?.id
+                  } else if (cityStateCountry.type === "City") {
+                    allListItem = `${item.city_title}`
+                    radioBtnColor = item.id == selectItem.city?.id
+                  }
+
+                  const backgroundColor = radioBtnColor ? rsplTheme.gradientColorRight : "transparent";
+                  const width = radioBtnColor ? 8 : 16
+                  const height = radioBtnColor ? 8 : 16
+                  const borderRadius = radioBtnColor ? 4 : 8
+
+                  return (
+                    <View style={styles.itemContainer} key={index.toString()}>
+                      <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", }} onPress={(() => { SetValue(item) })}>
+                        <View style={{ width: 16, height: 16, borderRadius: 8, borderWidth: 1.5, borderColor: rsplTheme.jetGrey, alignItems: "center", justifyContent: "center" }}><View style={{ width, height, borderRadius, backgroundColor }}></View></View>
+                        <Text style={{ color: rsplTheme.jetGrey, fontSize: 20, marginLeft: 8, }}> {allListItem}</Text>
+                      </TouchableOpacity>
+                    </View>
+                  )
+                })}
+              </ScrollView>
+            </View>
+          </Modal>
         </View>
-      </Modal>
-    </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   )
 }
 
@@ -362,6 +432,7 @@ export default AddNewAddress
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f5f5f5',
     // backgroundColor: rsplTheme.rsplWhite
   },
   inputContainer: {

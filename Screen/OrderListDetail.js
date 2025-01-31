@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React, { useContext, useState } from 'react'
 import Header from '../comman/Header'
 import { useNavigation } from '@react-navigation/native'
@@ -23,26 +23,28 @@ const OrderListDetail = ({ route }) => {
     }
     Services.post(apiRoutes.order_invoice_api, payLoad)
       .then((res) => {
-        if (res.status == "success") {
+        if (res.status === "success") {
           navigation.navigate("InvoiceViewer", { data: res.data })
           // setPdfSource(res.data)
+        } else if (res.status === "error") {
+          Alert.alert("Failed:", `${res.message}` || "Server error")
         }
       })
       .catch((err) => {
         if (err.message == "TypeError: Network request failed") {
           Alert.alert("Network Error", `Please try again.`)
-        } else { Alert.alert("Error", `${err.message}`) }
+        } else { Alert.alert("Error", `${err.message}` || "Something went wrong.") }
       })
       .finally(() => { setLoader(false) })
   }
 
-  if (loader) {
-    return (
-      <View style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, }}>
-        <Loader text='Loading....' />
-      </View>
-    )
-  }
+  // if (loader) {
+  //   return (
+  //     <View style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, }}>
+  //       <Loader text='Loading....' />
+  //     </View>
+  //   )
+  // }
 
 
 
@@ -113,8 +115,12 @@ const OrderListDetail = ({ route }) => {
             <Text style={{ flex: 1, }}>Edition:</Text>
             <Text style={{ flex: 1, }}>{OrderListData?.orderDetail?.getProduct?.Edition}</Text>
           </View>
+
           <TouchableOpacity onPress={(() => { orderInvoice() })} style={[{ backgroundColor: rsplTheme.rsplBorderGrey, paddingVertical: 10, marginTop: 8, alignItems: "center" }]} >
-            <Text style={{ flex: 1, fontWeight: "600" }}>Show Invoice</Text>
+            {loader ?
+              <ActivityIndicator size={"small"} color={rsplTheme.rsplWhite} /> :
+              <Text style={{ flex: 1, fontWeight: "600" }}>Show Invoice</Text>
+            }
           </TouchableOpacity>
 
 

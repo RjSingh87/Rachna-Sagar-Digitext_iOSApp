@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, TouchableOpacity, Keyboard, View, TextInput, KeyboardAvoidingView, Modal, Button, ScrollView, Image, Pressable, ActivityIndicator, } from 'react-native'
+import { Alert, StyleSheet, Text, TouchableOpacity, Keyboard, View, TextInput, TouchableWithoutFeedback, KeyboardAvoidingView, Modal, Button, ScrollView, Image, Pressable, ActivityIndicator, Platform } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../comman/Header';
@@ -33,6 +33,8 @@ const OrderSummery = ({ }) => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   const [promoCode, setPromoCode] = useState({ status: false, code: '', message: '', checkoutPromoCode: '' })
   const [loaderPromoCode, setLoaderPromoCode] = useState(false)
+  const [addtoCartAmount, setAddtoCartAmount] = useState([])
+  const [loaderCartTotal, setLoaderCartTotal] = useState(false)
 
 
   // const route = useRoute()
@@ -62,6 +64,43 @@ const OrderSummery = ({ }) => {
   }, [isFocused])
 
 
+  useEffect(() => {
+    if (cartList?.Data?.length > 0) {
+      const cartIDs = cartList.Data.map(cart => cart.id);
+      calculateAmountOfAddtoCart(cartIDs);
+    }
+  }, [cartList, address]);
+
+  const calculateAmountOfAddtoCart = async (cartIDs) => {
+    setLoaderCartTotal(true)
+    const payLoad = {
+      "api_token": token,
+      "userid": userData.data[0]?.id,
+      "cartIDs": cartIDs
+    }
+
+    try {
+      const result = await Services.post(apiRoutes.grandTotalOfCart, payLoad)
+      if (result.result && result.status === "success") {
+        setLoaderCartTotal(false)
+        const data = result.result
+        setAddtoCartAmount(data || [])
+      } else if (result.success === "false") {
+        Alert.alert("Failed:", result?.errors || "Failed to load.")
+        setLoaderCartTotal(false)
+      }
+    } catch (error) {
+      setLoaderCartTotal(false)
+      if (error.message === "TypeError: Network request failed") {
+        Alert.alert("Network Error", "Please try again.");
+      } else {
+        Alert.alert("Error:", error.message || "Something went wrong.")
+      }
+    }
+  }
+
+
+
   const getUserAddress = async () => {
     setLoader(true)
     const payLoad = {
@@ -71,8 +110,11 @@ const OrderSummery = ({ }) => {
     await Services.post(apiRoutes.getUserAddress, payLoad)
       .then((res) => {
         if (res.status === "success" && res.message.length !== 0) {
-          setAddress(res.message.slice(0, 1))
+          setAddress(res.message)
+          fetchDefaultAddress()
+          // setAddress(res.message.slice(0, 1))
         } else {
+          setAddress([])
           return
           Alert.alert("Address", res.message)
         }
@@ -85,6 +127,30 @@ const OrderSummery = ({ }) => {
       .finally((err) => { setLoader(false) });
   }
 
+  const fetchDefaultAddress = async (addressID) => {
+    setSelectedAddress(addressID) // set user selected address id
+    const payLoad = {
+      "api_token": token,
+      "userID": userData.data[0]?.id,
+      "addressID": addressID
+    }
+    try {
+      const result = await Services.post(apiRoutes.defaultAddress, payLoad)
+      if (result.status === "success") {
+        getUserAddress()
+        console.log(result.message, "all welll")
+      } else if (result.status === "failed") {
+        console.log(result.message, "not welll")
+      }
+    } catch (error) {
+      console.log(error.message, "Something went wrong")
+    }
+  }
+
+
+
+
+
   const toggleParentModal = () => {
     navigation.navigate("AddNewAddress")
     // setIsParentModalVisible(!isParentModalVisible);
@@ -93,7 +159,8 @@ const OrderSummery = ({ }) => {
 
 
   const placeOrder = async () => {
-    if (selectedAddress == null) {
+    // console.log(selectedAddress, "all delete par")
+    if (selectedAddress == null || !address.length > 0) {
       Alert.alert("Address", "Please add/select address.");
       return;
     }
@@ -107,6 +174,7 @@ const OrderSummery = ({ }) => {
       userID: userData.data[0]?.id,
       couponCode: promoCode?.checkoutPromoCode
     };
+    // console.log(payLoad, "of Address id")
 
     try {
       const res = await Services.post(apiRoutes.generateOrderPaytm, payLoad);
@@ -118,7 +186,7 @@ const OrderSummery = ({ }) => {
         const amount = "1.00"; // Transaction amount
         const callbackUrl = `https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}` //`https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}`;
         const isStaging = false; // true for testing, false for production
-        const restrictAppInvoke = false; // Allow Paytm App invoke
+        const restrictAppInvoke = true; // Allow Paytm App invoke
         const urlScheme = "paytmRachna00883415851600"; // URL Scheme for iOS
 
         const result = await AllInOneSDKManager.startTransaction(
@@ -210,13 +278,13 @@ const OrderSummery = ({ }) => {
   // }
 
   const verifyOrder = async (orderNumber, cartIDs, TXNAMOUNT) => {
-    console.log(orderNumber, "YashverifyOrder")
+    // console.log(orderNumber, "YashverifyOrder")
     const payLoad = {
       "api_token": token,
       "orderNumber": orderNumber,
       "cartIDs": cartIDs
     }
-    console.log(payLoad, "cartIDs")
+    // console.log(payLoad, "cartIDs")
     await Services.post(apiRoutes.paymentStatus, payLoad)
       .then((res) => {
         if (res.status === "success") {
@@ -255,27 +323,34 @@ const OrderSummery = ({ }) => {
   const deleteAddress = async (id) => {
     if (selectedAddress != id) {
       Alert.alert("Info", "Please select an address.")
+      return
+    } else {
+      setLoader(true)
+      const payLoad = {
+        "api_token": token,
+        "address_id": selectedAddress
+      }
+      console.log(payLoad, "after delete")
+      await Services.post(apiRoutes.userDeleteAddress, payLoad)
+        .then((res) => {
+          if (res.status == "success" && res.message.length !== 0) {
+            console.log(res, "after suceeedd")
+            getUserAddress()
+            // fetchDefaultAddress()
+          } else if (res.status === "failed") {
+            console.log(res.message, "after error")
+            return
+            Alert.alert("Address", res.message)
+          }
+        })
+        .catch((err) => {
+          if (err.message == "TypeError: Network request failed") {
+            Alert.alert("Network Error", `Please try again.`)
+          } else { Alert.alert("Error Raju", `${err.message}`) }
+        })
+        .finally((err) => { setLoader(false) });
     }
-    // setLoader(true)
-    const payLoad = {
-      "api_token": token,
-      "address_id": selectedAddress
-    }
-    await Services.post(apiRoutes.userDeleteAddress, payLoad)
-      .then((res) => {
-        if (res.status == "success" && res.message.length !== 0) {
-          getUserAddress()
-        } else {
-          return
-          Alert.alert("Address", res.message)
-        }
-      })
-      .catch((err) => {
-        if (err.message == "TypeError: Network request failed") {
-          Alert.alert("Network Error", `Please try again.`)
-        } else { Alert.alert("Error", `${err.message}`) }
-      })
-      .finally((err) => { setLoader(false) });
+
   }
 
   const saveEditAddress = async () => {
@@ -290,11 +365,11 @@ const OrderSummery = ({ }) => {
     await Services.post(apiRoutes.userEditAddressSave, payLoad)
       .then((res) => {
         if (res.status == "success") {
-          Alert.alert("Info", res.message)
+          Alert.alert("Success:", res.message)
           getUserAddress()
           setUserContactVisible(false)
         } else {
-          Alert.alert("Info", res.message)
+          Alert.alert("Failed:", res.message)
         }
       })
       .catch((err) => {
@@ -318,10 +393,10 @@ const OrderSummery = ({ }) => {
       }
       await Services.post(apiRoutes.validateCoupon, payLoad)
         .then((res) => {
-          if (res.status == "success") {
+          if (res.status === "success") {
             let promoCodeMessage = `Additional discount of ${res.data?.discountValue} ${res.data?.discountType} will be applied on checkout.`
             setPromoCode((prev) => { return { ...prev, status: true, message: promoCodeMessage, checkoutPromoCode: res.data?.couponCode } })
-          } else if (res.status == "error") {
+          } else if (res.status === "failed") {
             Alert.alert(res.message)
             // setPromoCode({ code: "" })
             setPromoCode((prev) => { return { ...prev, error: "Validation Error" } })
@@ -367,66 +442,78 @@ const OrderSummery = ({ }) => {
 
       <NoInternetConn />
 
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <KeyboardAvoidingView style={{ flex: 1, }} behavior={Platform.OS === "ios" ? "padding" : null} keyboardVerticalOffset={Platform.OS === "ios" ? 75 : 0}>
+          <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, }} keyboardShouldPersistTaps="handled">
 
-      <ScrollView contentContainerStyle={{}}>
+            <View style={styles.userAddContaner}>
+              <TouchableOpacity style={{ paddingVertical: 10, }} onPress={(() => { toggleParentModal() })}>
+                <Text style={styles.addNewAdd}>+ ADD NEW ADDRESS</Text>
+              </TouchableOpacity>
+              {address.filter(item => item.byDefault === 1).map((item, index) => {
+                // console.log(item.byDefault, "item.byDefault")
+                let backgroundColor = rsplTheme.rsplWhite
+                item.byDefault === 1 ? backgroundColor = rsplTheme.rsplGreen : backgroundColor = backgroundColor;
+                if (item.byDefault === 1 && selectedAddress == null) {
+                  setSelectedAddress(item?.id)
+                }
+                // if (item.id == selectedAddress) {
+                //   backgroundColor = rsplTheme.rsplGreen
+                // }
+                return (
+                  <View style={{ flexDirection: "row", alignItems: "center", padding: 5, }} key={item.id}>
+                    <View style={styles.row}>
 
-        <View style={styles.userAddContaner}>
-          <View style={{}}>
-            <TouchableOpacity onPress={(() => { toggleParentModal() })}>
-              <Text style={styles.addNewAdd}>+ ADD NEW ADDRESS</Text>
-            </TouchableOpacity>
-          </View>
-          {address.map((item, index) => {
-            let backgroundColor = rsplTheme.rsplWhite
-            if (item.id == selectedAddress) {
-              backgroundColor = rsplTheme.rsplGreen
-            }
-            return (
-              <View style={{ flexDirection: "row", alignItems: "center", padding: 5, }} key={item.id}>
-                <View style={styles.row}>
-
-                  <TouchableOpacity onPress={(() => { setSelectedAddress(item.id) })} style={[styles.button, { flex: 1, flexDirection: "row", alignItems: "center", }]}>
-                    <View style={{ width: 15, height: 15, borderRadius: 15 / 2, borderWidth: 1, alignItems: "center", justifyContent: "center" }}><View style={{ width: 8, height: 8, borderRadius: 8 / 2, backgroundColor: backgroundColor }}></View></View>
-                    <View style={[styles.button, { marginLeft: 10, marginRight: 10, }]}>
-                      <Text selectable={true} style={styles.userName}>{item.name}</Text>
-                      <Text selectable={true} style={styles.userAdd}>{item.address}, {item.landmark}, {item.state} {item.city} {item.country} {item.pincode} </Text>
-                      <Text selectable={true} style={styles.userMob}>+91 {item.mobile}</Text>
-                    </View>
-                  </TouchableOpacity>
+                      <TouchableOpacity disabled onPress={(() => { fetchDefaultAddress(item.id) })} style={[styles.button, { flex: 1, flexDirection: "row", alignItems: "center", }]}>
+                        {/* <View style={{ width: 15, height: 15, borderRadius: 15 / 2, borderWidth: 1, alignItems: "center", justifyContent: "center" }}><View style={{ width: 8, height: 8, borderRadius: 8 / 2, backgroundColor: backgroundColor }}></View></View> */}
+                        <View style={[styles.button, { marginLeft: 10, marginRight: 10, }]}>
+                          <Text selectable={true} style={styles.userName}>{`Delivering to ${item?.name}`}</Text>
+                          <Text selectable={true} style={styles.userAdd}>{item.address}, {item?.landmark}, {item.state} {item.city} {item.country} {item.pincode} </Text>
+                          <Text selectable={true} style={styles.userMob}>+91 {item?.mobile}</Text>
+                        </View>
+                      </TouchableOpacity>
 
 
 
 
-                  <View style={[styles.button, { justifyContent: "space-evenly" }]}>
+                      {/* <View style={[styles.button, { justifyContent: "space-evenly" }]}>
                     <TouchableOpacity onPress={(() => {
                       if (selectedAddress != item.id) {
                         Alert.alert("Info", "Please select an address.")
                       } else {
                         setUserContactVisible(true),
                           setUserDetails((prev) => {
-                            return {
-                              ...prev, name: item.name, address: item.address, landmark: item.landmark, mobile: item.mobile,
-                            }
+                            return {...prev, name: item.name, address: item.address, landmark: item.landmark, mobile: item.mobile,}
                           })
                       }
 
                     })}
                       style={{ width: 22, height: 22, borderRadius: 22 / 2, alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
-                      {/* <Image style={{ width: 12, height: 12, resizeMode: "contain", tintColor: rsplTheme.rsplWhite }} source={require("../assets/icons/pen.png")} /> */}
                       <Feather name="edit" size={20} color={rsplTheme.jetGrey} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={(() => { deleteAddress(item.id) })}>
-                      {/* <Image style={{ width: 20, height: 20, resizeMode: "contain" }} source={require("../assets/icons/trash.png")} /> */}
-                      <FontAwesome6 name="trash" size={20} color={rsplTheme.rsplRed} />
+                      <FontAwesome6 name="trash" size={17} color={rsplTheme.rsplRed} />
                     </TouchableOpacity>
-                  </View>
-                </View>
-              </View>
-            )
-          })}
-        </View>
+                  </View> */}
 
-        <Modal
+                    </View>
+                  </View>
+                )
+              })}
+
+              {address.length >= 1 &&
+                <TouchableOpacity style={{ marginLeft: 25, }} onPress={(() => { navigation.navigate("SavedAddress", { type: "AddtoCart" }) })}>
+                  <Text style={{ color: rsplTheme.rsplBlue, fontSize: 15 }}>Change delivery address</Text>
+                </TouchableOpacity>
+              }
+
+
+            </View>
+
+
+
+            {/* Address upadate and delete UI commented by Raju 22Jan2025 */}
+            {/* <Modal
           animationType="slide"
           transparent={true}
           visible={userContactVisible}
@@ -486,102 +573,119 @@ const OrderSummery = ({ }) => {
               </ScrollView>
             </View>
           </KeyboardAvoidingView>
-        </Modal>
+        </Modal> */}
 
 
 
 
-        <View style={styles.orderSummeryContainer}>
-          <Text style={styles.orderSumryTitle}>{`ORDER SUMMARY`}</Text>
-          <TouchableOpacity onPress={(() => { setViewOrderData(!viewOrderData) })} style={styles.summery}>
-            {/* <Text style={{ fontSize: 15, fontWeight: "600", color: rsplTheme.rsplBlue }}>{`View Order`}</Text> */}
-            <Icon size={22} name={viewOrderData ? "chevron-down" : "chevron-up"} />
-          </TouchableOpacity>
-        </View>
-
-        {viewOrderData &&
-          <>
-            <View style={styles.orderSumContainer}>
-              <View style={styles.orderSumLeft}>
-                <Text style={styles.orderSumLeftTitle}>Total MRP</Text>
-              </View>
-              <View style={styles.orderSumRight}>
-                <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Total_Merged_MRP}`}</Text>
-              </View>
-            </View>
-
-            <View style={styles.orderSumContainer}>
-              <View style={styles.orderSumLeft}>
-                <Text style={styles.orderSumLeftTitle}>Discount (-)</Text>
-              </View>
-              <View style={styles.orderSumRight}>
-                <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Total_Merged_discount}`}</Text>
-              </View>
-            </View>
-
-            <View style={styles.orderSumContainer}>
-              <View style={styles.orderSumLeft}>
-                <Text style={styles.orderSumLeftTitle}>Total Price</Text>
-              </View>
-              <View style={styles.orderSumRight}>
-                <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Total_Merged_price}`}</Text>
-              </View>
-            </View>
-
-            <View style={styles.orderSumContainer}>
-              <View style={styles.orderSumLeft}>
-                <Text style={styles.orderSumLeftTitle}>Shipping Charge (+)</Text>
-              </View>
-              <View style={styles.orderSumRight}>
-                <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Shipping_Charge}`}</Text>
-              </View>
-            </View>
-
-
-
-            <View style={styles.orderSumContainer}>
-              <View style={styles.orderSumLeft}>
-                <Text style={styles.orderSumLeftTitle}>Net Payable Amount</Text>
-              </View>
-              <View style={styles.orderSumRight}>
-                <Text style={[styles.orderSumRightTitle, { fontSize: 18, color: rsplTheme.rsplGreen }]}>{` \u20B9 ${grandTotal.data?.Total_grand_price}`}</Text>
-              </View>
-            </View>
-
-            {/* Enter the Promo Code UI */}
-            <View style={styles.enterProContainer}>
-              <TouchableOpacity style={styles.enterProHead} onPress={(() => { setEnterPromoCode(!enterPromoCode) })}>
-                <Text style={styles.enterProTitle}>Enter a promo code</Text>
+            <View style={styles.orderSummeryContainer}>
+              <Text style={styles.orderSumryTitle}>{`ORDER SUMMARY`}</Text>
+              <TouchableOpacity onPress={(() => { setViewOrderData(!viewOrderData) })} style={styles.summery}>
+                {/* <Text style={{ fontSize: 15, fontWeight: "600", color: rsplTheme.rsplBlue }}>{`View Order`}</Text> */}
+                <Icon size={22} name={viewOrderData ? "chevron-down" : "chevron-up"} />
               </TouchableOpacity>
             </View>
-            {enterPromoCode &&
-              <View style={[styles.inputContainer, { marginBottom: keyboardHeight }]}>
-                <TextInput autoCapitalize='none' autoCorrect={false} autoComplete='off' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text.trim(), error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
-                {promoCode.code !== "" &&
-                  <TouchableOpacity style={{ position: "absolute", left: "67%", top: 12 }} onPress={(() => { setPromoCode({ code: "" }) })}>
-                    <AntDesign name={"close"} size={20} color={rsplTheme.rsplRed} />
-                  </TouchableOpacity>
+
+            {viewOrderData &&
+              <>
+                {loaderCartTotal ?
+                  <ActivityIndicator size={"large"} color={rsplTheme.jetGrey} /> :
+                  <>
+                    <View style={styles.orderSumContainer}>
+                      <View style={styles.orderSumLeft}>
+                        <Text style={styles.orderSumLeftTitle}>Total MRP</Text>
+                      </View>
+                      <View style={styles.orderSumRight}>
+                        <Text style={styles.orderSumRightTitle}>{` \u20B9 ${addtoCartAmount?.Total_Merged_MRP}`}</Text>
+                        {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Total_Merged_MRP}`}</Text> */}
+                      </View>
+                    </View>
+
+                    <View style={styles.orderSumContainer}>
+                      <View style={styles.orderSumLeft}>
+                        <Text style={styles.orderSumLeftTitle}>Discount (-)</Text>
+                      </View>
+                      <View style={styles.orderSumRight}>
+                        <Text style={styles.orderSumRightTitle}>{` \u20B9 ${addtoCartAmount?.Total_Merged_discount}`}</Text>
+                        {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Total_Merged_discount}`}</Text> */}
+                      </View>
+                    </View>
+
+                    <View style={styles.orderSumContainer}>
+                      <View style={styles.orderSumLeft}>
+                        <Text style={styles.orderSumLeftTitle}>Total Price</Text>
+                      </View>
+                      <View style={styles.orderSumRight}>
+                        <Text style={styles.orderSumRightTitle}>{` \u20B9 ${addtoCartAmount?.Total_Merged_price}`}</Text>
+                        {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Total_Merged_price}`}</Text> */}
+                      </View>
+                    </View>
+
+                    <View style={styles.orderSumContainer}>
+                      <View style={styles.orderSumLeft}>
+                        <Text style={styles.orderSumLeftTitle}>Shipping Charge (+)</Text>
+                      </View>
+                      <View style={styles.orderSumRight}>
+                        <Text style={styles.orderSumRightTitle}>{` \u20B9 ${addtoCartAmount?.Shipping_Charge}`}</Text>
+                        {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${grandTotal.data?.Shipping_Charge}`}</Text> */}
+                      </View>
+                    </View>
+
+
+
+                    <View style={styles.orderSumContainer}>
+                      <View style={styles.orderSumLeft}>
+                        <Text style={styles.orderSumLeftTitle}>Net Payable Amount</Text>
+                      </View>
+                      <View style={styles.orderSumRight}>
+                        <Text style={[styles.orderSumRightTitle, { fontSize: 18, color: rsplTheme.rsplGreen }]}>{` \u20B9 ${addtoCartAmount?.Total_grand_price}`}</Text>
+                      </View>
+                    </View>
+                  </>
                 }
 
-                <Pressable style={styles.applyBtn} onPress={(() => { getValidateCoupon() })}>
-                  {loaderPromoCode ?
-                    (<ActivityIndicator size={"small"} color={rsplTheme.rsplWhite} />) :
-                    (<Text style={styles.text}>Apply</Text>)
-                  }
-                </Pressable>
-                <View style={{ marginTop: 10, }}>
-                  {promoCode.status &&
-                    <Text style={{ color: rsplTheme.rsplGreen, fontSize: 15, fontWeight: "500" }}>{promoCode.message} </Text>
+                {/* Enter the Promo Code UI */}
+
+                <View style={{ flexDirection: "column", }}>
+                  <View style={styles.enterProContainer}>
+                    <TouchableOpacity style={styles.enterProHead} onPress={(() => { setEnterPromoCode(!enterPromoCode) })}>
+                      <Text style={styles.enterProTitle}>Enter a promo code</Text>
+                    </TouchableOpacity>
+                  </View>
+                  {enterPromoCode &&
+                    <View style={[styles.inputContainer, { marginBottom: 0 }]}>
+                      <View style={{ flexDirection: "row", width: 250, alignItems: "center", }}>
+                        <TextInput autoCapitalize='none' autoCorrect={false} autoComplete='off' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text.trim(), error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
+                        {promoCode.code !== "" &&
+                          <TouchableOpacity style={{ position: "absolute", left: 220, }} onPress={(() => { setPromoCode({ code: "" }) })}>
+                            <AntDesign name={"close"} size={20} color={rsplTheme.rsplRed} />
+                          </TouchableOpacity>
+                        }
+                      </View>
+
+
+                      <Pressable style={styles.applyBtn} onPress={(() => { getValidateCoupon() })}>
+                        {loaderPromoCode ?
+                          (<ActivityIndicator size={"small"} color={rsplTheme.rsplWhite} />) :
+                          (<Text style={styles.text}>Apply</Text>)
+                        }
+                      </Pressable>
+                      <View style={{ marginTop: 10, }}>
+                        {promoCode.status &&
+                          <Text style={{ color: rsplTheme.rsplGreen, fontSize: 15, fontWeight: "500" }}>{promoCode.message} </Text>
+                        }
+                      </View>
+                    </View>
                   }
                 </View>
-              </View>
+              </>
             }
-          </>
-        }
 
 
 
-      </ScrollView>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
 
       <View>
         <TouchableOpacity onPress={(() => { placeOrder() })} style={styles.poweredBy}>
@@ -681,7 +785,7 @@ const styles = StyleSheet.create({
     textAlign: "left"
   },
   userName: {
-    fontSize: 14,
+    fontSize: 16,
     marginVertical: 6,
     fontWeight: "600",
     color: rsplTheme.textColorBold,
@@ -693,8 +797,8 @@ const styles = StyleSheet.create({
   },
   userMob: {
     fontSize: 12,
-    marginTop: 2,
-    fontWeight: "400",
+    marginTop: 8,
+    fontWeight: "600",
     color: rsplTheme.textColorBold
   },
   row: {
@@ -760,7 +864,10 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: "row",
     marginHorizontal: 10,
+    flex: 1,
+    alignItems: "center",
     flexWrap: "wrap"
+    // justifyContent: "space-around",
   },
   txtInputPromo: {
     // backgroundColor: "#e1e1e1",
@@ -774,12 +881,11 @@ const styles = StyleSheet.create({
   },
 
   applyBtn: {
-    width: 100,
+    flex: 1,
     marginLeft: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 12,
+    padding: 10,
     borderRadius: 4,
     elevation: 3,
     backgroundColor: rsplTheme.jetGrey,

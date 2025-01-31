@@ -212,7 +212,7 @@ const BooksellerStatewise = () => {
             <Text style={[styles.countryStateCity, { fontSize: selectItem.state !== null ? 15 : 14, fontWeight: selectItem.state !== null ? "500" : "normal", color: selectItem.state !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.state?.state_title == null ? "Select state" : selectItem.state?.state_title}`}</Text>
             {commonLoader?.stateLoader ?
               <ActivityIndicator /> :
-              <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
+              <EvilIcons name="chevron-down" size={30} color={rsplTheme.jetGrey} />
             }
           </TouchableOpacity>
         </View>
@@ -223,7 +223,7 @@ const BooksellerStatewise = () => {
             <Text style={[styles.countryStateCity, { fontSize: selectItem.city !== null ? 15 : 14, fontWeight: selectItem.city !== null ? "500" : "normal", color: selectItem.city !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.city?.city_title == null ? "Select city" : selectItem.city?.city_title}`}</Text>
             {commonLoader?.cityLoader ?
               <ActivityIndicator /> :
-              <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
+              <EvilIcons name="chevron-down" size={30} color={rsplTheme.jetGrey} />
             }
           </TouchableOpacity>
         </View>

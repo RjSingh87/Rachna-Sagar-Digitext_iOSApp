@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, Text, TouchableOpacity, View, Image, Linking, Share } from 'react-native'
+import { Alert, StyleSheet, Text, TouchableOpacity, View, Image, Linking, Share, ImageBackground } from 'react-native'
 import React, { useContext } from 'react'
 import { rsplTheme } from '../constant'
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -7,7 +7,7 @@ import { DrawerActions } from '@react-navigation/native'
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -150,7 +150,7 @@ const DrawerMenu = ({ navigation, props }) => {
               <AntDesign name="home" size={20} color={rsplTheme.gradientColorLeft} />
             </View>
 
-            <TouchableOpacity style={{ flex: 1, paddingVertical: 20, }} onPress={(() => {
+            <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
               setSelectedTab(0); navigation.navigate("Main")
               navigation.dispatch(DrawerActions.closeDrawer())
             })}>
@@ -164,7 +164,11 @@ const DrawerMenu = ({ navigation, props }) => {
               <AntDesign name="phone" size={20} color={rsplTheme.gradientColorLeft} />
             </View>
 
-            <TouchableOpacity style={{ flex: 1, paddingVertical: 20, }} onPress={(() => { Alert.alert("dldldl") })}>
+            <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
+              navigation.navigate("ContactUs")
+              navigation.dispatch(DrawerActions.closeDrawer())
+              // Alert.alert("dldldl") 
+            })}>
               <Text style={{ fontSize: 16, fontWeight: "500", color: rsplTheme.jetGrey }}>Contact Us</Text>
             </TouchableOpacity>
           </View>
@@ -174,7 +178,7 @@ const DrawerMenu = ({ navigation, props }) => {
               <AntDesign name="sharealt" size={20} color={rsplTheme.gradientColorLeft} />
             </View>
 
-            <TouchableOpacity style={{ flex: 1, paddingVertical: 20, }} onPress={(() => {
+            <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
               onShare()
               navigation.dispatch(DrawerActions.closeDrawer())
             })}>
@@ -187,7 +191,7 @@ const DrawerMenu = ({ navigation, props }) => {
               <AntDesign name="user" size={20} color={rsplTheme.gradientColorLeft} />
             </View>
 
-            <TouchableOpacity style={{ flex: 1, paddingVertical: 20, }} onPress={(() => {
+            <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
               setSelectedTab(4); navigation.navigate("Main")
               navigation.dispatch(DrawerActions.closeDrawer())
             })}>
@@ -205,8 +209,8 @@ const DrawerMenu = ({ navigation, props }) => {
                   <AntDesign name="hearto" size={20} color={rsplTheme.gradientColorLeft} />
                 </View>
 
-                <TouchableOpacity style={{ flex: 1, paddingVertical: 20, }} onPress={(() => {
-                  setSelectedTab(3); navigation.navigate("Main")
+                <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
+                  setSelectedTab(5); navigation.navigate("Main")
                   navigation.dispatch(DrawerActions.closeDrawer())
                 })}>
                   <Text style={{ fontSize: 16, fontWeight: "500", color: rsplTheme.jetGrey }}>Wish List</Text>
@@ -215,10 +219,49 @@ const DrawerMenu = ({ navigation, props }) => {
 
               <View style={{ flexDirection: "row", alignItems: "center", }}>
                 <View style={{ width: 50, alignItems: "center", padding: 10, }}>
+                  <AntDesign name="shoppingcart" size={20} color={rsplTheme.gradientColorLeft} />
+                </View>
+
+                <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
+                  setSelectedTab(3); navigation.navigate("Main")
+                  navigation.dispatch(DrawerActions.closeDrawer())
+                })}>
+                  <Text style={{ fontSize: 16, fontWeight: "500", color: rsplTheme.jetGrey }}>Cart</Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={{ flexDirection: "row", alignItems: "center", }}>
+                <View style={{ width: 50, alignItems: "center", padding: 10, }}>
+                  <Entypo name="address" size={20} color={rsplTheme.gradientColorLeft} />
+                </View>
+
+                <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
+                  navigation.navigate("SavedAddress")
+                  navigation.dispatch(DrawerActions.closeDrawer())
+                })}>
+                  <Text style={{ fontSize: 16, fontWeight: "500", color: rsplTheme.jetGrey }}>Address</Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={{ flexDirection: "row", alignItems: "center", }}>
+                <View style={{ width: 50, alignItems: "center", padding: 10, }}>
+                  <AntDesign name="book" size={20} color={rsplTheme.gradientColorLeft} />
+                </View>
+
+                <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
+                  navigation.navigate("YourAccount", { data: "Your Account" })
+                  navigation.dispatch(DrawerActions.closeDrawer())
+                })}>
+                  <Text style={{ fontSize: 16, fontWeight: "500", color: rsplTheme.jetGrey }}>My Order</Text>
+                </TouchableOpacity>
+              </View>
+
+              <View style={{ flexDirection: "row", alignItems: "center", }}>
+                <View style={{ width: 50, alignItems: "center", padding: 10, }}>
                   <AntDesign name="logout" size={20} color={rsplTheme.gradientColorLeft} />
                 </View>
 
-                <TouchableOpacity style={{ flex: 1, paddingVertical: 20, }} onPress={(() => {
+                <TouchableOpacity style={{ flex: 1, paddingVertical: 18, }} onPress={(() => {
                   logout()
                   navigation.navigate("Home")
                 })}>
@@ -268,7 +311,8 @@ const DrawerMenu = ({ navigation, props }) => {
           </TouchableOpacity>
 
           <TouchableOpacity style={{ width: "11.11%", alignItems: "center" }} onPress={() => handlePress('Flipkart')}>
-            <MaterialIcons name="storefront" size={17} color="#2874F0" />
+            {/* <MaterialIcons name="storefront" size={17} color="#2874F0" /> */}
+            <Image style={{ width: 20, height: 20, resizeMode: "contain" }} source={{ uri: "https://rachnasagar.in/assets/socialMedia/img/62e7786ae8ff6flipkart.png" }} />
           </TouchableOpacity>
 
         </View>

@@ -5,7 +5,7 @@ import Animated, { useSharedValue, useAnimatedStyle, withTiming, withDelay, runO
 const BreakingNews = () => {
   const [displayedText, setDisplayedText] = useState('');
   const fullText = 'RACHNA SAGAR PVT. LTD.';
-  const cursorOpacity = useSharedValue(1);
+  const cursorOpacity = useSharedValue(0);
 
   const startTyping = () => {
     let currentIndex = 0;
@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
     // backgroundColor: '#000',
   },
   text: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold',
     color: '#fff',
-    letterSpacing: 2,
+    letterSpacing: 1,
   },
   cursor: {
     color: '#fff',

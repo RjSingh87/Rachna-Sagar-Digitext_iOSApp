@@ -18,12 +18,15 @@ export default Store = ({ children }) => {
   const [cartList, setCartList] = useState({ isLoader: false, Data: [], length: 0, message: "" })
   const [grandTotal, setGrandTotal] = useState({ total: "", data: [] })
   const [isConnected, setIsConnected] = useState(true);
+  const [wishListProduct, setWishListProduct] = useState({ item: [], msg: "", isLoader: false })
+
 
   useEffect(() => {
     getNetworkStatus()
     checkLoginStatus()
     if (userData.isLogin) {
       getAllCartItems()
+      getWishListProduct() // add by raju 30 jan 2025
     }
     // getGrandTotal()
   }, [userData.isLogin, cartList.length])
@@ -189,9 +192,9 @@ export default Store = ({ children }) => {
       .then((res) => {
         if (res.status === 'success') {
           setGrandTotal((prev) => { return { ...prev, total: res.result.Total_Merged_price, data: res.result } })
-        } else if (res.success == false) {
-          Alert.alert(`${res.errors}`)
+        } else if (res.success === false) {
           return
+          Alert.alert(`${res.errors}`)
         }
       })
       .catch((err) => {
@@ -202,6 +205,27 @@ export default Store = ({ children }) => {
       .finally(() => { })
   }
 
+  // Get notification of wishlist by raju 30 jan 2025
+  const getWishListProduct = async () => {
+    setWishListProduct(prev => ({ ...prev, isLoader: true }))
+    try {
+      const payLoadWishListProduct = {
+        "api_token": token,
+        "userId": userData.data[0]?.id
+      }
+      const result = await Services.post(apiRoutes.viewWishlistProduct, payLoadWishListProduct)
+      if (result && result.status === "success") {
+        setWishListProduct((prev) => { return { ...prev, item: result?.result, isLoader: false } })
+      } else {
+        setWishListProduct((prev) => { return { msg: result.message } })
+      }
+    } catch (err) {
+      if (err.message == "TypeError: Network request failed") {
+        Alert.alert("Network Error", `Please try again.`)
+      } else { Alert.alert("Error", `${err.message}`) }
+    } finally { setWishListProduct(prev => ({ ...prev, isLoader: false })) }
+  }
+  // ------------------------Get notification of wishlist by raju 30 jan 2025----------------------------------------
 
 
 
@@ -237,7 +261,9 @@ export default Store = ({ children }) => {
         setCartList,
         cartList,
         getGrandTotal,
-        grandTotal
+        grandTotal,
+        wishListProduct,
+        getWishListProduct
       }}>
       {children}
       {userData.isLoading &&

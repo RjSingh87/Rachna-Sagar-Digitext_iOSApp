@@ -16,7 +16,7 @@ const BottomTab = createBottomTabNavigator()
 
 const HomeScreen = ({ navigation, route }) => {
 
-    const { userData, selectedTab, setSelectedTab, cartList } = useContext(MyContext)
+    const { userData, selectedTab, setSelectedTab, cartList, wishListProduct } = useContext(MyContext)
     // const [selectedTab, setSelectedTab] = useState(0)
     return (
         <View style={styles.container}>
@@ -100,6 +100,11 @@ const HomeScreen = ({ navigation, route }) => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(() => { setSelectedTab(5) })} style={styles.bottomTab}>
                     <Image style={[styles.bottomTabIcon, { tintColor: rsplTheme.gradientColorLeft }]} source={selectedTab == 5 ? require("../assets/icons/love_fill.png") : require('../assets/icons/love.png')} />
+                    {userData.isLogin && wishListProduct?.item?.length > 0 &&
+                        < View style={[styles.cartNotiFi, { borderWidth: .5, borderColor: rsplTheme.rsplWhite, }]}>
+                            <Text style={styles.cartLengthValue}>{wishListProduct?.item?.length}</Text>
+                        </View>
+                    }
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(() => { setSelectedTab(3) })} style={styles.bottomTab}>
                     <Image style={styles.bottomTabIcon} source={selectedTab == 3 ? require("../assets/icons/shopping_fill.png") : require('../assets/icons/shopping.png')} />

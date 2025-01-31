@@ -3,6 +3,7 @@ import { View, FlatList, Dimensions, Text, Modal, StyleSheet, Image, PanResponde
 import { rsplTheme } from '../constant';
 import NoInternetConn from './NoInternetConn';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view'
 
 const SwipeDownModal = ({ modalView, setModalView, image }) => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -63,13 +64,32 @@ const SwipeDownModal = ({ modalView, setModalView, image }) => {
   const ImageView = ({ img }) => {
     return (
       <View style={{ width: width, justifyContent: "center", alignItems: "center", backgroundColor: rsplTheme.white }}>
-        {/* {loading && <View style={styles.loader}><Loader text='Image loading...' /></View>} */}
+        <View style={{ flexShrink: 1, height: "100%", width: "100%", }}>
+          <ReactNativeZoomableView
+            doubleTapZoomToCenter={true}
+            maxZoom={2}
+            minZoom={0.5}
+            zoomStep={0.5}
+            initialZoom={1}
+            bindToBorders={true}
+            zoomEnabled={true}
+            doubleTapEnabled={true}
+            zoomCenteringLevelDistance={200}
+            onZoomAfter={this.logOutZoomState}
+            contentWidth={300}
+            contentHeight={150}
+            style={{
+              padding: 10,
+              // backgroundColor: 'red',
+            }}
+          >
+            <Image
+              style={{ width: "100%", minHeight: "100%", resizeMode: "contain", }}
+              src={img} />
+          </ReactNativeZoomableView>
+        </View>
 
-        <Image
-          // onLoad={() => setLoading(false)}
-          // onError={() => { setLoading(false) }}
-          style={{ width: "100%", minHeight: "100%", resizeMode: "contain", }}
-          src={img} />
+
       </View>
     )
   }

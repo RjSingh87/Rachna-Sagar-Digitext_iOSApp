@@ -118,6 +118,7 @@ const Profile = ({ data }) => {
   }
 
   const fetchUpdatedProfileImage = async () => {
+    // console.log("dkdkdk" + 5 - 6 + 15, "Output?")
     try {
       const payLoad = {
         "api_token": token,
@@ -131,7 +132,11 @@ const Profile = ({ data }) => {
         Alert.alert("Failed", result.message)
       }
     } catch (error) {
-      Alert.alert("Error:", error)
+      if (error.message === "TypeError: Network request failed") {
+        Alert.alert("Network Error", "Please try again.");
+      } else {
+        Alert.alert("Error:", error.message || "Something went wrong.")
+      }
     }
   }
 
@@ -257,11 +262,6 @@ const Profile = ({ data }) => {
       </View>
     )
   }
-
-
-
-
-
 
 
 

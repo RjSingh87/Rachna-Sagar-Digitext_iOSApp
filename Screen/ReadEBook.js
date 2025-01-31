@@ -25,6 +25,7 @@ const ReadEBook = () => {
         // rightIcon={require('../assets/icons/shopping-cart.png')}
         title={"Read eBook"}
         onClickLeftIcon={() => { navigation.openDrawer(); }}
+        onClickRightIcon={() => { return }}
       />
 
       <NoInternetConn />

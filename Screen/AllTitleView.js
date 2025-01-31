@@ -9,6 +9,18 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import Entypo from 'react-native-vector-icons/Entypo'
 import Voice from '@react-native-voice/voice';
 
+
+// Debounce function
+const debounce = (func, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
+};
+
 const AllTitleView = ({ navigation }) => {
 
   const [allTitle, setAllTitle] = useState([])
@@ -19,6 +31,7 @@ const AllTitleView = ({ navigation }) => {
   const [showScrollButton, setShowScrollButton] = useState(false); // For arrow button visibility
   const [query, setQuery] = useState(''); // User search query
   const [isListening, setIsListening] = useState(false)
+  const [lastQuery, setLastQuery] = useState('');
 
   const flatListRef = useRef(null)
   const searchRef = useRef(null);
@@ -138,10 +151,30 @@ const AllTitleView = ({ navigation }) => {
     flatListRef.current?.scrollToOffset({ animated: true, offset: 0 });
   };
 
+  // old search functionality
+  // const handleSearch = () => {
+  //   const searchQuery = query.toLowerCase(); // Convert query to lowercase for case-insensitive search
+  //   const filteredData = allTitle.filter((item) => {
+  //     // Match against title, price, and author
+  //     return (
+  //       item?.product_title?.toLowerCase().includes(searchQuery) || // Title
+  //       item?.book_price?.toString().includes(searchQuery) ||       // Price
+  //       item?.author?.toLowerCase().includes(searchQuery)           // Author
+  //     );
+  //   });
+
+  //   if (filteredData.length > 0) {
+  //     setAllTitle(filteredData);
+  //   } else {
+  //     Alert.alert("No Results", `No products match your search: ${query}`);
+  //   }
+  // };
+
   const handleSearch = () => {
+    searchWithAPI()
+    return
     const searchQuery = query.toLowerCase().trim(); // Normalize search query
     if (searchQuery === '') {
-      console.log("calling")
       // Reset to original data if query is empty
       setAllTitle(originalTitle);
       return;
@@ -190,6 +223,52 @@ const AllTitleView = ({ navigation }) => {
     }
   };
 
+  const searchWithAPI = async () => {
+    const searchQuery = query.toLowerCase().trim(); // Normalize the search query
+    if (searchQuery === lastQuery) return; // Skip if query hasn't changed
+    setLastQuery(searchQuery);
+
+    if (searchQuery === '') {
+      setAllTitle(originalTitle); // Reset to original data if query is empty
+      return;
+    }
+
+    try {
+      setLoading(true); // Show loading indicator
+      const payLoad = {
+        "api_token": "123456",
+        "searchKey": searchQuery,
+      };
+      const result = await Services.post(apiRoutes.titleSearchAPI, payLoad);
+
+      if (result.status === "success" && result?.data?.data) {
+        const fetchedBooks = result.data.data;
+        if (fetchedBooks.length > 0) {
+          setAllTitle(fetchedBooks); // Update the search result
+        } else {
+          Alert.alert('No Results', `No products match your search: ${query}`);
+          setAllTitle([]); // Clear the list if no results
+        }
+      } else {
+        Alert.alert('Error', result.message || 'Failed to fetch search results');
+        setAllTitle([]); // Clear the list in case of failure
+      }
+    } catch (error) {
+      Alert.alert('Error', error.message || 'An unexpected error occurred');
+      setAllTitle([]); // Clear the list in case of error
+    } finally {
+      setLoading(false); // Hide loading indicator
+    }
+  };
+
+
+  const debouncedSearch = useCallback(debounce(searchWithAPI, 300), [query, originalTitle]);
+
+  const handleChangeQuery = (text) => {
+    setQuery(text);
+    debouncedSearch();
+  };
+
 
 
   // const handleSearch = () => {
@@ -215,6 +294,9 @@ const AllTitleView = ({ navigation }) => {
       <NoInternetConn />
 
       <View style={styles.container}>
+        {/* <TouchableOpacity onPress={(() => { navigation.navigate("SearchScreen") })}>
+          <Text>Search</Text>
+        </TouchableOpacity> */}
 
         <View style={{ flexDirection: "row", position: "relative", alignItems: "center", }}>
 
@@ -224,12 +306,17 @@ const AllTitleView = ({ navigation }) => {
             placeholder={isListening ? "Speak now" : "Search products"}
             value={query}
             onChangeText={setQuery}
+            // onChangeText={handleChangeQuery}
             onSubmitEditing={handleSearch}
             returnKeyType='search'
             onKeyPress={handleKeyPress}
+            autoCapitalize='none'
+            autoCorrect={false}
             // autoFocus={isListening ? true : false}
             style={{
               height: 40,
+              paddingRight: 35,
+              paddingLeft: 15,
               borderColor: 'gray',
               borderWidth: 1,
               paddingHorizontal: 10,
@@ -318,7 +405,7 @@ const styles = StyleSheet.create({
     elevation: 0,
   },
   image: {
-    width: 250,
+    width: "100%",
     height: 250,
     marginBottom: 10,
   },

@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Services from '../services'
 import Loader from '../constant/Loader'
 import OtpVerify from './OtpVerify'
-
+import EvilIcons from "react-native-vector-icons/EvilIcons"
 
 const CreateAccount = () => {
   const navigation = useNavigation()
@@ -45,7 +45,10 @@ const CreateAccount = () => {
     await Services.post(apiRoutes.countryList, payLoad)
       .then((res) => {
         if (res.status === "success" && res.result.length != 0) {
-          setCityStateCountry((prev) => { return { ...prev, status: true, list: res.result, type: "Country" } })
+          const sortedResult = res.result.sort((a, b) => {
+            return a.country.localeCompare(b.country);
+          });
+          setCityStateCountry((prev) => { return { ...prev, status: true, list: sortedResult, type: "Country" } })
         } else if (res.status === "failed") {
           Alert.alert("Info", res.message)
         }
@@ -132,7 +135,7 @@ const CreateAccount = () => {
       "name": validation.name,
       "mobile": validation.mobile,
       "email": validation.email,
-      "country": selectItem.country?.country_code,
+      "country": selectItem.country?.country,   //selectItem.country?.country_code,
       "state": selectItem.state?.state_title,
       "city": selectItem.city?.city_title,
       "pincode": validation.zipPincode,
@@ -140,6 +143,7 @@ const CreateAccount = () => {
       "password": validation.password,
       "you_are": userAccountType.type
     }
+    // console.log(payLoad, "of submit...?")
 
     await Services.post(apiRoutes.createAccount, payLoad)
       .then((res) => {
@@ -164,6 +168,7 @@ const CreateAccount = () => {
 
 
 
+
   return (
     <View style={styles.container}>
       <Header
@@ -184,16 +189,33 @@ const CreateAccount = () => {
             <Text style={styles.EmaiPass}>Name *</Text>
             <TextInput onChangeText={(text) => { setValidation((prev) => { return { ...prev, name: text } }) }} value={validation.name} placeholder='Enter your name' style={styles.txtInput} />
           </View>
+
+
+          <View style={styles.emailPass}>
+            <Text style={styles.EmaiPass}>Country *</Text>
+            <TouchableOpacity onPress={(() => { handleCityStateCountry(4) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between", }]}>
+              <Text style={[styles.countryStateCity, { width: 350, fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.id == null ? "Select country" : selectItem?.country?.country}`}</Text>
+              {commonLoader.countryLoader ?
+                <ActivityIndicator /> :
+                <EvilIcons name={"chevron-down"} size={30} />
+              }
+            </TouchableOpacity>
+          </View>
+
+
+
+
           <View style={styles.emailPass}>
             <Text style={styles.EmaiPass}>Mobile *</Text>
             <View style={{ flexDirection: "row", flex: 1, }}>
-              <TouchableOpacity onPress={(() => { handleCityStateCountry(4) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between", width: 120, marginRight: 10, }]}>
-                <Text style={[styles.countryStateCity, { width: 70, fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.country_code == null ? "Select country" : selectItem.country?.country_code}`}</Text>
-                {commonLoader.countryLoader ?
-                  <ActivityIndicator /> :
-                  <Image style={{ width: 20, height: 20, resizeMode: "center" }} source={require("../assets/icons/down-arrow.png")} />
-                }
-              </TouchableOpacity>
+
+
+              {/* {selectItem?.country?.country_code ?
+                <View style={{ justifyContent: "center" }}>
+                  <Text> {selectItem?.country?.cCode} </Text>
+                </View> : null
+              } */}
+
               <TextInput
                 returnKeyType={'done'}
                 onChangeText={(text) => {
@@ -304,11 +326,12 @@ const CreateAccount = () => {
           <View style={styles.greyDesign}></View>
           <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
             {cityStateCountry.list?.map((item, index) => {
+
               let allListItem = ""
               let radioBtnColor = ""
               if (cityStateCountry.type === "Country") {
                 // allListItem = `${item.country_code}`
-                allListItem = `${item.country_title}`
+                allListItem = `${item?.country}`    //`${item.country_title}`
                 radioBtnColor = item.id == selectItem.country?.id
                 // console.log(radioBtnColor, "radioBtnColor")
               } else if (cityStateCountry.type === "State") {

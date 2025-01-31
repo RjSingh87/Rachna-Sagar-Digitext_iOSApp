@@ -67,8 +67,8 @@ const EbookList = () => {
   const eBookRenderItem = ({ item, index }) => {
     return (
       <TouchableOpacity onPress={(() => { pdfViewer(item) })} key={item.id} style={styles.productItem}>
-        <Image style={styles.eBookImage} source={{ uri: item.main_image }} />
-        <Text style={styles.eBookTitleName} numberOfLines={2}>{item.product_title}</Text>
+        <Image style={styles.eBookImage} source={{ uri: item?.productData?.url }} />
+        <Text style={styles.eBookTitleName} numberOfLines={2}>{item?.productData?.product_title}</Text>
       </TouchableOpacity>
     )
   }
@@ -91,6 +91,7 @@ const EbookList = () => {
         // rightIcon={require('../assets/icons/shopping-cart.png')}
         title={"Ebook"}
         onClickLeftIcon={() => { navigation.goBack(); }}
+        onClickRightIcon={() => { return }}
       />
 
 

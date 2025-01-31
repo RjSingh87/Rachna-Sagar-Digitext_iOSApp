@@ -8,12 +8,13 @@ import base64 from 'react-native-base64'
 
 
 const PdfViewerPasswordProtected = ({ route }) => {
-  const serverSitePdfUrl = route.params?.pdfUrl?.pdfUrl
-  const serverSiteLink = route.params?.pdfUrl?.link
+  const serverSitePdfUrl = route.params?.pdfUrl?.eBookUrl?.pdfUrl //route.params?.pdfUrl?.pdfUrl
+  const serverSiteLink = route.params?.pdfUrl?.eBookUrl?.psw //route.params?.pdfUrl?.link
   const bookID = route.params?.pdfUrl?.bookid
   const [error, setError] = useState("")
   const { width, height } = Dimensions.get("window")
   const navigation = useNavigation()
+
 
   function stringReverse(str) {
     return str.split('').reverse().join('');

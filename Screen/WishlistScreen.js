@@ -13,13 +13,13 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const WishlistScreen = () => {
   const navigation = useNavigation()
-  const { userData, addToCart, setSelectedTab } = useContext(MyContext)
-  const [wishListProduct, setWishListProduct] = useState({ item: [], msg: "" })
+  const { userData, addToCart, setSelectedTab, wishListProduct, setWishListProduct, getWishListProduct } = useContext(MyContext)
+  // const [wishListProduct, setWishListProduct] = useState({ item: [], msg: "" })
   const [loader, setLoader] = useState(false)
 
-  useEffect(() => {
-    getWishListProduct()
-  }, [])
+  // useEffect(() => {
+  //   getWishListProduct()
+  // }, [])
 
 
   const startShopping = () => {
@@ -29,32 +29,32 @@ const WishlistScreen = () => {
 
 
 
-  const getWishListProduct = async () => {
-    setLoader(true)
-    const payLoadWishListProduct = {
-      "api_token": token,
-      "userId": userData.data[0]?.id
-    }
-    await Services.post(apiRoutes.viewWishlistProduct, payLoadWishListProduct)
-      .then((res) => {
-        if (res.status == "success") {
-          setWishListProduct((prev) => {
-            return { ...prev, item: res.result }
-          })
-        } else {
-          setWishListProduct((prev) => {
-            return { msg: res.message }
-          })
-        }
-      })
-      .catch((err) => {
-        if (err.message == "TypeError: Network request failed") {
-          Alert.alert("Network Error", `Please try again.`)
-        } else { Alert.alert("Error", `${err.message}`) }
-      })
-      .finally(() => { setLoader(false) })
+  // const getWishListProduct = async () => {
+  //   setLoader(true)
+  //   const payLoadWishListProduct = {
+  //     "api_token": token,
+  //     "userId": userData.data[0]?.id
+  //   }
+  //   await Services.post(apiRoutes.viewWishlistProduct, payLoadWishListProduct)
+  //     .then((res) => {
+  //       if (res.status === "success") {
+  //         setWishListProduct((prev) => {
+  //           return { ...prev, item: res.result }
+  //         })
+  //       } else {
+  //         setWishListProduct((prev) => {
+  //           return { msg: res.message }
+  //         })
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       if (err.message == "TypeError: Network request failed") {
+  //         Alert.alert("Network Error", `Please try again.`)
+  //       } else { Alert.alert("Error", `${err.message}`) }
+  //     })
+  //     .finally(() => { setLoader(false) })
 
-  }
+  // }
 
   if (loader) {
     return (
@@ -110,7 +110,7 @@ const WishlistScreen = () => {
     }
     await Services.post(apiRoutes.deleteToWishlist, payLoadOfWishlist)
       .then((res) => {
-        if (res.status == "success") {
+        if (res.status === "success") {
           Alert.alert(`${type == "MovetoCart" ? "Product move to cart successfully." : `${res.message}`}`)
           getWishListProduct()
         } else {
@@ -132,7 +132,7 @@ const WishlistScreen = () => {
     }
     Services.post(apiRoutes.removeAllFromWishlist, payLoad)
       .then((res) => {
-        if (res.status == "success") {
+        if (res.status === "success") {
           Alert.alert("Info", res.message)
           getWishListProduct()
         }

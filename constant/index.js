@@ -67,6 +67,8 @@ export const apiRoutes = Object.freeze({
     updateUserDetails: "updateUserDetails",
     allBookList: "allBookList",
     bookSellerList: "bookSellerList",
+    defaultAddress: "setDefaultAddress",
+    titleSearchAPI: "bookSearchList",
     booksellerListStatewise: "bookSellerListStateWise" // "booksellerListStatewise"
 })
 
@@ -74,6 +76,7 @@ export const apiRoutes = Object.freeze({
 export const rsplTheme = {
     rsplWhite: "#ffffff",
     rsplBlue: "#0b66c3",
+    lightGrey: "#f5f5f5",
     // rsplBackgroundColor:"#00B9F1", //like payTM color
     // rsplBackgroundColor:"#0072c6",
     rsplBackgroundColor: "#0f62ac", //for v-2 school

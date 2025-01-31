@@ -15,8 +15,9 @@ const Cart = () => {
   const navigation = useNavigation()
   const isFocused = useIsFocused()
   const [quantity, setQuantity] = useState();
-  const [cartId, setCartId] = useState()
+  const [cartId, setCartId] = useState(null)
   const [loader, setLoader] = useState({ isProductUpdateLoader: false, isProductDeleteLoader: false })
+  const [whenDeleteCartItem, setWhenDeleteCartItem] = useState({})
 
   const {
     userData, //for userData details
@@ -42,9 +43,9 @@ const Cart = () => {
   //   }
   // }, [isFocused,])
 
-  useEffect(() => {
-    updateCartQuantity()
-  }, [quantity])
+  // useEffect(() => {
+  //   updateCartQuantity()
+  // }, [quantity])
 
 
 
@@ -92,26 +93,26 @@ const Cart = () => {
   };
 
   const deleteCartItem = async (cartId) => {
-    setCartId(cartId)
-    setLoader((prev) => { return { ...prev, isProductDeleteLoader: true } })
-    const payLoad = {
-      "api_token": token,
-      "cart_id": cartId
+    // setCartId(cartId)
+    // setLoader((prev) => { return { ...prev, isProductDeleteLoader: true } })
+    setWhenDeleteCartItem(prev => ({ ...prev, [cartId]: true }))
+    try {
+      const payLoad = { "api_token": token, "cart_id": cartId }
+      const result = await Services.post(apiRoutes.removeCardItem, payLoad)
+      if (result.status === "success") {
+        getAllCartItems() //// for cart items refresh every delete cart item
+      } else if (result.status === "failed") {
+        Alert.alert(`Failed ${res.message}`)
+      }
+
+    } catch (err) {
+      if (err.message == "TypeError: Network request failed") {
+        Alert.alert("Network Error", `Please try again.`)
+      } else { Alert.alert("Error", `${err.message}`) }
+    } finally {
+      setWhenDeleteCartItem(prev => ({ ...prev, [cartId]: false }))
+      // setLoader((prev) => { return { ...prev, isProductDeleteLoader: false } }) 
     }
-    await Services.post(apiRoutes.removeCardItem, payLoad)
-      .then((res) => {
-        if (res.status == "success") {
-          getAllCartItems() //// for cart items refresh every delete cart item
-        } else if (res.status == "failed") {
-          Alert.alert(`${res.message}`)
-        }
-      })
-      .catch((err) => {
-        if (err.message == "TypeError: Network request failed") {
-          Alert.alert("Network Error", `Please try again.`)
-        } else { Alert.alert("Error", `${err.message}`) }
-      })
-      .finally(() => { setLoader((prev) => { return { ...prev, isProductDeleteLoader: false } }) })
   }
 
   // if (cartList?.isLoader) {
@@ -124,42 +125,61 @@ const Cart = () => {
 
 
   const increment = (cartId) => {
-    setQuantity(cartId.quantity);
-    setQuantity(prevCount => prevCount + 1);
-    setCartId(cartId?.id)
+    // setQuantity(cartId.quantity);
+    // setQuantity(prevCount => prevCount + 1);
+    // setCartId(cartId?.id)
+    const newQuantity = cartId.quantity + 1;
+    setCartId(cartId?.id) // check cardId for loader in increment 
+    setLoader((prev) => { return { ...prev, isProductUpdateLoader: true } })
+    updateCartQuantity(cartId?.id, newQuantity);
+
   };
 
   const decrement = (cartId) => {
-    setQuantity(cartId.quantity);
-    setQuantity(prevCount => (prevCount > 1 ? prevCount - 1 : prevCount));
+    // setQuantity(cartId.quantity);
+    // setQuantity(prevCount => (prevCount > 1 ? prevCount - 1 : prevCount));
+    // setCartId(cartId?.id)
+
+    const newQuantity = Math.max(1, cartId?.quantity - 1); // Prevent quantity < 1
     setCartId(cartId?.id)
+    setLoader((prev) => { return { ...prev, isProductUpdateLoader: true } })
+    updateCartQuantity(cartId?.id, newQuantity);
   };
 
-  const updateCartQuantity = async () => {
-    setLoader((prev) => { return { ...prev, isProductUpdateLoader: true } })
-    const payLoad = {
-      "api_token": `${token}`,
-      "userid": `${userData?.data[0]?.id}`,
-      "cartID": `${cartId}`,
-      "quantity": `${quantity}`
-    }
-    // console.log(payLoad, "updateCartQuantity")
-    await Services.post(apiRoutes.updateCartQuantity, payLoad)
-      .then((res) => {
-        if (res.status == "success") {
-          getAllCartItems() // for upadate qunatity and price, discount
-        } else if (res.status == "error") {
-          console.log(res.message, "else if")
-        }
+  const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
+  };
 
-      })
-      .catch((err) => {
-        if (err.message == "TypeError: Network request failed") {
-          Alert.alert("Network Error", `Please try again.`)
-        } else { Alert.alert("Error", `${err.message}`) }
-      })
-      .finally(() => { setLoader((prev) => { return { ...prev, isProductUpdateLoader: false } }) })
-  }
+
+
+
+  const updateCartQuantity = useCallback(debounce(async (cartId, quantity) => {
+    try {
+      const payLoad = {
+        "api_token": `${token}`,
+        "userid": `${userData?.data[0]?.id}`,
+        "cartID": `${cartId}`,
+        "quantity": `${quantity}`
+      }
+      const result = await Services.post(apiRoutes.updateCartQuantity, payLoad)
+      if (result?.status === "success") {
+        getAllCartItems() // for upadate qunatity and price, discount
+      } else if (result.status === "error") {
+        Alert.alert("Failed", result?.message || "Something went wrong.");
+        // console.log(res.message, "else if")
+      }
+    } catch (err) {
+      if (err.message == "TypeError: Network request failed") {
+        Alert.alert("Network Error", `Please try again.`)
+      } else { Alert.alert("Error", `${err.message}`) }
+    } finally {
+      setLoader((prev) => { return { ...prev, isProductUpdateLoader: false } })
+    }
+  }, 300), [token, userData])
 
 
 
@@ -211,7 +231,7 @@ const Cart = () => {
 
             <View style={{ flexDirection: "row", alignItems: "center" }}>
               <Text style={[styles.price, { fontSize: 17, color: rsplTheme.rsplGreen, fontWeight: "600", }]}>{`₹ ${item.total_price}`}</Text>
-              <Text style={[styles.price, { textDecorationLine: "line-through", color: rsplTheme.jetGrey, marginLeft: 12, }]}>{`₹ ${item.total_mrp}`}</Text>
+              <Text style={[styles.price, { textDecorationLine: "line-through", color: rsplTheme.jetGrey, marginLeft: 12, }]}>{item.disPercent == 0 ? null : `₹ ` + item.total_mrp}</Text>
             </View>
 
             {item.disPercent != 0 &&
@@ -236,7 +256,7 @@ const Cart = () => {
           {item.product_type !== "Ebook" &&
             <>
 
-              {loader.isProductUpdateLoader && cartId == item.id ?
+              {loader.isProductUpdateLoader && cartId === item.id ?
                 <View style={{ alignSelf: "center", width: 130, height: 35, }}>
                   <ActivityIndicator />
                 </View> :
@@ -265,7 +285,7 @@ const Cart = () => {
           }
 
           <View style={{ flex: 1, flexDirection: "row", justifyContent: "flex-end" }}>
-            {loader.isProductDeleteLoader && cartId == item.id ?
+            {whenDeleteCartItem[item.id] ?
               <ActivityIndicator /> :
               <TouchableOpacity onPress={(() => { deleteCartItem(item.id) })} >
                 <Image style={styles.deleteImg} source={require("../assets/icons/trash.png")} />

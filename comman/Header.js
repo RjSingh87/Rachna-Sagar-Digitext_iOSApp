@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     paddingRight: 10
   },
   btn: {
-    width: 25,
-    height: 25,
+    width: 45,
+    height: 45,
     justifyContent: "center",
     alignItems: "center",
   },
