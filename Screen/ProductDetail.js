@@ -11,6 +11,8 @@ import { MyContext } from '../Store';
 import AddToCartPopupMessage from './AddToCartPopupMessage';
 import NoInternetConn from './NoInternetConn';
 import Icon from 'react-native-vector-icons/AntDesign';
+import { useWindowDimensions } from 'react-native';
+import RenderHtml from 'react-native-render-html';
 
 
 
@@ -25,11 +27,14 @@ const ProductDetail = ({ navigation, route }) => {
 	const { width, height } = Dimensions.get("window")
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [modalView, setModalView] = useState(false)
-	const [singleProduct, setSingleProduct] = useState({ frontBackImgArry: [], isPaperbackAvailable: "", isEbookAvailable: "", eBook_stock: "", book_stock: "", item: [], comment: [], isWishList: "" })
+	const [singleProduct, setSingleProduct] = useState({ frontBackImgArry: [], isPaperbackAvailable: "", isEbookAvailable: "", eBook_stock: "", book_stock: "", item: [], comment: [], isWishList: "", commentNotFounde: "" })
 	const [loading, setLoading] = useState(false)
 	const [activeButton, setActiveButton] = useState("Paperback")
 	const [addWishListMessage, setAddWishListMessage] = useState({ isVisible: false, message: "" })
 	const [lastCartId, setLastCartId] = useState(null)
+	const [descriptionAndReviewsBtn, setDescriptionAndReviewsBtn] = useState(0)
+
+
 
 
 	const viewCartIds = []
@@ -74,6 +79,7 @@ const ProductDetail = ({ navigation, route }) => {
 			"userId": userData.data[0]?.id,
 			"productType": activeButton
 		}
+		// console.log(payLoad, "dkdk>?:")
 		await Services.post(apiRoutes.singleProductList, payLoad)
 			.then((res) => {
 				if ((res.status == "Success") && (res.result?.length != 0)) {
@@ -103,12 +109,14 @@ const ProductDetail = ({ navigation, route }) => {
 			"api_token": token,
 			"id": productId
 		}
+		console.log(payLoad, "of Comments??")
 
 		await Services.post(apiRoutes.productReviews, payLoad)
 			.then((res) => {
 				if (res.status === "success" && res.result.length != 0) {
 					setSingleProduct((prev) => { return { ...prev, comment: res.result } })
 				} else {
+					setSingleProduct((prev) => { return { ...prev, commentNotFounde: res.message } })
 					return
 					Alert.alert("Review", res.message)
 				}
@@ -393,6 +401,24 @@ const ProductDetail = ({ navigation, route }) => {
 
 												<View style={styles.metaDataDetail}>
 													<View style={styles.side1}>
+														<Text style={styles.descriptionOfBook}>Class:</Text>
+													</View>
+													<View style={styles.side2}>
+														<Text style={styles.descriptionOfBook}>{item.class}</Text>
+													</View>
+												</View>
+
+												<View style={styles.metaDataDetail}>
+													<View style={styles.side1}>
+														<Text style={styles.descriptionOfBook}>Subject:</Text>
+													</View>
+													<View style={styles.side2}>
+														<Text style={styles.descriptionOfBook}>{item.subject}</Text>
+													</View>
+												</View>
+
+												<View style={styles.metaDataDetail}>
+													<View style={styles.side1}>
 														<Text style={styles.descriptionOfBook}>ISBN:</Text>
 													</View>
 													<View style={styles.side2}>
@@ -467,6 +493,24 @@ const ProductDetail = ({ navigation, route }) => {
 
 												<View style={styles.metaDataDetail}>
 													<View style={styles.side1}>
+														<Text style={styles.descriptionOfBook}>Class:</Text>
+													</View>
+													<View style={styles.side2}>
+														<Text style={styles.descriptionOfBook}>{item.class}</Text>
+													</View>
+												</View>
+
+												<View style={styles.metaDataDetail}>
+													<View style={styles.side1}>
+														<Text style={styles.descriptionOfBook}>Subject:</Text>
+													</View>
+													<View style={styles.side2}>
+														<Text style={styles.descriptionOfBook}>{item.subject}</Text>
+													</View>
+												</View>
+
+												<View style={styles.metaDataDetail}>
+													<View style={styles.side1}>
 														<Text style={styles.descriptionOfBook}>ISBN:</Text>
 													</View>
 													<View style={styles.side2}>
@@ -495,34 +539,73 @@ const ProductDetail = ({ navigation, route }) => {
 				{/* comment and review section   */}
 
 				<View style={styles.commentBox}>
-					<Text style={styles.reviewComment}>Reviews & Ratings</Text>
-					{singleProduct.comment?.map((item, index) => {
-						const currentDate = new Date(item.created_at);
-						const dateFormatOptions = { day: '2-digit', month: 'long', year: 'numeric' };
-						const formattedDate = new Intl.DateTimeFormat('en-US', dateFormatOptions).format(currentDate);
-						const timeFormatOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
-						const formattedTime = new Intl.DateTimeFormat('en-US', timeFormatOptions).format(currentDate);
-						const dateTime = `${formattedDate} ${formattedTime}`
-						return (
-							<View key={item.id}>
-								<View style={styles.metaDataDetail}>
-									<View style={[styles.side1, { width: 60, }]}>
-										<View style={styles.ratingCircle}>
-											<Text style={[styles.descriptionOfBook, { fontSize: 20, fontWeight: "600", color: "white" }]}>{item.name[0]}</Text>
-										</View>
-									</View>
-									<View style={[styles.side2, { borderBottomWidth: .5, marginBottom: 12, }]}>
-										<Text style={styles.reviewName}>{item.name}</Text>
-										<Text style={styles.reviewHeading}>{item.headline}</Text>
-										<Text style={styles.reviewDate}>{dateTime}</Text>
-										<StarRating rating={item.star} />
-										<Text style={styles.descriptionOfBook}>{item.review}</Text>
-									</View>
-								</View>
 
-							</View>
-						)
-					})}
+					<View style={{ padding: 6, borderTopWidth: 1, borderTopColor: rsplTheme.jetGrey, flexDirection: "row", justifyContent: "space-around" }}>
+						<TouchableOpacity onPress={() => setDescriptionAndReviewsBtn(0)} style={{ padding: 8, borderRadius: 6, borderWidth: 1, borderColor: rsplTheme.jetGrey, backgroundColor: descriptionAndReviewsBtn === 0 ? rsplTheme.jetGrey : rsplTheme.rsplWhite }}>
+							<Text style={{ color: descriptionAndReviewsBtn === 0 ? rsplTheme.rsplWhite : rsplTheme.jetGrey, fontWeight: "500" }} >Description</Text>
+						</TouchableOpacity>
+						<TouchableOpacity onPress={() => setDescriptionAndReviewsBtn(1)} style={{ padding: 8, borderRadius: 6, borderWidth: 1, borderColor: rsplTheme.jetGrey, backgroundColor: descriptionAndReviewsBtn === 1 ? rsplTheme.jetGrey : rsplTheme.rsplWhite }}>
+							<Text style={{ color: descriptionAndReviewsBtn === 1 ? rsplTheme.rsplWhite : rsplTheme.jetGrey, fontWeight: "500" }}>Reviews</Text>
+						</TouchableOpacity>
+					</View>
+
+					{descriptionAndReviewsBtn === 0 && activeButton === "Paperback" &&
+						<>
+							{singleProduct?.item?.map((item, index) => {
+								const source = { html: `${item?.book_desc}` };
+								return (
+									<View key={item.productId}>
+										<RenderHtml
+											contentWidth={width}
+											source={source}
+										/>
+									</View>
+								)
+							})}
+						</>
+					}
+					{descriptionAndReviewsBtn === 1 &&
+						<>
+							<Text style={styles.reviewComment}>Customer Review</Text>
+							{singleProduct?.comment.length > 0 ?
+								<View>
+									{singleProduct.comment?.map((item, index) => {
+										const currentDate = new Date(item.created_at);
+										const dateFormatOptions = { day: '2-digit', month: 'long', year: 'numeric' };
+										const formattedDate = new Intl.DateTimeFormat('en-US', dateFormatOptions).format(currentDate);
+										const timeFormatOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
+										const formattedTime = new Intl.DateTimeFormat('en-US', timeFormatOptions).format(currentDate);
+										const dateTime = `${formattedDate} ${formattedTime}`
+										return (
+											<View key={item.id}>
+												<View style={styles.metaDataDetail}>
+													<View style={[styles.side1, { width: 60, }]}>
+														<View style={styles.ratingCircle}>
+															<Text style={[styles.descriptionOfBook, { fontSize: 20, fontWeight: "600", color: "white" }]}>{item.name[0]}</Text>
+														</View>
+													</View>
+													<View style={[styles.side2, { borderBottomWidth: .5, marginBottom: 12, }]}>
+														<Text style={styles.reviewName}>{item.name}</Text>
+														<Text style={styles.reviewHeading}>{item.headline}</Text>
+														<Text style={styles.reviewDate}>{dateTime}</Text>
+														<StarRating rating={item.star} />
+														<Text style={styles.descriptionOfBook}>{item.review}</Text>
+													</View>
+												</View>
+
+											</View>
+										)
+									})}
+								</View> :
+								<View>
+									<Text>{singleProduct?.commentNotFounde}</Text>
+								</View>
+							}
+						</>
+
+					}
+
+
 				</View>
 
 

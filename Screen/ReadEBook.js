@@ -40,8 +40,8 @@ const ReadEBook = () => {
             <Image style={styles.eBookLogo} source={require("../assets/icons/eBookLogo.png")} />
           </View>
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={(() => { getInteractiveEbook() })} style={styles.eBookRow}>
+        {/* INTERACTIVE Ebook is temperaraly disable by ekbal sir meeting feb 2025 */}
+        {/* <TouchableOpacity onPress={(() => { getInteractiveEbook() })} style={styles.eBookRow}>
           <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[rsplTheme.gradientColorLeft, rsplTheme.gradientColorRight]} style={styles.eBook}>
             <Text style={styles.eBookHeading}>INTERACTIVE Ebook</Text>
             <Text style={styles.eBookText}>Tap to download and interactive Ebook</Text>
@@ -49,7 +49,7 @@ const ReadEBook = () => {
           <View style={styles.interactiveBook}>
             <Image style={styles.eBookLogo} source={require("../assets/icons/interactiveBookLogo.png")} />
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
 

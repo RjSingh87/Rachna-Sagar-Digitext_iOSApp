@@ -392,6 +392,8 @@ PODS:
   - react-native-razorpay (2.3.0):
     - razorpay-pod
     - React
+  - react-native-render-html (6.3.4):
+    - React-Core
   - react-native-safe-area-context (4.7.4):
     - React-Core
   - react-native-splash-screen (3.3.0):
@@ -513,6 +515,8 @@ PODS:
     - React-perflogger (= 0.72.15)
   - RNCAsyncStorage (1.22.1):
     - React-Core
+  - RNDeviceInfo (14.0.4):
+    - React-Core
   - RNGestureHandler (2.13.4):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
@@ -581,6 +585,7 @@ DEPENDENCIES:
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - react-native-razorpay (from `../node_modules/react-native-razorpay`)
+  - react-native-render-html (from `../node_modules/react-native-render-html`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - "react-native-voice (from `../node_modules/@react-native-voice/voice`)"
@@ -603,6 +608,7 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -683,6 +689,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-pdf"
   react-native-razorpay:
     :path: "../node_modules/react-native-razorpay"
+  react-native-render-html:
+    :path: "../node_modules/react-native-render-html"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
@@ -727,6 +735,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -778,6 +788,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: 8a7fd3f7130ef4ad2fb4276d5c9f8d3f28d2df3d
   react-native-pdf: 103940c90d62adfd259f63cca99c7c0c306b514c
   react-native-razorpay: 0272dd684bc9148828c54a72e05059e3e2e8b813
+  react-native-render-html: 984dfe2294163d04bf5fe25d7c9f122e60e05ebe
   react-native-safe-area-context: 2cd91d532de12acdb0a9cbc8d43ac72a8e4c897c
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-voice: 2b4ee948775b528dc450220406ee38c57c91b590
@@ -800,6 +811,7 @@ SPEC CHECKSUMS:
   React-utils: 8eb3c12fd4a4da6df3824f7d9a961d73a6ed6e5d
   ReactCommon: d2de36ed3eebe700d7169b9e80f7d1a4b98e178d
   RNCAsyncStorage: 7deab901e27d1f989a83e8be6ce91b673772c848
+  RNDeviceInfo: feea80a690d2bde1fe51461cf548039258bd03f2
   RNGestureHandler: 5102af8c91262d5a9b757a56e734b1a02071d83b
   RNReanimated: f9d406228327def600da7c60c1d4db94429586c4
   RNScreens: bea7b9767050d69e4b9da14639cdd5c8f5a37881

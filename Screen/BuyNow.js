@@ -1,5 +1,5 @@
 import { Alert, StyleSheet, Keyboard, Text, TouchableOpacity, Platform, TouchableWithoutFeedback, ActivityIndicator, Pressable, View, TextInput, KeyboardAvoidingView, Modal, Button, ScrollView, Image } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Header from '../comman/Header';
 import { apiRoutes, rsplTheme, token, CALLBACK_URL, MID, URL_SCHEME, baseURL, API_Key } from '../constant';
@@ -14,13 +14,15 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import AllInOneSDKManager from 'paytm_allinone_react-native';
 import NoInternetConn from './NoInternetConn';
+import DeviceInfo from 'react-native-device-info';
 
 
 const BuyNow = ({ route, singleProduct }) => {
-  // console.log(route.params.productId, "Saurabgchange cartid???")
+  // console.log(route.params, "Saurabgchange cartid???")
   // console.log(route.params.singleProduct, "New purchase")
   // console.log(route.params.activeButton, "activeButton")
   const productType = route?.params?.activeButton
+  const productID = route?.params?.productId
   const navigation = useNavigation()
   const isFocused = useIsFocused()
   const { userData, grandTotal, cartList } = useContext(MyContext)
@@ -37,6 +39,7 @@ const BuyNow = ({ route, singleProduct }) => {
   const [placeOrderLoader, setPlaceOrderLoader] = useState(false)
   const [buyNowAmount, setBuyNowAmount] = useState([])
   const [lastCartId, setLastCartId] = useState(null)
+  const [buyNowQuantity, setBuyNowQuantity] = useState(1)
 
   // const route = useRoute()
   // const { cartSummeryData } = route.params
@@ -68,11 +71,11 @@ const BuyNow = ({ route, singleProduct }) => {
     // }
     for (const key in cartList.Data) {
       if (cartList.Data[key].productId == route.params?.productId && productType == cartList.Data[key].product_type && lastCartId == null) {
-        calculateAmountOfBuyNow(cartList?.Data[key]?.id)
+        calculateAmountOfBuyNow(cartList?.Data[key]?.id, buyNowQuantity)
         setLastCartId(cartList?.Data[key]?.id)
         // console.log(cartList?.Data[key]?.id, "First time Id?")
       } else {
-        calculateAmountOfBuyNow(lastCartId)
+        calculateAmountOfBuyNow(lastCartId, buyNowQuantity)
         // setLastCartId(lastCartId)
         // console.log(lastCartId, "LastId???")
       }
@@ -194,13 +197,16 @@ const BuyNow = ({ route, singleProduct }) => {
     // const cartIDs = cartList.Data.map(cart => cart.id);
     // const lastElement = cartIDs[cartIDs.length - 1];
     const payLoad = {
-      api_token: token,
-      addressID: selectedAddress,
-      cartIDs: [lastCartId], //[route.params?.lastCartId != null ? route.params?.lastCartId : lastElement],
-      userID: userData.data[0]?.id,
-      couponCode: promoCode?.checkoutPromoCode
+      "api_token": token,
+      "addressID": selectedAddress,
+      "cartIDs": [lastCartId], //[route.params?.lastCartId != null ? route.params?.lastCartId : lastElement],
+      "userID": userData.data[0]?.id,
+      "couponCode": promoCode?.checkoutPromoCode,
+      "orderType": "buyNow", // only in buynow case
+      "quantity": buyNowQuantity // only in buynow case
     };
-    console.log(payLoad, "lastCartId???P")
+    // console.log(payLoad, "lastCartId???P")
+    // return
     try {
       const res = await Services.post(apiRoutes.generateOrderPaytm, payLoad);
       // console.log(res, "RESSS??>")
@@ -228,6 +234,9 @@ const BuyNow = ({ route, singleProduct }) => {
         if (result.STATUS === "TXN_SUCCESS" && result.RESPCODE === "01") {
           await verifyOrder(result?.ORDERID, cartIDs, result?.TXNAMOUNT);
           // navigation.goBack();
+          if (productType === "Ebook") {
+            eBookDownloadPermissions(orderId) // if Ebook payment is successful add by raju 13 Feb.2025
+          }
         } else {
           Alert.alert("Payment Failed", result.RESPMSG || "Transaction could not be completed.");
         }
@@ -345,17 +354,28 @@ const BuyNow = ({ route, singleProduct }) => {
 
   }
 
-  const calculateAmountOfBuyNow = async (cartID) => {
+  const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+
+
+
+  const calculateAmountOfBuyNow = useCallback(debounce(async (cartID, quantity) => {
     setLoader(true)
     const payLoad = {
       "api_token": token,
       "userid": userData.data[0]?.id,
       // "cartIDs": [route.params?.lastCartId !== null ? route.params?.lastCartId : lastElement]
-      "cartIDs": [cartID]
+      "cartIDs": [cartID],
+      "quantity": quantity === undefined ? buyNowQuantity : quantity
     }
-    // console.log(payLoad, "dkfkfkffk????")
     try {
-      const result = await Services.post(apiRoutes.grandTotalOfCart, payLoad)
+      const result = await Services.post(apiRoutes.singleCartAmmount, payLoad)
       if (result.result && result.status === "success") {
         setLoader(false)
         const data = result.result
@@ -371,17 +391,62 @@ const BuyNow = ({ route, singleProduct }) => {
       } else {
         Alert.alert("Error:", error.message || "Something went wrong.")
       }
+    } finally { setLoader(false) }
+  }, 300), [token, userData])
+
+
+  const increment = (quantity) => {
+    const newQuantity = quantity + 1;
+    setBuyNowQuantity(newQuantity)
+    calculateAmountOfBuyNow(lastCartId, newQuantity)
+  };
+
+  const decrement = () => {
+    const newQuantity = Math.max(1, buyNowQuantity - 1); // Prevent quantity < 1
+    setBuyNowQuantity(newQuantity)
+    calculateAmountOfBuyNow(lastCartId, newQuantity)
+  };
+
+  const getDeviceID = async () => {
+    const uniqueId = await DeviceInfo.getUniqueId();  // Har device ka ek alag ID hota hai
+    const model = await DeviceInfo.getModel();
+    let deviceInfo = {
+      "uniqueId": uniqueId,
+      "model": model
+    }
+    return deviceInfo;
+  };
+
+  const eBookDownloadPermissions = async (orderId) => {
+    try {
+      const deviceId = (await getDeviceID()).uniqueId;
+      const model = (await getDeviceID()).model;
+      const payload = {
+        "api_token": token,
+        "userID": userData.data[0]?.id,
+        "orderID": orderId, //45698,
+        "productId": productID, //3124,
+        "zip_title": route.params.singleProduct.item[0]?.product_title, //"TogetherWithDemoTestPdf",
+        "book_type": productType, //"eBook",
+        "last_mob_device_id": deviceId, //"59961f43dd911d056",
+        "last_mob_model": model, //"MotoG3-TE"
+      }
+      const result = await Services.post(apiRoutes.eBookDownload, payload)
+      if (result.status === "success") {
+
+      } else if (result.status === "failed") {
+        Alert.alert("Error:", result.message)
+      }
+
+    } catch (error) {
+      if (error.message === "TypeError: Network request failed") {
+        Alert.alert("Network Error", "Please try again.");
+      } else {
+        Alert.alert("Error:", error.message || "Something went wrong.")
+      }
     }
   }
 
-
-
-  // const qunatityIncrease = () => {
-  //   setQuantity(quantity + 1)
-  // }
-  // const qunatityDecrease = () => {
-  //   setQuantity(quantity - 1)
-  // }
 
 
 
@@ -430,50 +495,24 @@ const BuyNow = ({ route, singleProduct }) => {
                 //   backgroundColor = rsplTheme.rsplGreen
                 // }
                 return (
-                  <View style={{ flexDirection: "row", alignItems: "center", padding: 5, }} key={item.id}>
+                  <View style={{ flexDirection: "row", alignItems: "center", }} key={item.id}>
                     <View style={styles.row}>
 
                       <TouchableOpacity disabled onPress={(() => { fetchDefaultAddress(item.id) })} style={[styles.button, { flex: 1, flexDirection: "row", alignItems: "center", }]}>
                         {/* <View style={{ width: 15, height: 15, borderRadius: 15 / 2, borderWidth: 1, alignItems: "center", justifyContent: "center" }}><View style={{ width: 8, height: 8, borderRadius: 8 / 2, backgroundColor: backgroundColor }}></View></View> */}
-                        <View style={[styles.button, { marginLeft: 10, marginRight: 10, }]}>
+                        <View style={[styles.button, {}]}>
                           <Text selectable={true} style={styles.userName}>{`Delivering to ${item?.name}`}</Text>
                           <Text selectable={true} style={styles.userAdd}>{item?.address}, {item?.landmark}, {item.state} {item.city} {item.country} {item.pincode} </Text>
                           <Text selectable={true} style={styles.userMob}>+91 {item?.mobile}</Text>
                         </View>
                       </TouchableOpacity>
-
-
-
-
-                      {/* <View style={[styles.button, { justifyContent: "space-evenly" }]}>
-                    <TouchableOpacity onPress={(() => {
-                      if (selectedAddress != item.id) {
-                        Alert.alert("Info", "Please select an address.")
-                      } else {
-                        setUserContactVisible(true),
-                          setUserDetails((prev) => {
-                            return {
-                              ...prev, name: item.name, address: item.address, landmark: item.landmark, mobile: item.mobile,
-                            }
-                          })
-                      }
-
-                    })}
-                      style={{ width: 22, height: 22, borderRadius: 22 / 2, alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
-                      <Feather name="edit" size={17} color={rsplTheme.jetGrey} />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={(() => { deleteAddress(item.id) })}>
-                      <FontAwesome6 name="trash" size={17} color={rsplTheme.rsplRed} />
-                    </TouchableOpacity>
-                  </View> */}
-
                     </View>
                   </View>
                 )
               })}
 
               {address.length >= 1 &&
-                <TouchableOpacity style={{ marginLeft: 25, }} onPress={(() => { navigation.navigate("SavedAddress", { type: "BuyNow" }) })}>
+                <TouchableOpacity style={{ marginLeft: 10, }} onPress={(() => { navigation.navigate("SavedAddress", { type: "BuyNow" }) })}>
                   <Text style={{ color: rsplTheme.rsplBlue, fontSize: 15 }}>Change delivery address</Text>
                 </TouchableOpacity>
               }
@@ -481,68 +520,7 @@ const BuyNow = ({ route, singleProduct }) => {
 
             </View>
 
-            {/* Address upadate and delete UI commented by Raju 22Jan2025 */}
-            {/* <Modal
-          animationType="slide"
-          transparent={true}
-          visible={userContactVisible}
-        >
-          <KeyboardAvoidingView style={styles.modalContainerEdit}>
-            <View style={[styles.modalContent, { borderBottomRightRadius: 20, borderBottomLeftRadius: 20, }]}>
-              <ScrollView contentContainerStyle={{ flexGrow: 1, }}>
-                <View style={{ flex: 1, flexDirection: "column", }}>
-                  <View style={styles.rowContainer}>
-                    <Text style={styles.text1}>Name</Text>
-                    <TextInput
-                      style={styles.input}
-                      value={userDeatail.name}
-                      returnKeyType='send'
-                      onChangeText={(txt) => { userInputValHandle(txt, "name") }}
-                    />
-                  </View>
 
-                  <View style={styles.rowContainer}>
-                    <Text style={styles.text1}>Add. 1</Text>
-                    <TextInput
-                      style={styles.input}
-                      value={userDeatail.address}
-                      onChangeText={(txt) => { userInputValHandle(txt, "address") }}
-                    />
-                  </View>
-
-
-                  <View style={styles.rowContainer}>
-                    <Text style={styles.text1}>Add. 2</Text>
-                    <TextInput
-                      style={styles.input}
-                      value={userDeatail.landmark}
-                      onChangeText={(txt) => { userInputValHandle(txt, "landmark") }}
-                    />
-                  </View>
-
-                  <View style={styles.rowContainer}>
-                    <Text style={styles.text1}>Mob.</Text>
-                    <TextInput
-                      style={styles.input}
-                      value={userDeatail.mobile}
-                      onChangeText={(txt) => { userInputValHandle(txt, "mobile") }}
-                      keyboardType="numeric"
-                      maxLength={10}
-                    />
-                  </View>
-
-
-
-
-                </View>
-                <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-                  <Button title="Save" onPress={(() => { saveEditAddress() })} />
-                  <Button title='Close' onPress={(() => { setUserContactVisible(false) })} />
-                </View>
-              </ScrollView>
-            </View>
-          </KeyboardAvoidingView>
-        </Modal> */}
 
 
 
@@ -559,7 +537,7 @@ const BuyNow = ({ route, singleProduct }) => {
                 <Text style={styles.description}>{`Class : ${route.params.singleProduct.item[0]?.class}`}</Text>
                 <Text style={styles.description}>{`Subject : ${route.params.singleProduct.item[0]?.subject}`}</Text>
                 <Text style={styles.description}>{`Product Type : ${route.params.activeButton}`}</Text>
-                <Text style={styles.description}>{`Quantity : 1`}</Text>
+                <Text style={styles.description}>{`Quantity : ${buyNowQuantity}`}</Text>
                 <View style={{ flexDirection: "row", }}>
                   <Text style={[styles.description, { fontWeight: "700" }]}>{`\u20B9`} {route.params.activeButton == "Paperback" ? route.params.singleProduct.item[0]?.book_price : route.params.singleProduct.item[0]?.ebook_price} </Text>
                   {route.params.singleProduct.item[0].book_perDiscount !== 0 &&
@@ -575,13 +553,21 @@ const BuyNow = ({ route, singleProduct }) => {
                 }
 
                 {/* Quantity increase decrease UI */}
-                {/* <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-              <Button title='-' onPress={qunatityDecrease} />
-              <View style={{ borderWidth: .5, width: 30, height: 30, borderRadius: 5, marginHorizontal: 5, justifyContent: "center", marginVertical: 5 }}>
-                <Text style={{ textAlign: "center", fontSize: 16, fontWeight: "500" }}>{quantity}</Text>
-              </View>
-              <Button title='+' onPress={qunatityIncrease} />
-            </View> */}
+                {productType !== "Ebook" &&
+                  <View style={{ flex: 1, flexDirection: "row", alignItems: "center", position: "absolute", left: 165, top: 35, right: 0, justifyContent: "flex-end" }}>
+                    <View style={styles.buttonContainer}>
+                      <TouchableOpacity disabled={buyNowQuantity <= 1} onPress={(() => { decrement(buyNowQuantity) })} style={[styles.pulsButton]}>
+                        <Text style={styles.quantityText}>-</Text>
+                      </TouchableOpacity>
+
+                      <Text style={styles.countText}>{buyNowQuantity}</Text>
+
+                      <TouchableOpacity onPress={(() => { increment(buyNowQuantity) })} style={[styles.minusButton]}>
+                        <Text style={styles.quantityText}>+</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                }
 
               </View>
 
@@ -759,7 +745,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: rsplTheme.rsplLightGrey,
-    padding: 15,
+    paddingLeft: 15,
+    paddingRight: 15,
+    height: 30,
+
   },
   orderSumryTitle: {
     fontSize: 14,
@@ -777,7 +766,7 @@ const styles = StyleSheet.create({
   },
   orderSumLeft: {
     width: 180,
-    padding: 6,
+    padding: 4,
     justifyContent: "center",
   },
   orderSumLeftTitle: {
@@ -787,7 +776,7 @@ const styles = StyleSheet.create({
   },
   orderSumRight: {
     flex: 1,
-    padding: 6,
+    padding: 4,
     justifyContent: "center",
   },
   orderSumRightTitle: {
@@ -868,11 +857,13 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 1,
-    paddingRight: 10,
+    // paddingRight: 10,
+    // alignItems: "center",
+    justifyContent: "center"
   },
   image: {
-    width: '100%',
-    height: 200,
+    width: '95%',
+    height: 150,
     resizeMode: 'contain',
   },
   descriptionContainer: {
@@ -959,6 +950,47 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 0.25,
     color: 'white',
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: 'space-between',
+    width: 100,
+    borderWidth: .5,
+    borderColor: rsplTheme.jetGrey,
+    borderRadius: 5,
+    backgroundColor: rsplTheme.rsplWhite,
+  },
+  quantityText: {
+    fontSize: 20,
+    fontWeight: "500",
+    textAlign: "center",
+    // color: '#888',
+    color: rsplTheme.textColorBold
+  },
+  pulsButton: {
+    borderRightWidth: .5,
+    borderColor: rsplTheme.jetGrey,
+    backgroundColor: rsplTheme.rsplLightGrey,
+    padding: 5,
+    borderBottomLeftRadius: 5,
+    borderTopLeftRadius: 5,
+    width: 30,
+  },
+  minusButton: {
+    borderLeftWidth: .5,
+    borderColor: rsplTheme.jetGrey,
+    backgroundColor: rsplTheme.rsplLightGrey,
+    padding: 5,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    width: 30,
+  },
+  countText: {
+    fontSize: 16,
+    textAlign: "center",
+    color: rsplTheme.rsplBlue
+    // marginBottom: 20,
   },
 
 })

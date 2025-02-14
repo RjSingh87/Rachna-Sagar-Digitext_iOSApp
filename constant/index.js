@@ -44,6 +44,7 @@ export const apiRoutes = Object.freeze({
     viewAllCartList: "view_all_cart",
     removeCardItem: "remove_to_cart",
     grandTotalOfCart: "calculate_cart_ammount",
+    singleCartAmmount: "single_cart_ammount",
     productQuantityDecrement: "single_remove_to_cart",
     userAddAddress: "add_user_address",
     userDeleteAddress: "delete_user_address",
@@ -69,6 +70,8 @@ export const apiRoutes = Object.freeze({
     bookSellerList: "bookSellerList",
     defaultAddress: "setDefaultAddress",
     titleSearchAPI: "bookSearchList",
+    checkDeviceId: "mobileDeviceValidate",
+    eBookDownload: "eBookDownload",
     booksellerListStatewise: "bookSellerListStateWise" // "booksellerListStatewise"
 })
 

@@ -312,7 +312,7 @@ const Profile = ({ data }) => {
           </LinearGradient>
         </TouchableOpacity>
         <View style={{ marginTop: 20, alignSelf: "center" }}>
-          <Button onPress={onShare} title="Share and earn" />
+          <Button onPress={onShare} title="Share" />
           {/* <Button onPress={viewOrder} title="View Order" /> */}
           <Button
             onPress={yourAccount}
