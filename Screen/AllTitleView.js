@@ -32,6 +32,9 @@ const AllTitleView = ({ navigation }) => {
   const [query, setQuery] = useState(''); // User search query
   const [isListening, setIsListening] = useState(false)
   const [lastQuery, setLastQuery] = useState('');
+  const [error, setError] = useState(null);
+  const [searchLoader, setSearchLoader] = useState(false)
+  const [timeoutId, setTimeoutId] = useState(null)
 
   const flatListRef = useRef(null)
   const searchRef = useRef(null);
@@ -40,10 +43,13 @@ const AllTitleView = ({ navigation }) => {
   useEffect(() => {
     fetchAllTitles()
 
-    Voice.onSpeechStart = onSpeechStart;
-    Voice.onSpeechEnd = onSpeechEnd;
+    Voice.onSpeechStart = () => setIsListening(true);
+    Voice.onSpeechEnd = () => stopListening();
     Voice.onSpeechResults = onSpeechResults;
-    Voice.onSpeechError = (error) => console.log("Speech Error:", error);
+    Voice.onSpeechError = (error) => {
+      console.log("Speech Error:", error);
+      stopListening();
+    };
 
     return () => {
       Voice.destroy().then(() => Voice.removeAllListeners());
@@ -52,26 +58,51 @@ const AllTitleView = ({ navigation }) => {
   }, [])
 
 
-  const onSpeechStart = (event) => { setIsListening(true) }
 
-  const onSpeechEnd = (event) => { setIsListening(false) }
+  useEffect(() => {
+    if (!query) {
+      setAllTitle(originalTitle);
+      setSearchLoader(false);
+      setError(null);
+      return;
+    }
+
+    setSearchLoader(true);
+    setError(null);
+
+    const timer = setTimeout(() => {
+      searchWithAPI(query);
+    }, 500); // 500ms 
+
+    return () => clearTimeout(timer);
+  }, [query]);
 
   const onSpeechResults = (event) => {
-    const text = event.value[0]
-    setQuery(text)
+    const text = event.value[0]?.trim();
+    if (!text) {
+      stopListening();
+      return;
+    }
+
+    setQuery(text);
     if (searchRef.current) {
       searchRef.current.focus();
     }
-    setTimeout(() => {
-      stopListening()
-    }, 5000);
-  }
+    clearTimeout(timeoutId);
+    const newTimeout = setTimeout(() => {
+      stopListening();
+    }, 3000);
+    setTimeoutId(newTimeout);
+  };
 
   const startListening = async () => {
     try {
       setIsListening(true);
       await Voice.start("en-US");
-      setTimeout(stopListening, 5000);
+      const id = setTimeout(() => {
+        stopListening();
+      }, 10000);
+      setTimeoutId(id);
     } catch (error) {
       console.log("Start Listening Error:", error);
       setIsListening(false);
@@ -80,6 +111,7 @@ const AllTitleView = ({ navigation }) => {
 
   const stopListening = async () => {
     try {
+      clearTimeout(timeoutId);
       await Voice.stop();
       setIsListening(false);
     } catch (error) {
@@ -115,6 +147,7 @@ const AllTitleView = ({ navigation }) => {
     // console.log(`${imgBaseUrl}${item.front_image}`, "with call back")
     return (
       <TouchableOpacity onPress={(() => {
+        stopListening();
         navigation.navigate("ProductDetail",
           {
             item: [item],
@@ -212,7 +245,7 @@ const AllTitleView = ({ navigation }) => {
 
   const resetFiltersTitles = () => {
     setQuery("")
-    setAllTitle(originalTitle);
+    setError(null)
     return;
   }
 
@@ -223,18 +256,17 @@ const AllTitleView = ({ navigation }) => {
     }
   };
 
-  const searchWithAPI = async () => {
-    const searchQuery = query.toLowerCase().trim(); // Normalize the search query
-    if (searchQuery === lastQuery) return; // Skip if query hasn't changed
-    setLastQuery(searchQuery);
+  const searchWithAPI = async (searchQuery) => {
+    // const searchQuery = query.toLowerCase().trim(); // Normalize the search query
+    // if (searchQuery === lastQuery) return; // Skip if query hasn't changed
+    // setLastQuery(searchQuery);
 
-    if (searchQuery === '') {
-      setAllTitle(originalTitle); // Reset to original data if query is empty
-      return;
-    }
+    // if (searchQuery === '') {
+    //   setAllTitle(originalTitle); // Reset to original data if query is empty
+    //   return;
+    // }
 
     try {
-      setLoading(true); // Show loading indicator
       const payLoad = {
         "api_token": "123456",
         "searchKey": searchQuery,
@@ -250,14 +282,15 @@ const AllTitleView = ({ navigation }) => {
           setAllTitle([]); // Clear the list if no results
         }
       } else {
-        Alert.alert('Error', result.message || 'Failed to fetch search results');
+        setError(result.message || "Failed to fetch search results")
+        // Alert.alert('Error', result.message || 'Failed to fetch search results');
         setAllTitle([]); // Clear the list in case of failure
       }
     } catch (error) {
       Alert.alert('Error', error.message || 'An unexpected error occurred');
       setAllTitle([]); // Clear the list in case of error
     } finally {
-      setLoading(false); // Hide loading indicator
+      setSearchLoader(false); // Hide loading indicator
     }
   };
 
@@ -268,16 +301,6 @@ const AllTitleView = ({ navigation }) => {
     setQuery(text);
     debouncedSearch();
   };
-
-
-
-  // const handleSearch = () => {
-  //   fetchData(query, 1); // Fetch data for new search query
-  // };
-
-  // console.log(allTitle, "allTitle??")
-
-
 
 
 
@@ -305,11 +328,14 @@ const AllTitleView = ({ navigation }) => {
             ref={searchRef}
             placeholder={isListening ? "Speak now" : "Search products"}
             value={query}
-            onChangeText={setQuery}
+            onChangeText={(text) => {
+              setQuery(text.trimStart());
+              stopListening()
+            }}
             // onChangeText={handleChangeQuery}
-            onSubmitEditing={handleSearch}
-            returnKeyType='search'
-            onKeyPress={handleKeyPress}
+            // onSubmitEditing={handleSearch}
+            // returnKeyType='search'
+            // onKeyPress={handleKeyPress}
             autoCapitalize='none'
             autoCorrect={false}
             // autoFocus={isListening ? true : false}
@@ -344,6 +370,11 @@ const AllTitleView = ({ navigation }) => {
             </TouchableOpacity>
           }
         </View>
+
+
+        {searchLoader && <ActivityIndicator size="large" color={rsplTheme.rsplRed} />}
+
+        {error && <Text style={{ color: 'red', textAlign: "center" }}>{error}</Text>}
 
 
         {loading ?

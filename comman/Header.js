@@ -13,7 +13,7 @@ const Header = ({ title, leftIcon, rightIcon, onClickLeftIcon, onClickRightIcon 
         <Image source={leftIcon} style={styles.icon} />
       </TouchableOpacity>
 
-      <Text style={styles.title}> {title} </Text>
+      <Text style={styles.title}>{title} </Text>
 
       <TouchableOpacity onPress={() => { onClickRightIcon() }} style={styles.btn}>
         <Image source={rightIcon} style={styles.icon} />

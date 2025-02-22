@@ -91,7 +91,7 @@ const OrderListDetail = ({ route }) => {
         <Text style={{ fontWeight: "600", fontSize: 16, marginBottom: 6, }}>Purchase Details</Text>
         <View style={styles.orderContainer}>
           <View style={styles.orderBox} >
-            <Text style={{ flex: 1, textTransform: "capitalize", color: rsplTheme.rsplGreen, fontWeight: "600", fontSize: 16 }}>{`${OrderListData?.orderDetail?.payment_status}ful`}</Text>
+            <Text style={{ flex: 1, textTransform: "capitalize", color: rsplTheme.rsplGreen, fontWeight: "600", fontSize: 16 }}>{`${OrderListData?.orderDetail?.payment_status === null ? "" : OrderListData?.orderDetail?.payment_status}`}</Text>
           </View>
           <View style={[styles.orderBox, { marginBottom: 10 }]} >
             <Image style={{ width: "100%", height: 200, resizeMode: "contain", }} source={{ uri: OrderListData?.orderDetail?.getProduct?.main_image }} />

@@ -87,9 +87,10 @@ const ProductDetail = ({ navigation, route }) => {
 					const backImage = res.result[0].full_back_image_path
 					const paperBack = res.result[0].paperbook_available
 					const eBook = res.result[0].eBook_available
+					const eBookPublish = res.result[0].ebook_publish
 					const eBook_stock = res.result[0].eBook_stock
 					const book_stock = res.result[0].book_stock
-					setSingleProduct((prev) => { return { ...prev, frontBackImgArry: [frontImage, backImage], isPaperbackAvailable: paperBack, isEbookAvailable: eBook, eBook_stock: eBook_stock, book_stock: book_stock, item: res.result, isWishList: res.isWishlist } })
+					setSingleProduct((prev) => { return { ...prev, frontBackImgArry: [frontImage, backImage], isPaperbackAvailable: paperBack, isEbookAvailable: eBook, isEbookPublish: eBookPublish, eBook_stock: eBook_stock, book_stock: book_stock, item: res.result, isWishList: res.isWishlist } })
 					getUserComments()
 				} else if (res.status == "failed") {
 					return
@@ -275,7 +276,7 @@ const ProductDetail = ({ navigation, route }) => {
 						<Text style={[styles.paperback, { color: activeButton == "Paperback" ? rsplTheme.rsplWhite : null }]}>Paperback </Text>
 					</TouchableOpacity>) : null
 				}
-				{singleProduct?.isEbookAvailable == 1 && singleProduct?.eBook_stock > 0 ?
+				{singleProduct?.isEbookAvailable === 1 && singleProduct?.isEbookPublish === 1 ?
 
 					(<TouchableOpacity onPress={(() => { handleButton("Ebook") })} style={{ backgroundColor: activeButton == "Ebook" ? rsplTheme.textColorBold : "transparent", borderWidth: .5, width: "45%", height: 40, justifyContent: "center", alignItems: "center" }}>
 						<Text style={[styles.eBook, { color: activeButton == "Ebook" ? rsplTheme.rsplWhite : null }]}>Ebook</Text>
@@ -549,10 +550,15 @@ const ProductDetail = ({ navigation, route }) => {
 						</TouchableOpacity>
 					</View>
 
-					{descriptionAndReviewsBtn === 0 && activeButton === "Paperback" &&
+					{descriptionAndReviewsBtn === 0 &&
 						<>
 							{singleProduct?.item?.map((item, index) => {
-								const source = { html: `${item?.book_desc}` };
+								let source = null;
+								if (activeButton === "Paperback") {
+									source = { html: `${item?.book_desc == "" ? "No description available." : item?.book_desc} ` };
+								} else if (activeButton === "Ebook") {
+									source = { html: `${item?.ebook_desc == null ? "eBook description is not available." : item?.ebook_desc} ` };
+								}
 								return (
 									<View key={item.productId}>
 										<RenderHtml

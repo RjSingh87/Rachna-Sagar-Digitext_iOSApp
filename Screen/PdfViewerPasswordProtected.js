@@ -12,10 +12,14 @@ import { MyContext } from '../Store'
 
 
 const PdfViewerPasswordProtected = ({ route }) => {
+  // console.log(route.params.pdfPsw, "route.params?Raju")
 
   const { userData } = useContext(MyContext)
 
 
+  const finalPdfUrl = route.params?.pdfUrl //route.params?.pdfUrl?.pdfUrl
+  const finalPdfPsw = route.params?.pdfPsw
+  const pdfTitle = route.params?.pdfTitle
   const serverSitePdfUrl = route.params?.pdfUrl?.eBookUrl?.pdfUrl //route.params?.pdfUrl?.pdfUrl
   const serverSiteLink = route.params?.pdfUrl?.eBookUrl?.psw //route.params?.pdfUrl?.link
   const bookID = route.params?.pdfUrl?.productId
@@ -81,11 +85,11 @@ const PdfViewerPasswordProtected = ({ route }) => {
   // console.log({ deviceID, deviceModel, osVersion })
 
 
-  function stringReverse(str) {
-    return str.split('').reverse().join('');
-  }
-  const reversedString = stringReverse(serverSiteLink);
-  const password = base64.decode(reversedString)
+  // function stringReverse(str) {
+  //   return str.split('').reverse().join('');
+  // }
+  // const reversedString = stringReverse(serverSiteLink);
+  // const password = base64.decode(reversedString)
 
 
   // const pdfWithPassword = "https://swaadhyayan.com/s1/drylab.pdf"
@@ -98,15 +102,16 @@ const PdfViewerPasswordProtected = ({ route }) => {
       <Header
         leftIcon={require("../assets/icons/backArrow.png")}
         // rightIcon={require('../assets/icons/shopping-cart.png')}
-        title={"Read eBook PDF"}
+        title={pdfTitle}
+        // title={"Read eBook PDF"}
         onClickLeftIcon={() => { navigation.goBack(); }}
       />
 
       <View style={[styles.container, { width: width, height: height }]}>
         <Pdf
           // When come final pdfURL from server site then call variable {`${serverSitePdfUrl}`} in pdf source
-          source={{ uri: serverSitePdfUrl }}
-          password={password}
+          source={{ uri: finalPdfUrl }}
+          password={finalPdfPsw}
           onError={((error) => { if (error) { setError("Load pdf failed.") } })}
           renderActivityIndicator={(() => {
             return (

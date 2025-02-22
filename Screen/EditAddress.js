@@ -214,12 +214,12 @@ const EditAddress = ({ route, navigation }) => {
                   <Text style={styles.text1}>Country</Text>
 
                   <TouchableOpacity onPress={(() => { getCountryList() })} style={[styles.input, { flex: 1, alignItems: "center", flexDirection: "row", justifyContent: "space-between" }]}>
-                    <View style={{ width: 350, height: 40, justifyContent: "center" }}>
+                    <View style={{ width: "65%", height: 40, justifyContent: "center" }}>
                       <Text style={{ color: rsplTheme.textColorBold, fontWeight: "400" }}>{userDetail?.country ? userDetail.country : "Select country"}</Text>
                     </View>
                     {loader.countryLoader ?
                       <ActivityIndicator size={"small"} color={rsplTheme.jetGrey} /> :
-                      <View style={{ paddingHorizontal: 8, height: 40, justifyContent: "center" }}>
+                      <View style={{ paddingHorizontal: 8, height: 40, flex: 1, alignItems: "flex-end", justifyContent: "center", paddingHorizontal: 0 }}>
                         <EvilIcons name="chevron-down" size={30} color={rsplTheme.jetGrey} />
                       </View>
                     }

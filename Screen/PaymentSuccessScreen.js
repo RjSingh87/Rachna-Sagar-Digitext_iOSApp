@@ -25,7 +25,8 @@ const PaymentSuccessScreen = ({ route }) => {
     ).start();
 
     setTimeout(() => {
-      navigation.goBack()
+      navigation.pop(2)
+      // navigation.goBack()
     }, 6000)
 
   }, []);

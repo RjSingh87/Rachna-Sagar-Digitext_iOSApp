@@ -177,7 +177,7 @@ const BuyNow = ({ route, singleProduct }) => {
         getUserAddress()
         console.log(result.message, "all welll")
       } else if (result.status === "failed") {
-        console.log(result.message, "not welll")
+        // console.log(result.message, "not welll")
       }
     } catch (error) {
       console.log(error.message, "Something went wrong")
@@ -217,7 +217,7 @@ const BuyNow = ({ route, singleProduct }) => {
         const amount = "1.00"; // Transaction amount
         const callbackUrl = `https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}` //`https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}`;
         const isStaging = false; // true for testing, false for production
-        const restrictAppInvoke = false; // Allow Paytm App invoke
+        const restrictAppInvoke = true; // Allow Paytm App invoke
         const urlScheme = "paytmRachna00883415851600"; // URL Scheme for iOS
 
         const result = await AllInOneSDKManager.startTransaction(
@@ -232,7 +232,8 @@ const BuyNow = ({ route, singleProduct }) => {
         );
         // console.log(result, "Paytm Transition Intialized");
         if (result.STATUS === "TXN_SUCCESS" && result.RESPCODE === "01") {
-          await verifyOrder(result?.ORDERID, cartIDs, result?.TXNAMOUNT);
+          console.log("successfulllele...")
+          await verifyOrder(result?.ORDERID, lastCartId, result?.TXNAMOUNT);
           // navigation.goBack();
           if (productType === "Ebook") {
             eBookDownloadPermissions(orderId) // if Ebook payment is successful add by raju 13 Feb.2025
@@ -255,15 +256,16 @@ const BuyNow = ({ route, singleProduct }) => {
     const payLoad = {
       "api_token": token,
       "orderNumber": orderNumber,
-      "cartIDs": cartIDs
+      "cartIDs": [cartIDs]
     }
-    console.log(payLoad, "cartIDs")
+    console.log(payLoad, "payLoadVerifiorder")
     await Services.post(apiRoutes.paymentStatus, payLoad)
       .then((res) => {
         if (res.status === "success") {
-          // console.log(res, "When Success")
+          console.log(res, "When Success")
           navigation.navigate("PaymentSuccessScreen", { txnStatus: res.message, txnAmount: TXNAMOUNT })
-          getAllCartItems();
+          // navigation.goBack()
+          // getAllCartItems();
           // setOrderVerifyData(res.data)
         } else if (res.status === "error") {
           Alert.alert("Error", res.message)
@@ -425,8 +427,8 @@ const BuyNow = ({ route, singleProduct }) => {
         "api_token": token,
         "userID": userData.data[0]?.id,
         "orderID": orderId, //45698,
-        "productId": productID, //3124,
-        "zip_title": route.params.singleProduct.item[0]?.product_title, //"TogetherWithDemoTestPdf",
+        "productId": [productID], //3124,
+        //"zip_title": route.params.singleProduct.item[0]?.product_title, //"TogetherWithDemoTestPdf",
         "book_type": productType, //"eBook",
         "last_mob_device_id": deviceId, //"59961f43dd911d056",
         "last_mob_model": model, //"MotoG3-TE"
@@ -481,7 +483,7 @@ const BuyNow = ({ route, singleProduct }) => {
 
             <View style={styles.userAddContaner}>
 
-              <TouchableOpacity style={{ paddingVertical: 10, }} onPress={(() => { toggleParentModal() })}>
+              <TouchableOpacity style={{ height: 30, justifyContent: "center" }} onPress={(() => { toggleParentModal() })}>
                 <Text style={styles.addNewAdd}>+ ADD NEW ADDRESS</Text>
               </TouchableOpacity>
 
@@ -512,12 +514,10 @@ const BuyNow = ({ route, singleProduct }) => {
               })}
 
               {address.length >= 1 &&
-                <TouchableOpacity style={{ marginLeft: 10, }} onPress={(() => { navigation.navigate("SavedAddress", { type: "BuyNow" }) })}>
+                <TouchableOpacity style={{ marginTop: 8, }} onPress={(() => { navigation.navigate("SavedAddress", { type: "BuyNow" }) })}>
                   <Text style={{ color: rsplTheme.rsplBlue, fontSize: 15 }}>Change delivery address</Text>
                 </TouchableOpacity>
               }
-
-
             </View>
 
 
@@ -525,11 +525,27 @@ const BuyNow = ({ route, singleProduct }) => {
 
 
             <View style={styles.containerImg}>
-              <View style={styles.imageContainer}>
+              <View style={[styles.imageContainer, {}]}>
                 <Image
                   source={{ uri: route.params.singleProduct?.frontBackImgArry[0] }}
                   style={styles.image}
                 />
+                {/* Quantity increase decrease UI */}
+                {productType !== "Ebook" &&
+                  <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", marginTop: 6, }}>
+                    <View style={styles.buttonContainer}>
+                      <TouchableOpacity disabled={buyNowQuantity <= 1} onPress={(() => { decrement(buyNowQuantity) })} style={[styles.pulsButton]}>
+                        <Text style={styles.quantityText}>-</Text>
+                      </TouchableOpacity>
+
+                      <Text style={styles.countText}>{buyNowQuantity}</Text>
+
+                      <TouchableOpacity onPress={(() => { increment(buyNowQuantity) })} style={[styles.minusButton]}>
+                        <Text style={styles.quantityText}>+</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                }
               </View>
               <View style={styles.descriptionContainer}>
                 <Text style={styles.title}>{route.params.singleProduct.item[0]?.product_title}</Text>
@@ -552,22 +568,7 @@ const BuyNow = ({ route, singleProduct }) => {
                   </View>
                 }
 
-                {/* Quantity increase decrease UI */}
-                {productType !== "Ebook" &&
-                  <View style={{ flex: 1, flexDirection: "row", alignItems: "center", position: "absolute", left: 165, top: 35, right: 0, justifyContent: "flex-end" }}>
-                    <View style={styles.buttonContainer}>
-                      <TouchableOpacity disabled={buyNowQuantity <= 1} onPress={(() => { decrement(buyNowQuantity) })} style={[styles.pulsButton]}>
-                        <Text style={styles.quantityText}>-</Text>
-                      </TouchableOpacity>
 
-                      <Text style={styles.countText}>{buyNowQuantity}</Text>
-
-                      <TouchableOpacity onPress={(() => { increment(buyNowQuantity) })} style={[styles.minusButton]}>
-                        <Text style={styles.quantityText}>+</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-                }
 
               </View>
 
@@ -593,7 +594,7 @@ const BuyNow = ({ route, singleProduct }) => {
                     <Text style={styles.orderSumLeftTitle}>Total MRP</Text>
                   </View>
                   <View style={styles.orderSumRight}>
-                    <Text style={styles.orderSumRightTitle}>{` \u20B9 ${buyNowAmount?.Total_Merged_MRP}`}</Text>
+                    <Text style={styles.orderSumRightTitle}>{` \u20B9 ${buyNowAmount?.Total_Merged_MRP ?? "0.00"}`}</Text>
                     {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${route.params.singleProduct.item[0]?.book_mrp}`}.00</Text> */}
                   </View>
                 </View>
@@ -603,7 +604,7 @@ const BuyNow = ({ route, singleProduct }) => {
                     <Text style={styles.orderSumLeftTitle}>Discount (-)</Text>
                   </View>
                   <View style={styles.orderSumRight}>
-                    <Text style={styles.orderSumRightTitle}>{`\u20B9 ${buyNowAmount.Total_Merged_discount}`}</Text>
+                    <Text style={styles.orderSumRightTitle}>{`\u20B9 ${buyNowAmount.Total_Merged_discount ?? "0.00"}`}</Text>
                     {/* <Text style={styles.orderSumRightTitle}>{`\u20B9`} {route.params.activeButton == "Paperback" ? route.params.singleProduct.item[0]?.book_discount : route.params.singleProduct.item[0]?.eBook_discount} </Text> */}
                     {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${route.params.singleProduct.item[0]?.book_discount}`}</Text> */}
                   </View>
@@ -614,7 +615,7 @@ const BuyNow = ({ route, singleProduct }) => {
                     <Text style={styles.orderSumLeftTitle}>Total Price</Text>
                   </View>
                   <View style={styles.orderSumRight}>
-                    <Text style={styles.orderSumRightTitle}>{` \u20B9 ${buyNowAmount.Total_Merged_price}`}</Text>
+                    <Text style={styles.orderSumRightTitle}>{` \u20B9 ${buyNowAmount.Total_Merged_price ?? "0.00"}`}</Text>
                     {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${totalPrice}`}</Text> */}
                     {/* <Text style={styles.orderSumRightTitle}>{`\u20B9`} {route.params.activeButton == "Paperback" ? route.params.singleProduct.item[0]?.book_discount : route.params.singleProduct.item[0]?.eBook_discount} </Text> */}
                   </View>
@@ -625,7 +626,7 @@ const BuyNow = ({ route, singleProduct }) => {
                     <Text style={styles.orderSumLeftTitle}>Shipping Charge (+)</Text>
                   </View>
                   <View style={styles.orderSumRight}>
-                    <Text style={styles.orderSumRightTitle}>{` \u20B9 ${buyNowAmount?.Shipping_Charge}`}</Text>
+                    <Text style={styles.orderSumRightTitle}>{` \u20B9 ${buyNowAmount?.Shipping_Charge ?? "0.00"}`}</Text>
                     {/* <Text style={styles.orderSumRightTitle}>{` \u20B9 ${shipingCharge}.00`}</Text> */}
                   </View>
                 </View>
@@ -637,7 +638,7 @@ const BuyNow = ({ route, singleProduct }) => {
                     <Text style={styles.orderSumLeftTitle}>Net Payable Amount</Text>
                   </View>
                   <View style={styles.orderSumRight}>
-                    <Text style={[styles.orderSumRightTitle, { fontSize: 20, color: rsplTheme.rsplGreen }]}>{` \u20B9 ${buyNowAmount?.Total_grand_price}`}</Text>
+                    <Text style={[styles.orderSumRightTitle, { fontSize: 20, color: rsplTheme.rsplGreen }]}>{` \u20B9 ${buyNowAmount?.Total_grand_price ?? "0.00"}`}</Text>
                     {/* <Text style={[styles.orderSumRightTitle, { fontSize: 20, color: rsplTheme.rsplGreen }]}>{` \u20B9 ${netPayableAmount}`}</Text> */}
                   </View>
                 </View>
@@ -657,7 +658,7 @@ const BuyNow = ({ route, singleProduct }) => {
               {enterPromoCode &&
                 <View style={[styles.inputContainer, { marginBottom: 0 }]}>
                   <View style={{ flexDirection: "row", width: 250, alignItems: "center", }}>
-                    <TextInput autoCapitalize='none' autoCorrect={false} autoComplete='off' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text.trim(), error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
+                    <TextInput autoFocus={true} autoCapitalize='none' autoCorrect={false} autoComplete='off' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text.trim(), error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
                     {promoCode.code !== "" &&
                       <TouchableOpacity style={{ position: "absolute", left: 220, }} onPress={(() => { setPromoCode({ code: "" }) })}>
                         <AntDesign name={"close"} size={20} color={rsplTheme.rsplRed} />
@@ -766,7 +767,7 @@ const styles = StyleSheet.create({
   },
   orderSumLeft: {
     width: 180,
-    padding: 4,
+    padding: 3,
     justifyContent: "center",
   },
   orderSumLeftTitle: {
@@ -776,7 +777,7 @@ const styles = StyleSheet.create({
   },
   orderSumRight: {
     flex: 1,
-    padding: 4,
+    padding: 3,
     justifyContent: "center",
   },
   orderSumRightTitle: {
@@ -819,7 +820,7 @@ const styles = StyleSheet.create({
   button: {
     // backgroundColor: '#e1e1e1e1',
     borderRadius: 5,
-    padding: 5,
+    // padding: 5,
     // alignItems: 'center',
   },
   input: {
@@ -899,21 +900,22 @@ const styles = StyleSheet.create({
   },
 
   enterProContainer: {
-    margin: 10,
-    marginVertical: 20,
+    // margin: 10,
+    marginVertical: 10,
     flexDirection: "row",
-    justifyContent: "center"
+    justifyContent: "center",
+    // borderWidth: 1,
   },
   enterProHead: {
     width: 180,
-    padding: 10,
-    borderRadius: 4,
+    padding: 6,
+    borderRadius: 6,
     // borderWidth: .5,
     // borderColor: rsplTheme.jetGrey,
     backgroundColor: rsplTheme.rsplLightGrey
   },
   enterProTitle: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: "center",
     color: rsplTheme.jetGrey
   },
@@ -956,6 +958,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: 'space-between',
     width: 100,
+    height: 30,
     borderWidth: .5,
     borderColor: rsplTheme.jetGrey,
     borderRadius: 5,
@@ -972,7 +975,7 @@ const styles = StyleSheet.create({
     borderRightWidth: .5,
     borderColor: rsplTheme.jetGrey,
     backgroundColor: rsplTheme.rsplLightGrey,
-    padding: 5,
+    padding: 2,
     borderBottomLeftRadius: 5,
     borderTopLeftRadius: 5,
     width: 30,
@@ -981,7 +984,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: .5,
     borderColor: rsplTheme.jetGrey,
     backgroundColor: rsplTheme.rsplLightGrey,
-    padding: 5,
+    padding: 2,
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     width: 30,

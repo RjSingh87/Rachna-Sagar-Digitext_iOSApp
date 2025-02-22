@@ -16,6 +16,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import DeviceInfo from 'react-native-device-info';
 
 
 const OrderSummery = ({ }) => {
@@ -202,6 +203,10 @@ const OrderSummery = ({ }) => {
         // console.log(result, "Paytm Transition Intialized");
         if (result.STATUS === "TXN_SUCCESS" && result.RESPCODE === "01") {
           await verifyOrder(result?.ORDERID, cartIDs, result?.TXNAMOUNT);
+          const eBookProductID = cartList?.Data?.filter(item => item.product_type === "Ebook").map(cart => cart.productId) || [];
+          if (eBookProductID.length > 0) {
+            eBookDownloadPermissions(orderId, eBookProductID)
+          }
           // navigation.goBack();
         } else {
           Alert.alert("Payment Failed", result.RESPMSG || "Transaction could not be completed.");
@@ -215,6 +220,48 @@ const OrderSummery = ({ }) => {
       console.error("Transaction Failed:", err);
     }
   };
+
+  const getDeviceID = async () => {
+    const uniqueId = await DeviceInfo.getUniqueId();  // Har device ka ek alag ID hota hai
+    const model = await DeviceInfo.getModel();
+    let deviceInfo = {
+      "uniqueId": uniqueId,
+      "model": model
+    }
+    return deviceInfo;
+  };
+
+
+  const eBookDownloadPermissions = async (orderId, eBookProductID) => {
+    try {
+      const deviceId = (await getDeviceID()).uniqueId;
+      const model = (await getDeviceID()).model;
+      const payload = {
+        "api_token": token,
+        "userID": userData.data[0]?.id,
+        "orderID": orderId, //45698,
+        "productId": eBookProductID, //3124,
+        //"zip_title": route.params.singleProduct.item[0]?.product_title, //"TogetherWithDemoTestPdf",
+        //"book_type": productType, //"eBook",
+        "last_mob_device_id": deviceId, //"59961f43dd911d056",
+        "last_mob_model": model, //"MotoG3-TE"
+      }
+      console.log(payload, "after payment successfully")
+      const result = await Services.post(apiRoutes.eBookDownload, payload)
+      if (result.status === "success") {
+        console.log(result.message, "After success.")
+      } else if (result.status === "failed") {
+        Alert.alert("Error:", result.message)
+      }
+
+    } catch (error) {
+      if (error.message === "TypeError: Network request failed") {
+        Alert.alert("Network Error", "Please try again.");
+      } else {
+        Alert.alert("Error:", error.message || "Something went wrong.")
+      }
+    }
+  }
 
 
   // razorpay_order_id
@@ -291,6 +338,7 @@ const OrderSummery = ({ }) => {
           // console.log(res, "When Success")
           navigation.navigate("PaymentSuccessScreen", { txnStatus: res.message, txnAmount: TXNAMOUNT })
           getAllCartItems();
+          //navigation.goBack() // land to cart page
           // setOrderVerifyData(res.data)
         } else if (res.status === "error") {
           Alert.alert("Error", res.message)
@@ -461,12 +509,12 @@ const OrderSummery = ({ }) => {
                 //   backgroundColor = rsplTheme.rsplGreen
                 // }
                 return (
-                  <View style={{ flexDirection: "row", alignItems: "center", padding: 5, }} key={item.id}>
+                  <View style={{ flexDirection: "row", alignItems: "center", }} key={item.id}>
                     <View style={styles.row}>
 
                       <TouchableOpacity disabled onPress={(() => { fetchDefaultAddress(item.id) })} style={[styles.button, { flex: 1, flexDirection: "row", alignItems: "center", }]}>
                         {/* <View style={{ width: 15, height: 15, borderRadius: 15 / 2, borderWidth: 1, alignItems: "center", justifyContent: "center" }}><View style={{ width: 8, height: 8, borderRadius: 8 / 2, backgroundColor: backgroundColor }}></View></View> */}
-                        <View style={[styles.button, { marginLeft: 10, marginRight: 10, }]}>
+                        <View style={[styles.button, {}]}>
                           <Text selectable={true} style={styles.userName}>{`Delivering to ${item?.name}`}</Text>
                           <Text selectable={true} style={styles.userAdd}>{item.address}, {item?.landmark}, {item.state} {item.city} {item.country} {item.pincode} </Text>
                           <Text selectable={true} style={styles.userMob}>+91 {item?.mobile}</Text>
@@ -502,7 +550,7 @@ const OrderSummery = ({ }) => {
               })}
 
               {address.length >= 1 &&
-                <TouchableOpacity style={{ marginLeft: 25, }} onPress={(() => { navigation.navigate("SavedAddress", { type: "AddtoCart" }) })}>
+                <TouchableOpacity style={{ marginLeft: 10, }} onPress={(() => { navigation.navigate("SavedAddress", { type: "AddtoCart" }) })}>
                   <Text style={{ color: rsplTheme.rsplBlue, fontSize: 15 }}>Change delivery address</Text>
                 </TouchableOpacity>
               }
@@ -655,7 +703,7 @@ const OrderSummery = ({ }) => {
                   {enterPromoCode &&
                     <View style={[styles.inputContainer, { marginBottom: 0 }]}>
                       <View style={{ flexDirection: "row", width: 250, alignItems: "center", }}>
-                        <TextInput autoCapitalize='none' autoCorrect={false} autoComplete='off' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text.trim(), error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
+                        <TextInput autoFocus={true} autoCapitalize='none' autoCorrect={false} autoComplete='off' value={promoCode.code} onChangeText={(text) => { setPromoCode((prev) => { return { ...prev, code: text.trim(), error: "" } }) }} style={[styles.txtInputPromo, { borderColor: promoCode.error ? rsplTheme.rsplRed : rsplTheme.jetGrey }]} placeholder='Enter Promocode' />
                         {promoCode.code !== "" &&
                           <TouchableOpacity style={{ position: "absolute", left: 220, }} onPress={(() => { setPromoCode({ code: "" }) })}>
                             <AntDesign name={"close"} size={20} color={rsplTheme.rsplRed} />
@@ -737,7 +785,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: rsplTheme.rsplLightGrey,
-    padding: 10,
+    paddingLeft: 15,
+    paddingRight: 15,
+    height: 30,
+    marginBottom: 5
   },
   orderSumryTitle: {
     fontSize: 14,
@@ -756,7 +807,7 @@ const styles = StyleSheet.create({
   },
   orderSumLeft: {
     width: 180,
-    padding: 6,
+    padding: 4,
     justifyContent: "center",
   },
   orderSumLeftTitle: {
@@ -766,7 +817,7 @@ const styles = StyleSheet.create({
   },
   orderSumRight: {
     flex: 1,
-    padding: 6,
+    padding: 4,
     justifyContent: "center",
   },
   orderSumRightTitle: {
@@ -786,7 +837,7 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 16,
-    marginVertical: 6,
+    marginVertical: 0,
     fontWeight: "600",
     color: rsplTheme.textColorBold,
   },
@@ -850,14 +901,14 @@ const styles = StyleSheet.create({
   },
   enterProHead: {
     width: 180,
-    padding: 10,
-    borderRadius: 4,
+    padding: 5,
+    borderRadius: 6,
     // borderWidth: .5,
     // borderColor: rsplTheme.jetGrey,
     backgroundColor: rsplTheme.rsplLightGrey
   },
   enterProTitle: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: "center",
     color: rsplTheme.jetGrey
   },
