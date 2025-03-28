@@ -193,7 +193,7 @@ const Profile = ({ data }) => {
 
 
   const saveProfile = async () => {
-    setLoader(true)
+    // setLoader(true)
     try {
       const payLoad = {
         "api_token": token,

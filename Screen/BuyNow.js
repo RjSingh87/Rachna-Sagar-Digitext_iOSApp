@@ -321,7 +321,7 @@ const BuyNow = ({ route, singleProduct }) => {
         .catch((err) => {
           if (err.message == "TypeError: Network request failed") {
             Alert.alert("Network Error", `Please try again.`)
-          } else { Alert.alert("Error Raju", `${err.message}`) }
+          } else { Alert.alert("Error", `${err.message}`) }
         })
         .finally((err) => { setLoader(false) });
     }

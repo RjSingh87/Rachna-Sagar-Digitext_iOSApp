@@ -139,7 +139,9 @@ const AllTitleView = ({ navigation }) => {
       }
     } catch (error) {
       setLoading(false);
-      Alert.alert("Error", error.message || "An unexpected error occurred");
+      if (error.message == "TypeError: Network request failed") {
+        Alert.alert("Network Error", `Please try again.`)
+      }
     }
   }
 
@@ -287,7 +289,10 @@ const AllTitleView = ({ navigation }) => {
         setAllTitle([]); // Clear the list in case of failure
       }
     } catch (error) {
-      Alert.alert('Error', error.message || 'An unexpected error occurred');
+      if (err.message == "TypeError: Network request failed") {
+        Alert.alert("Network Error", `Please try again.`)
+        // Alert.alert('Error', error.message || 'An unexpected error occurred');
+      }
       setAllTitle([]); // Clear the list in case of error
     } finally {
       setSearchLoader(false); // Hide loading indicator

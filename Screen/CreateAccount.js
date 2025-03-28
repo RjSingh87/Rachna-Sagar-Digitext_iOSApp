@@ -8,6 +8,7 @@ import Services from '../services'
 import Loader from '../constant/Loader'
 import OtpVerify from './OtpVerify'
 import EvilIcons from "react-native-vector-icons/EvilIcons"
+import NoInternetConn from './NoInternetConn'
 
 const CreateAccount = () => {
   const navigation = useNavigation()
@@ -177,6 +178,9 @@ const CreateAccount = () => {
         title={"Create Account"}
         onClickLeftIcon={() => { navigation.goBack(); }}
       />
+
+      <NoInternetConn />
+
       <KeyboardAvoidingView
         style={styles.avoidKeyboarContainer}
         behavior={Platform.OS === "ios" ? "padding" : null}
@@ -194,11 +198,13 @@ const CreateAccount = () => {
           <View style={styles.emailPass}>
             <Text style={styles.EmaiPass}>Country *</Text>
             <TouchableOpacity onPress={(() => { handleCityStateCountry(4) })} style={[styles.txtInput, { alignItems: "center", flexDirection: "row", justifyContent: "space-between", }]}>
-              <Text style={[styles.countryStateCity, { width: 350, fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.id == null ? "Select country" : selectItem?.country?.country}`}</Text>
-              {commonLoader.countryLoader ?
-                <ActivityIndicator /> :
-                <EvilIcons name={"chevron-down"} size={30} />
-              }
+              <Text style={[styles.countryStateCity, { fontSize: selectItem.country !== null ? 18 : 14, fontWeight: selectItem.country !== null ? "500" : "normal", color: selectItem.country !== null ? rsplTheme.textColorBold : rsplTheme.textColorLight }]}>{`${selectItem.country?.id == null ? "Select country" : selectItem?.country?.country}`}</Text>
+              <View style={{ flex: 1, alignItems: "flex-end", justifyContent: "center" }}>
+                {commonLoader.countryLoader ?
+                  <ActivityIndicator /> :
+                  <EvilIcons name={"chevron-down"} size={30} />
+                }
+              </View>
             </TouchableOpacity>
           </View>
 

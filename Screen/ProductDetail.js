@@ -110,7 +110,7 @@ const ProductDetail = ({ navigation, route }) => {
 			"api_token": token,
 			"id": productId
 		}
-		console.log(payLoad, "of Comments??")
+		// console.log(payLoad, "of Comments??")
 
 		await Services.post(apiRoutes.productReviews, payLoad)
 			.then((res) => {
