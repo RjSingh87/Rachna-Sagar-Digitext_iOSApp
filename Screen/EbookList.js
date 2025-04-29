@@ -10,6 +10,7 @@ import { unzipSync } from "fflate";
 import { Buffer } from "buffer"; // Buffer is required
 import RNBlobUtil from "react-native-blob-util";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // Store extracted file path
+import DeviceInfo from 'react-native-device-info'
 
 
 const { width, height } = Dimensions.get("window")
@@ -19,6 +20,7 @@ const EbookList = () => {
   const { userData } = useContext(MyContext)
   const [eBookDataList, setEbookDataList] = useState({ data: [], loaderStatus: false, message: "" })
   const [loading, setLoading] = useState(false);
+  const [eBookLoader, setEbookLoader] = useState(false)
   const [progress, setProgress] = useState(0);
 
 
@@ -72,7 +74,7 @@ const EbookList = () => {
 
   const eBookRenderItem = ({ item, index }) => {
     return (
-      <TouchableOpacity onPress={(() => { downloadAndExtractZip(item) })} key={item.id} style={styles.productItem}>
+      <TouchableOpacity onPress={(() => { checkDeviceAuthorization(item) })} key={item.id} style={styles.productItem}>
         <Image style={styles.eBookImage} source={{ uri: item?.productData?.url }} />
         <Text style={styles.eBookTitleName} numberOfLines={2}>{item?.productData?.product_title}</Text>
       </TouchableOpacity>
@@ -80,86 +82,70 @@ const EbookList = () => {
   }
 
 
-  const pdfViewer = (pdfUrl) => {
-    navigation.navigate("PdfViewerPasswordProtected", { pdfUrl: pdfUrl })
-    return
-    navigation.navigate("PdfViewer", { bookid: bookid })
-  }
+  const getDeviceID = async () => {
+    const uniqueId = DeviceInfo.getUniqueId();  // Har device ka ek alag ID hota hai
+    return uniqueId;
+  };
 
 
-  // async function downloadAndExtractZip(item) {
-  //   setIsLoading(true)
-  //   try {
-  //     const zipUrl = item?.eBookUrl?.download_link;
-  //     const zipPath = `${RNBlobUtil.fs.dirs.DocumentDir}/downloaded.zip`;
+  const checkDeviceAuthorization = async (item) => {
+    setEbookLoader(true)
+    const bookID = item?.eBookUrl?.productId
+    const pdfSubscriptionType = item?.subscription_type
 
-  //     // ✅ Check if PDF already extracted
-  //     const savedPdfPath = await AsyncStorage.getItem(zipUrl);
-  //     if (savedPdfPath) {
-  //       console.log("✅ PDF already extracted, opening directly:", savedPdfPath);
-  //       navigation.navigate("PdfViewerPasswordProtected", { pdfUrl: savedPdfPath });
-  //       return;
-  //     }
+    if (pdfSubscriptionType === "Free") {
+      setEbookLoader(false)
+      downloadAndExtractZip(item)
+    } else if (pdfSubscriptionType === "Paid") {
+      try {
+        const deviceId = await getDeviceID();
+        const payLoad = {
+          "api_token": token,
+          "userID": userData?.data[0]?.id,
+          "productId": bookID, //"3124", //bookID,
+          "deviceID": deviceId, //"241E270F-F02D-4C92-83F3-046006347E2C" //deviceId, //"59961f43dd911d056" //deviceId
+        }
+        const response = await Services.post(apiRoutes.checkDeviceId, payLoad)
+        if (response.status === "success" && pdfSubscriptionType === "Paid") {
+          downloadAndExtractZip(item)
+          return
+          Alert.alert("Device is authorized")
+        } else if (response.status === "failed") {
+          Alert.alert("Device:", response.message)
+          // navigation.goBack()
+        }
+      } catch (error) {
+        if (error.message == "TypeError: Network request failed") {
+          Alert.alert("Network Error", `Please try again.`)
+        } else {
+          Alert.alert("Error", `${error.message}`)
+        }
+      } finally {
+        setEbookLoader(false)
+      }
+    }
+  };
 
-  //     console.log(`📥 Downloading ZIP from: ${zipUrl}`);
-  //     const res = await RNBlobUtil.config({ path: zipPath }).fetch("GET", zipUrl);
-  //     console.log(`✅ ZIP downloaded at: ${zipPath}`);
 
-  //     const fileExists = await RNBlobUtil.fs.exists(zipPath);
-  //     if (!fileExists) throw new Error("❌ ZIP file not found!");
 
-  //     // ✅ Read ZIP as Base64
-  //     const base64Data = await RNBlobUtil.fs.readFile(zipPath, "base64");
 
-  //     if (!base64Data) throw new Error("❌ base64Data is empty!");
 
-  //     // ✅ Convert base64 to Uint8Array
-  //     const zipData = new Uint8Array(Buffer.from(base64Data, "base64"));
-  //     console.log("✅ ZIP data converted to Uint8Array:", zipData.length);
 
-  //     // ✅ Extract ZIP contents
-  //     const extractedFiles = unzipSync(zipData);
-  //     console.log("✅ Files extracted:", Object.keys(extractedFiles));
 
-  //     let pdfUrl = null;
-
-  //     for (const fileName of Object.keys(extractedFiles)) {
-  //       if (fileName.endsWith(".pdf")) {
-  //         pdfUrl = `${RNBlobUtil.fs.dirs.DocumentDir}/${fileName}`;
-  //         const fileContent = extractedFiles[fileName];
-
-  //         // ✅ Correct encoding & save as base64
-  //         await RNBlobUtil.fs.writeFile(pdfUrl, Buffer.from(fileContent).toString("base64"), "base64");
-  //         console.log(`✅ Extracted PDF saved at: ${pdfUrl}`);
-
-  //         // ✅ Save extracted PDF path to AsyncStorage
-  //         await AsyncStorage.setItem(zipUrl, pdfUrl);
-  //         break;
-  //       }
-  //     }
-
-  //     if (!pdfUrl) throw new Error("❌ No PDF found in ZIP!");
-
-  //     console.log("✅ ZIP Extraction Complete!");
-  //     navigation.navigate("PdfViewerPasswordProtected", { pdfUrl });
-  //     setIsLoading(false)
-  //   } catch (error) {
-  //     setIsLoading(false)
-  //     console.error("❌ Error extracting ZIP:", error);
-  //   }
-  // }
 
   async function downloadAndExtractZip(item) {
     try {
-      const zipUrl = item?.eBookUrl?.download_link;
+      const zipUrl = item?.eBookUrl?.zipPath;
       const pdfPsw = item?.eBookUrl?.psw;
       const pdfTitle = item?.productData?.product_title;
       const zipPath = `${RNBlobUtil.fs.dirs.DocumentDir}/downloaded.zip`;
+      const pdfSubscriptionType = item?.subscription_type
+      const bookID = item?.eBookUrl?.productId
 
       // ✅ Check if already extracted
       const savedPdfPath = await AsyncStorage.getItem(zipUrl);
       if (savedPdfPath) {
-        navigation.navigate("PdfViewerPasswordProtected", { pdfUrl: savedPdfPath, pdfPsw: pdfPsw, pdfTitle: pdfTitle });
+        navigation.navigate("PdfViewerPasswordProtected", { pdfUrl: savedPdfPath, pdfPsw: pdfPsw, pdfTitle: pdfTitle, pdfSubscriptionType: pdfSubscriptionType, bookID: bookID });
         return;
       }
 
@@ -211,7 +197,7 @@ const EbookList = () => {
       setTimeout(() => {
         setLoading(false);
         setProgress(100); // ✅ Ensure progress is full at end
-        navigation.navigate("PdfViewerPasswordProtected", { pdfUrl, pdfPsw, pdfTitle });
+        navigation.navigate("PdfViewerPasswordProtected", { pdfUrl, pdfPsw, pdfTitle, pdfSubscriptionType, bookID });
       }, 500);
 
     } catch (error) {
@@ -258,11 +244,15 @@ const EbookList = () => {
           <View style={{ justifyContent: "center", alignItems: "center" }}>
             <Text style={{ fontSize: 16, color: rsplTheme.rsplRed }} >{eBookDataList.message}</Text>
           </View>
-
-
         }
-
+        {eBookLoader &&
+          <View style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.1)', alignItems: "center", justifyContent: "center" }}>
+            <ActivityIndicator size="large" color={rsplTheme.rsplRed} />
+          </View>
+        }
       </View>
+
+
 
       {loading && (
         <Modal transparent={true} visible={true}>
@@ -278,6 +268,8 @@ const EbookList = () => {
           </View>
         </Modal>
       )}
+
+
 
     </View>
   )

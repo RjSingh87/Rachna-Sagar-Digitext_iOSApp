@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: rsplTheme.rsplWhite,
-    fontSize: 20,
+    fontSize: 16,
+    width: "90%"
   },
 })

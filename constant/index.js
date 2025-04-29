@@ -1,5 +1,5 @@
 // export const baseURL = "https://books.foreverbooks.co.in/laravel_api/";
-export const baseURL = "https://foreverbooks.co.in/rsdigitextapp/api/"; //http://192.168.2.77:8081/api/
+export const baseURL = "https://api.rachnasagar.in/rsdigitextapp/api/" //"https://foreverbooks.co.in/rsdigitextapp/api/"; //http://192.168.2.77:8081/api/
 export const token = '123456';
 export const tokenMobileOTP = "books002"
 export const domain_url = 'https://www.rachnasagar.in/';
