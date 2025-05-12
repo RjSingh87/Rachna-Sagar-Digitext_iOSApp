@@ -17,7 +17,7 @@ const { width, height } = Dimensions.get("window")
 
 const EbookList = () => {
   const navigation = useNavigation()
-  const { userData } = useContext(MyContext)
+  const { userData, setSelectedTab } = useContext(MyContext)
   const [eBookDataList, setEbookDataList] = useState({ data: [], loaderStatus: false, message: "" })
   const [loading, setLoading] = useState(false);
   const [eBookLoader, setEbookLoader] = useState(false)
@@ -50,7 +50,7 @@ const EbookList = () => {
           if (userData.isLogin) {
             setEbookDataList((prev) => { return { ...prev, message: res.message } })
           } else {
-            setEbookDataList((prev) => { return { ...prev, message: "Please login." } })
+            setEbookDataList((prev) => { return { ...prev, message: "Please login" } })
           }
         }
       })
@@ -125,6 +125,14 @@ const EbookList = () => {
       }
     }
   };
+
+
+  const checkUserLogin = () => {
+    if (!userData.isLogin) {
+      setSelectedTab(4)
+      navigation.navigate("Main")
+    }
+  }
 
 
 
@@ -241,9 +249,9 @@ const EbookList = () => {
               />
             }
           /> :
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ fontSize: 16, color: rsplTheme.rsplRed }} >{eBookDataList.message}</Text>
-          </View>
+          <TouchableOpacity onPress={(() => { checkUserLogin() })} style={{ justifyContent: "center", alignItems: "center" }}>
+            <Text style={{ fontSize: 16, color: rsplTheme.rsplRed, textTransform: "uppercase", fontWeight: "500" }} >{eBookDataList.message}</Text>
+          </TouchableOpacity>
         }
         {eBookLoader &&
           <View style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.1)', alignItems: "center", justifyContent: "center" }}>

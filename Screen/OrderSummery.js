@@ -184,7 +184,7 @@ const OrderSummery = ({ }) => {
         const orderId = res.orderID; // Unique Order ID
         const mid = "Rachna00883415851600"; // Paytm MID
         const txnToken = res.txnToken; // Generated from Paytm API
-        const amount = "1.00"; // Transaction amount
+        const amount = res.totalAmount//"1.00"; // Transaction amount
         const callbackUrl = `https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}` //`https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=${orderId}`;
         const isStaging = false; // true for testing, false for production
         const restrictAppInvoke = true; // Allow Paytm App invoke
@@ -201,7 +201,7 @@ const OrderSummery = ({ }) => {
           urlScheme
         );
         // console.log(result, "Paytm Transition Intialized");
-        if (result.STATUS === "TXN_SUCCESS" && result.RESPCODE === "01") {
+        if (result?.STATUS === "TXN_SUCCESS" && result?.RESPCODE === "01") {
           await verifyOrder(result?.ORDERID, cartIDs, result?.TXNAMOUNT);
           const eBookProductID = cartList?.Data?.filter(item => item.product_type === "Ebook").map(cart => cart.productId) || [];
           if (eBookProductID.length > 0) {
@@ -216,8 +216,9 @@ const OrderSummery = ({ }) => {
       }
     } catch (err) {
       Alert.alert("Transaction cancelled.");
-      setPromoCode(prev => ({ ...prev, status: false, code: "", checkoutPromoCode: "" }));
       console.error("Transaction Failed:", err);
+    } finally {
+      setPromoCode(prev => ({ ...prev, status: false, code: "", checkoutPromoCode: "" }));
     }
   };
 

@@ -15,7 +15,7 @@ const ViewOrderList = ({ route }) => {
   const OrderListProduct = ({ product }) => {
     let productTitle = product.orderDetail?.getProduct?.product_title || 'Unknown Product';
     let productImage = product.orderDetail?.getProduct?.main_image
-    console.log(product, "Img???")
+    // console.log(product, "Img???")
     return (
       <TouchableOpacity onPress={(() => { navigation.navigate("OrderListDetail", { OrderListData: product }) })} style={styles.containers}>
         <Image source={productImage ? { uri: productImage } : require("../assets/RSPL.png")} style={[styles.image, { width: !productImage ? 50 : 80 }]} />

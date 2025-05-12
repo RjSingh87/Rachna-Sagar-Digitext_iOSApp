@@ -11,6 +11,8 @@ import Profile from './Profile'
 import CatchError from './CatchError'
 import { MyContext } from '../Store'
 import NoInternetConn from './NoInternetConn'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -31,75 +33,40 @@ const User = () => {
   const [errorMessage, setErrorMessage] = useState(null);
 
 
+  useEffect(() => {
+    const loadEmail = async () => {
+      try {
+        const storedEmail = await AsyncStorage.getItem('rememberedEmail');
+        if (storedEmail) {
+          setUserDetail((prev) => ({ ...prev, email: storedEmail }));
+          setRemember((prev) => ({ ...prev, rememberPassStatus: true }));
+        }
+      } catch (error) {
+        console.log("Error loading email:", error);
+      }
+    };
+
+    loadEmail();
+  }, []);
+
+
 
   const rememberPass = () => {
     setRemember(((prev) => { return { ...prev, rememberPassStatus: !remember.rememberPassStatus } }))
   }
 
   const signInAccount = async () => {
-    // logout()
-    // if (!userData.isLoading) {
-    // }
-    login(userDatail, navigation);
-    // if (userDatail.email !== "" || userDatail.password !== "") {
-    //   setLoader(true)
-    //   const payLoad = {
-    //     "api_token": token,
-    //     "email": userDatail?.email,
-    //     "password": userDatail?.password
-    //   }
-    //   await Services.post(apiRoutes.loginAccount, payLoad)
-    //     .then((res) => {
-    //       if (res.status === "success") {
-    //         const storageData = res.result
-    //         setUserDetail((prev) => { return { ...prev, email: null, password: null, data: storageData } })
-    //         getProfileDetails(res.result[0].id)
-    //         login(userDatail)
-    //         // navigation.navigate("HomeScreen")
-    //         // AsyncStorage.setItem('apiResponseData', storageData)
-    //       } else { Alert.alert("Info", res.errors) }
-    //     })
-    //     .catch((error) => {
-    //       if (error.message === 'Network request failed' && error instanceof TypeError) {
-    //         setErrorMessage('Network request timed out. Please try again later.');
-    //       } else {
-    //         setErrorMessage('An error occurred. Please try again later.');
-    //       }
-    //     })
-    //     .finally(() => { setLoader(false) })
-    // } else {
-    //   Alert.alert("Info", "Please enter valid user credentials")
-    //   return
-    // }
-
-
-  }
-
-
-  const getProfileDetails = async (userId) => {
-    const payLoad = {
-      "api_token": token,
-      "userID": userId //userDatail.data[0]?.id
+    try {
+      if (remember.rememberPassStatus) {
+        await AsyncStorage.setItem('rememberedEmail', userDatail.email);
+      } else {
+        await AsyncStorage.removeItem('rememberedEmail');
+      }
+      login(userDatail, navigation);
+    } catch (error) {
+      console.log("Error saving email:", error);
     }
-    await Services.post(apiRoutes.profileDetails, payLoad)
-      .then((res) => {
-        if (res.status === "success") {
-          setProfileDetails((prev) => { return { ...prev, details: res.result, status: true } })
-        } else {
-          Alert.alert("Info", res.message)
-        }
-      })
-      .catch((err) => {
-        if (err.message == "TypeError: Network request failed") {
-          Alert.alert("Network Error", `Please try again.`)
-        } else { Alert.alert("Error", `${err.message}`) }
-      })
-      .finally(() => { })
   }
-
-
-
-
 
 
   if (loader) {
@@ -144,7 +111,15 @@ const User = () => {
             </View>
             <View style={styles.emailPass}>
               <Text style={styles.EmaiPass}>Password</Text>
-              <TextInput value={userDatail.password} onChangeText={(text) => { setUserDetail((prev) => { return { ...prev, password: text } }) }} placeholder='Enter password' secureTextEntry={!userDatail.status} style={[styles.txtInput, { paddingRight: 45 }]} />
+              <TextInput
+                value={userDatail.password}
+                onChangeText={(text) => { setUserDetail((prev) => { return { ...prev, password: text } }) }}
+                placeholder='Enter password'
+                textContentType='password'
+                autoComplete='password'
+                secureTextEntry={!userDatail.status}
+                style={[styles.txtInput, { paddingRight: 45 }]}
+              />
               <TouchableOpacity onPress={(() => { setUserDetail((prev) => { return { ...prev, status: !userDatail.status } }) })} style={styles.eyePosition}>
                 <Image style={styles.eyeIcon} source={userDatail.status == true ? require("../assets/icons/eye.png") : require("../assets/icons/eyeClose.png")} />
               </TouchableOpacity>
@@ -156,13 +131,13 @@ const User = () => {
 
 
             <View style={styles.rememberForgetPass}>
-              <TouchableOpacity style={{ justifyContent: "center" }} onPress={(() => { rememberPass() })}>
-                <View style={[styles.squareBox, { borderWidth: remember.rememberPass ? 0 : 1 }]} />
-                {remember.rememberPassStatus &&
-                  <Image style={{ flex: 1, position: "absolute", left: -2.5, width: 30, height: 30, resizeMode: "center" }} source={require("../assets/icons/tick.png")} />
+              <TouchableOpacity style={{ alignItems: "center", flexDirection: "row", width: "40%" }} onPress={(() => { rememberPass() })}>
+                {remember.rememberPassStatus ?
+                  <MaterialCommunityIcons name="checkbox-marked" size={25} color={rsplTheme.rsplGreen} /> :
+                  <MaterialCommunityIcons name="checkbox-blank-outline" size={25} color={rsplTheme.jetGrey} />
                 }
+                <Text style={{ marginHorizontal: 5 }}>Remember</Text>
               </TouchableOpacity>
-              <Text>Remember</Text>
               <TouchableOpacity onPress={(() => {
                 navigation.navigate("ForgotPassword")
                 // setRemember((prev) => { return { ...prev, forgotPassModal: true } })
@@ -182,7 +157,7 @@ const User = () => {
               <Image style={styles.loginImg} source={require("../assets/icons/loginImg.png")} />
 
               <View style={styles.dontAcount}>
-                <Text style={styles.DontAccount}>Don't have an accoun?</Text>
+                <Text style={styles.DontAccount}>Don't have an account?</Text>
                 <TouchableOpacity onPress={(() => { navigation.navigate("CreateAccount") })} style={{ marginLeft: 10, }}>
                   <Text style={styles.Register}>Register</Text>
                 </TouchableOpacity>
@@ -253,18 +228,12 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 10,
     flexDirection: "row",
-    // justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
   },
   poweredBy: {
-    // backgroundColor: rsplTheme.rsplBgColor,
-    // borderWidth:1,
-    // position: "absolute",
     bottom: 0,
-    // left:10,
     padding: 10,
     width: "100%",
-    // flex: 1,
   },
   poweredByTxt: {
     color: rsplTheme.jetGrey + 75,
@@ -274,7 +243,6 @@ const styles = StyleSheet.create({
   },
 
   linearGradient: {
-    // flex: 1,
     height: 50,
     borderRadius: 50 / 2,
     alignItems: "center",
@@ -285,13 +253,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontFamily: 'Gill Sans',
     textAlign: 'center',
-    // margin: 10,
     color: rsplTheme.rsplWhite,
   },
   txtInput: {
     backgroundColor: rsplTheme.rsplWhite,
     padding: 10,
-    // top: 10,
     height: 45,
     borderRadius: 6,
     color: rsplTheme.jetGrey,
@@ -315,21 +281,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     backgroundColor: rsplTheme.jetGrey + 75
-    // marginTop: 22,
   },
   modalView: {
-    // margin: 20,
-    // flex: 1,
     width: "92%",
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 20,
-    // alignItems: 'center',
   },
   eyePosition: {
     position: "absolute",
     top: "50%",
-    left: "90%"
+    right: 10,
+    // left: "90%"
 
   },
   eyeIcon: {

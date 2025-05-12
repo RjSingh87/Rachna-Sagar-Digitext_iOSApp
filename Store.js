@@ -19,6 +19,7 @@ export default Store = ({ children }) => {
   const [grandTotal, setGrandTotal] = useState({ total: "", data: [] })
   const [isConnected, setIsConnected] = useState(true);
   const [wishListProduct, setWishListProduct] = useState({ item: [], msg: "", isLoader: false })
+  const [userUpadatedRecord, setUserUpadatedRecord] = useState({ name: null, email: null, Mobile: null, image: null })
 
 
   useEffect(() => {
@@ -228,7 +229,27 @@ export default Store = ({ children }) => {
   // ------------------------Get notification of wishlist by raju 30 jan 2025----------------------------------------
 
 
-
+  const fetchUpdatedProfileImage = async () => {
+    try {
+      const payLoad = {
+        "api_token": token,
+        "userID": userData.data[0].id
+      }
+      const result = await Services.post(apiRoutes.getUserProfile, payLoad)
+      if (result.status === 'success') {
+        const { name, email, Mobile, image } = result.userData[0] || {};
+        setUserUpadatedRecord((prev) => { return { ...prev, name, email, Mobile, image } })
+      } else if (result.status === 'failed') {
+        Alert.alert("Failed", result.message)
+      }
+    } catch (error) {
+      if (error.message === "TypeError: Network request failed") {
+        Alert.alert("Network Error", "Please try again.");
+      } else {
+        Alert.alert("Error:", error.message || "Something went wrong.")
+      }
+    }
+  }
 
 
 
@@ -263,7 +284,10 @@ export default Store = ({ children }) => {
         getGrandTotal,
         grandTotal,
         wishListProduct,
-        getWishListProduct
+        getWishListProduct,
+        fetchUpdatedProfileImage,
+        userUpadatedRecord,
+        setUserUpadatedRecord
       }}>
       {children}
       {userData.isLoading &&

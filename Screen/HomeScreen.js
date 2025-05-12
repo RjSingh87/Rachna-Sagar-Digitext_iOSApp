@@ -91,15 +91,19 @@ const HomeScreen = ({ navigation, route }) => {
             <View style={styles.bottomView}>
                 <TouchableOpacity onPress={(() => { setSelectedTab(0) })} style={styles.bottomTab}>
                     <Image style={styles.bottomTabIcon} source={selectedTab == 0 ? require("../assets/icons/store_fill.png") : require('../assets/icons/store.png')} />
+                    <Text style={{ marginVertical: 3, textAlign: "center", fontSize: 8, fontWeight: selectedTab == 0 ? "500" : null, color: selectedTab == 0 ? rsplTheme.rsplRed : rsplTheme.jetGrey }}>Product</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(() => { setSelectedTab(1) })} style={styles.bottomTab}>
                     <Image style={styles.bottomTabIcon} source={selectedTab == 1 ? require("../assets/icons/filters_fill.png") : require('../assets/icons/filters.png')} />
+                    <Text style={{ marginVertical: 3, textAlign: "center", fontSize: 8, fontWeight: selectedTab == 1 ? "500" : null, color: selectedTab == 1 ? rsplTheme.rsplRed : rsplTheme.jetGrey }}>Filter</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(() => { setSelectedTab(2) })} style={styles.bottomTab}>
                     <Image style={styles.bottomTabIcon} source={selectedTab == 2 ? require("../assets/icons/book_fill.png") : require('../assets/icons/book.png')} />
+                    <Text style={{ marginVertical: 3, textAlign: "center", fontSize: 8, fontWeight: selectedTab == 2 ? "500" : null, color: selectedTab == 2 ? rsplTheme.rsplRed : rsplTheme.jetGrey }}>E-Book</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(() => { setSelectedTab(5) })} style={styles.bottomTab}>
                     <Image style={[styles.bottomTabIcon, { tintColor: rsplTheme.gradientColorLeft }]} source={selectedTab == 5 ? require("../assets/icons/love_fill.png") : require('../assets/icons/love.png')} />
+                    <Text style={{ marginVertical: 3, textAlign: "center", fontSize: 8, fontWeight: selectedTab == 5 ? "500" : null, color: selectedTab == 5 ? rsplTheme.rsplRed : rsplTheme.jetGrey }}>WishList</Text>
                     {userData.isLogin && wishListProduct?.item?.length > 0 &&
                         < View style={[styles.cartNotiFi, { borderWidth: .5, borderColor: rsplTheme.rsplWhite, }]}>
                             <Text style={styles.cartLengthValue}>{wishListProduct?.item?.length}</Text>
@@ -108,6 +112,7 @@ const HomeScreen = ({ navigation, route }) => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(() => { setSelectedTab(3) })} style={styles.bottomTab}>
                     <Image style={styles.bottomTabIcon} source={selectedTab == 3 ? require("../assets/icons/shopping_fill.png") : require('../assets/icons/shopping.png')} />
+                    <Text style={{ marginVertical: 3, textAlign: "center", fontSize: 8, fontWeight: selectedTab == 3 ? "500" : null, color: selectedTab == 3 ? rsplTheme.rsplRed : rsplTheme.jetGrey }}>Cart</Text>
                     {userData.isLogin && cartList.length > 0 &&
                         < View style={styles.cartNotiFi}>
                             <Text style={styles.cartLengthValue}>{cartList.length}</Text>
@@ -115,7 +120,8 @@ const HomeScreen = ({ navigation, route }) => {
                     }
                 </TouchableOpacity>
                 <TouchableOpacity onPress={(() => { setSelectedTab(4) })} style={styles.bottomTab}>
-                    <Image style={styles.bottomTabIcon} source={selectedTab == 4 ? require("../assets/icons/person_fill.png") : require('../assets/icons/person.png')} />
+                    <Image style={[styles.bottomTabIcon, { width: 20, height: 20 }]} source={selectedTab == 4 ? require("../assets/icons/person_fill.png") : require('../assets/icons/person.png')} />
+                    <Text style={{ marginVertical: 3, textAlign: "center", fontSize: 8, fontWeight: selectedTab == 4 ? "500" : null, color: selectedTab == 4 ? rsplTheme.rsplRed : rsplTheme.jetGrey }}>Account</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -152,17 +158,17 @@ const styles = StyleSheet.create({
     },
     cartNotiFi: {
         position: "absolute",
-        top: 8,
-        right: "25%",
-        width: 18,
-        height: 18,
-        borderRadius: 18 / 2,
+        top: 4,
+        right: "26%",
+        width: 16,
+        height: 16,
+        borderRadius: 16 / 2,
         backgroundColor: rsplTheme.gradientColorRight,
         alignItems: "center",
         justifyContent: "center",
     },
     cartLengthValue: {
-        fontSize: 12,
+        fontSize: 10,
         color: rsplTheme.rsplWhite
     }
 })

@@ -145,7 +145,7 @@ const NewReleases = () => {
 				}
 			})
 			.catch((err) => {
-				if (err.message == "TypeError: Network request failed") {
+				if (err.message == "TypeError: Network request failed" || "TypeError: Network request timed out") {
 					Alert.alert("Network Error", `Please try again.`)
 				} else { Alert.alert("Error", `${err.message}`) }
 			})

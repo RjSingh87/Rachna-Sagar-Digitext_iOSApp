@@ -10,7 +10,7 @@ import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const Profile = ({ data }) => {
   const navigation = useNavigation()
-  const { logout, login, userData, setUserDate } = useContext(MyContext)
+  const { logout, login, userData, setUserDate, fetchUpdatedProfileImage, userUpadatedRecord } = useContext(MyContext)
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupEditProfileVisible, setEditProfilePopupVisible] = useState(false);
   const [userDeatail, setUserDetails] = useState({ name: "", email: "", mobile: "", address: "", country: "" })
@@ -18,13 +18,14 @@ const Profile = ({ data }) => {
   const [profileImgLoader, setProfileImgLoader] = useState(false)
   const [userPickImg, setUserPickImg] = useState()
   const [saveLoader, setSaveLoader] = useState(false)
+  // const [userUpadateName, setUserUpadatedName] = useState({ name: null, email: null, phone: null })
 
 
   useEffect(() => {
     if (userData?.isLogin) {
       fetchUpdatedProfileImage()
     }
-  }, [userData?.isLogin])
+  }, [userData?.isLogin,])
 
 
   const toggleCameraPopup = () => {
@@ -32,44 +33,46 @@ const Profile = ({ data }) => {
   };
   const toggleEditProfilePopup = () => {
     setUserDetails({
-      name: data?.name || "",       // Set initial name
-      email: data?.email || "",     // Set initial email
-      mobile: data?.phone || "",   // Set initial mobile
+      name: userUpadatedRecord?.name || "",
+      email: userUpadatedRecord?.email || "",
+      mobile: userUpadatedRecord?.Mobile || "",
+      // name: data?.name || "",       // Set initial name
+      // email: data?.email || "",     // Set initial email
+      // mobile: data?.Mobile || "",   // Set initial mobile
     });
 
     setEditProfilePopupVisible(true);
   };
 
   const signOutAccount = () => {
-    logout(navigation)
+    Alert.alert(
+      "Confirm Logout",
+      "Are you sure you want to logout?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel"
+        },
+        {
+          text: "Logout",
+          style: "destructive",
+          onPress: () => {
+            logout(navigation) // Perform logout here
+          }
+        }
+      ]
+    )
     // navigation.navigate("Login")
     // Alert.alert("Info", "Coming soon")
   }
 
 
-  // const getProfileDetails = async (userId) => {
-  //   const payLoad = {
-  //     "api_token": token,
-  //     "userID": userData.data[0].id //userDatail.data[0]?.id
-  //   }
-  //   await Services.post(apiRoutes.profileDetails, payLoad)
-  //     .then((res) => {
-  //       if (res.status === "success") {
-  //         setProfileDetails((prev) => { return { ...prev, details: res.result, status: true } })
-  //       } else {
-  //         Alert.alert("Info", res.message)
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       Alert.alert("Error", err.message)
-  //     })
-  //     .finally(() => { })
-  // }
 
   const cameraAccess = async (userSelect) => {
     const options = { mediaType: 'photo', saveToPhotos: true, quality: 1, };
     try {
       let result
+      setPopupVisible(false) // Hide popup
       if (userSelect === "camera") {
         result = await launchCamera(options)
       } else if (userSelect === "photo gallery") {
@@ -84,9 +87,10 @@ const Profile = ({ data }) => {
         return;
       }
       const selectedImage = result.assets[0];
-      setUserPickImg(selectedImage.uri); // Show the image locally first
+      // setUserPickImg(selectedImage.uri); // Show the image locally first
       await uploadImageToServer(selectedImage);// Upload to server
-      setPopupVisible(false)
+
+
     } catch (error) {
       console.error('Camera/Gallery error:', error);
     }
@@ -117,28 +121,28 @@ const Profile = ({ data }) => {
     }
   }
 
-  const fetchUpdatedProfileImage = async () => {
-    // console.log("dkdkdk" + 5 - 6 + 15, "Output?")
-    try {
-      const payLoad = {
-        "api_token": token,
-        "userID": userData.data[0].id
-      }
-      const result = await Services.post(apiRoutes.getUserProfile, payLoad)
-      if (result.status === 'success') {
-        const updatedImageUrl = result.userData[0]?.image
-        setUserPickImg(updatedImageUrl)
-      } else if (result.status === 'failed') {
-        Alert.alert("Failed", result.message)
-      }
-    } catch (error) {
-      if (error.message === "TypeError: Network request failed") {
-        Alert.alert("Network Error", "Please try again.");
-      } else {
-        Alert.alert("Error:", error.message || "Something went wrong.")
-      }
-    }
-  }
+  // const fetchUpdatedProfileImage = async () => {
+  //   try {
+  //     const payLoad = {
+  //       "api_token": token,
+  //       "userID": userData.data[0].id
+  //     }
+  //     const result = await Services.post(apiRoutes.getUserProfile, payLoad)
+  //     if (result.status === 'success') {
+  //       const updatedImageUrl = result.userData[0]?.image
+  //       setUserPickImg(updatedImageUrl)
+  //       setUserUpadatedName((prev) => { return { ...prev, name: result.userData[0]?.name } })
+  //     } else if (result.status === 'failed') {
+  //       Alert.alert("Failed", result.message)
+  //     }
+  //   } catch (error) {
+  //     if (error.message === "TypeError: Network request failed") {
+  //       Alert.alert("Network Error", "Please try again.");
+  //     } else {
+  //       Alert.alert("Error:", error.message || "Something went wrong.")
+  //     }
+  //   }
+  // }
 
 
 
@@ -185,36 +189,54 @@ const Profile = ({ data }) => {
       setUserDetails((prev) => { return { ...prev, address: txt, } })
     } else if (type == "country") {
       setUserDetails((prev) => { return { ...prev, country: txt } })
-    } else {
-      return
-      Alert.alert("DFFF",)
     }
   }
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateMobile = (mobile) => {
+    return /^\d{10}$/.test(mobile); // Exactly 10 digits
+  };
+
 
   const saveProfile = async () => {
-    // setLoader(true)
+    if (!userDeatail.name.trim()) {
+      Alert.alert("Name", "Name is required");
+      return;
+    }
+    if (!validateEmail(userDeatail.email)) {
+      Alert.alert("Email", "Please enter a valid email address");
+      return;
+    }
+    if (!validateMobile(userDeatail.mobile)) {
+      Alert.alert("Mobile", "Mobile number must be 10 digits");
+      return;
+    }
+    setSaveLoader(true)
     try {
       const payLoad = {
         "api_token": token,
         "userID": userData.data[0].id,
-        "userName": userDeatail.name,
+        "userName": userDeatail.name.trim(),
         "email": userDeatail.email,
         "contactNo": userDeatail.mobile
       }
       const result = await Services.post(apiRoutes.updateUserDetails, payLoad)
       if (result.status === "success") {
-        const updatedUserData = result.userData[0]; // Update user data from API
-        setUserDate({ ...userData, data: [updatedUserData] }); // Update global state
-        setUserDetails({
-          name: updatedUserData.name || "",
-          email: updatedUserData.email || "",
-          mobile: updatedUserData.phone || "",
-        });
-        Alert.alert("Success", "Profile updated successfully!");
+        fetchUpdatedProfileImage()
+        // const updatedUserData = result.userData[0]; // Update user data from API
+        // setUserDate({ ...userData, data: [updatedUserData] }); // Update global state
+        // setUserDetails({
+        //   name: updatedUserData.name || "",
+        //   email: updatedUserData.email || "",
+        //   mobile: updatedUserData.Mobile || "",
+        // });
+        Alert.alert("Success", result?.message);
         setEditProfilePopupVisible(false); // Close modal
-
-        setUserDetails((prev) => { return { ...prev, name: "", email: "", mobile: "", address: "" } })
+        // setUserDetails((prev) => { return { ...prev, name: "", email: "", mobile: "", address: "" } })
       } else if (result.status === "failed") {
         setLoader(false)
         Alert.alert("Info", result.message)
@@ -222,14 +244,13 @@ const Profile = ({ data }) => {
     } catch (error) {
       console.log(error, "error?userData.??")
     } finally {
-      setLoader(false);
+      setSaveLoader(false)
     }
   };
 
   const onShare = async () => {
     try {
       const result = await Share.share({
-        // message: 'https://appstoreconnect.apple.com/apps',
         url: "https://apps.apple.com/app/rachna-sagar/id6654905066" //"https://apps.apple.com/us/app/swaadhyayanlms/id6450884259",
       });
       if (result.action === Share.sharedAction) {
@@ -267,12 +288,12 @@ const Profile = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40, }}>
         <View style={styles.profileBox}>
-          <View style={{ borderWidth: 2, borderColor: rsplTheme.rsplWhite, width: "95%", height: "95%", borderRadius: 100, overflow: "hidden", alignItems: "center", justifyContent: "center" }}>
+          <View style={{ borderWidth: 3, borderColor: rsplTheme.rsplWhite, width: "95%", height: "95%", borderRadius: 100, overflow: "hidden", alignItems: "center", justifyContent: "center" }}>
             {profileImgLoader ?
-              <ActivityIndicator size={"large"} color={rsplTheme.rsplWhite} /> :
-              <Image style={styles.profileIcon} source={userPickImg == undefined ? require("../assets/icons/ProfileIcon.png") : { uri: `${userPickImg}` }} />
+              <ActivityIndicator size={"small"} color={rsplTheme.rsplWhite} /> :
+              <Image style={styles.profileIcon} source={userUpadatedRecord?.image == null ? require("../assets/icons/ProfileIcon.png") : { uri: `${userUpadatedRecord?.image}` }} />
             }
           </View>
 
@@ -285,7 +306,12 @@ const Profile = ({ data }) => {
         </View>
 
 
-        <Text style={styles.profileName}>{data?.name}</Text>
+        <View style={{ marginVertical: 5, }}>
+          <Text style={styles.profileName}>{userUpadatedRecord?.name}</Text>
+          {/* <Text style={styles.profileName}>{data?.name}</Text> */}
+        </View>
+
+
 
         <View style={styles.profileDetails}>
           <View style={styles.DetailsDes}>
@@ -293,7 +319,8 @@ const Profile = ({ data }) => {
               <Text style={styles.allTypes}>Email:</Text>
             </View>
             <View style={styles.Side2}>
-              <Text style={styles.allTypesValue}>{data?.email}</Text>
+              <Text style={styles.allTypesValue}>{userUpadatedRecord?.email}</Text>
+              {/* <Text style={styles.allTypesValue}>{data?.email}</Text> */}
             </View>
           </View>
           <View style={styles.DetailsDes}>
@@ -301,7 +328,8 @@ const Profile = ({ data }) => {
               <Text style={styles.allTypes}>Mobile:</Text>
             </View>
             <View style={styles.Side2}>
-              <Text style={styles.allTypesValue}>{data?.phone}</Text>
+              <Text style={styles.allTypesValue}>{userUpadatedRecord?.Mobile}</Text>
+              {/* <Text style={styles.allTypesValue}>{data?.Mobile}</Text> */}
             </View>
           </View>
         </View>
@@ -311,12 +339,9 @@ const Profile = ({ data }) => {
             <Text style={styles.buttonText}>Log Out</Text>
           </LinearGradient>
         </TouchableOpacity>
-        <View style={{ marginTop: 20, alignSelf: "center" }}>
+        <View style={{ marginTop: 20, alignSelf: "center", }}>
           <Button onPress={onShare} title="Share" />
-          {/* <Button onPress={viewOrder} title="View Order" /> */}
-          <Button
-            onPress={yourAccount}
-            title="Your Account" />
+          <Button onPress={yourAccount} title="Your Account" />
         </View>
       </ScrollView>
 
@@ -342,8 +367,10 @@ const Profile = ({ data }) => {
                 />
                 <Text style={styles.txtInptName}>Email</Text>
                 <TextInput
-                  style={styles.input}
+                  style={[styles.input, { opacity: 0.5, backgroundColor: '#f0f0f0' }]}
+                  editable={false}
                   placeholder="Enter Email"
+                  autoCapitalize='none'
                   value={userDeatail.email}
                   onChangeText={(txt) => { userInputValHandle(txt, "email") }}
                   keyboardType="email-address"
@@ -354,12 +381,18 @@ const Profile = ({ data }) => {
                   style={styles.input}
                   placeholder="Enter Mobile"
                   value={userDeatail.mobile}
-                  onChangeText={(txt) => { userInputValHandle(txt, "mobile") }}
+                  onChangeText={(txt) => {
+                    const onlyNums = txt.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+                    userInputValHandle(onlyNums, "mobile");
+                  }}
                   keyboardType="phone-pad"
                   maxLength={10}
                 />
                 <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-                  <Button title="Save" onPress={saveProfile} />
+                  {saveLoader ?
+                    <ActivityIndicator size={"small"} /> :
+                    <Button title="Save" onPress={saveProfile} />
+                  }
                   <Button title='Close' onPress={setEditProfilePopupVisible} />
                 </View>
               </ScrollView>
@@ -395,7 +428,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 5 },
-    shadowRadius: 10,
+    shadowRadius: 4,
     elevation: 3,
     alignItems: "center",
     justifyContent: "center",
@@ -409,23 +442,24 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     // flex: 1,
-    width: "50%",
-    height: 50,
-    borderRadius: 50 / 2,
+    width: "60%",
+    height: 40,
+    borderRadius: 40 / 2,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center"
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "600",
     fontFamily: 'Gill Sans',
     textAlign: 'center',
     // margin: 10,
     color: rsplTheme.rsplWhite,
+    // textTransform: "uppercase"
   },
   profileName: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "600",
     color: rsplTheme.jetGrey,
     textAlign: "center"
@@ -436,27 +470,22 @@ const styles = StyleSheet.create({
   },
   allTypes: {
     color: rsplTheme.textColorLight,
-    fontSize: 18,
+    fontSize: 16,
   },
   allTypesValue: {
     color: rsplTheme.textColorBold,
-    fontSize: 18,
+    fontSize: 16,
   },
   DetailsDes: {
     flexDirection: 'row',
-    // flex: 1,
-    // paddingTop: 8,
   },
   Side1: {
-    width: 125,
-    // borderBottomWidth:1,
-    // borderBottomColor:swaTheme.swaBackgroundColor,
-    padding: 8,
+    width: 70,
+    paddingVertical: 5,
   },
   Side2: {
-    backgroundColor: "white",
     flex: 1,
-    padding: 8,
+    paddingVertical: 5,
   },
   HwDetailTxt: {
     color: rsplTheme.textColorBold,
@@ -516,17 +545,17 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "-5%",
     left: "92%",
-    width: 30,
-    height: 30,
-    borderRadius: 30 / 2,
+    width: 25,
+    height: 25,
+    borderRadius: 25 / 2,
     // borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: rsplTheme.rsplWhite
   },
   editIcon: {
-    width: 15,
-    height: 15,
+    width: 12,
+    height: 12,
     resizeMode: "contain",
     tintColor: rsplTheme.gradientColorLeft
   },

@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'
 import React, { useContext, useState } from 'react'
 import Header from '../comman/Header'
 import { useNavigation } from '@react-navigation/native'

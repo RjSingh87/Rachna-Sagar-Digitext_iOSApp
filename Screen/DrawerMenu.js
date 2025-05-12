@@ -1,5 +1,5 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View, Image, Linking, Share, ImageBackground } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { rsplTheme } from '../constant'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { MyContext } from '../Store'
@@ -13,7 +13,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const DrawerMenu = ({ navigation, props }) => {
 
-  const { userData, logout, setSelectedTab } = useContext(MyContext)
+  const { userData, logout, setSelectedTab, fetchUpdatedProfileImage, userUpadatedRecord } = useContext(MyContext)
+
+  useEffect(() => {
+    if (userData?.isLogin) {
+      fetchUpdatedProfileImage()
+    }
+  }, [userData?.isLogin,])
 
 
   const privacyPolicy = (userSelected) => {
@@ -134,10 +140,12 @@ const DrawerMenu = ({ navigation, props }) => {
 
       <View style={{ width: "100%", paddingVertical: 10, alignItems: "center", justifyContent: "center", backgroundColor: "red", alignSelf: "center", marginBottom: 25, }}>
         <View style={{ width: 80, height: 80, borderRadius: 80 / 2, alignItems: "center", justifyContent: "center", backgroundColor: rsplTheme.rsplWhite }}>
-          <Image style={{ width: 70, height: 70, borderColor: rsplTheme.rsplLightPink, borderRadius: 70 / 2, resizeMode: "contain" }} source={userData?.data?.[0]?.image ? { uri: userData?.data[0]?.image } : require("../assets/RSPL.png")} />
+          <Image style={{ width: 70, height: 70, borderColor: rsplTheme.rsplLightPink, borderRadius: 70 / 2, resizeMode: "contain" }} source={userUpadatedRecord?.image ? { uri: userUpadatedRecord?.image } : require("../assets/RSPL.png")} />
+          {/* <Image style={{ width: 70, height: 70, borderColor: rsplTheme.rsplLightPink, borderRadius: 70 / 2, resizeMode: "contain" }} source={userData?.data?.[0]?.image ? { uri: userData?.data[0]?.image } : require("../assets/RSPL.png")} /> */}
         </View>
         <View style={{ marginVertical: 8, }}>
-          <Text style={{ color: rsplTheme.rsplWhite, fontWeight: "600", fontSize: 16 }}> {`${userData?.data?.[0]?.name || 'Unknow User'}`} </Text>
+          <Text style={{ color: rsplTheme.rsplWhite, fontWeight: "600", fontSize: 16 }}> {`${userUpadatedRecord?.name || 'Unknow User'}`} </Text>
+          {/* <Text style={{ color: rsplTheme.rsplWhite, fontWeight: "600", fontSize: 16 }}> {`${userData?.data?.[0]?.name || 'Unknow User'}`} </Text> */}
         </View>
       </View>
 
