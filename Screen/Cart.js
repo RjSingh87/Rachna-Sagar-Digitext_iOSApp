@@ -261,7 +261,7 @@ const Cart = () => {
                   <ActivityIndicator />
                 </View> :
                 <View style={styles.buttonContainer}>
-                  <TouchableOpacity disabled={item.quantity <= 1} onPress={(() => { decrement(item) })} style={[styles.pulsButton]}>
+                  <TouchableOpacity disabled={item.quantity <= 1} onPress={(() => { decrement(item) })} style={[styles.pulsButton, { opacity: item.quantity <= 1 ? .3 : 1 }]}>
                     <Text style={styles.quantityText}>-</Text>
                   </TouchableOpacity>
 

@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
+	<string>1.7</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -44,6 +44,8 @@
 		<string>gpay</string>
 		<string>whatsapp</string>
 		<string>upi</string>
+		<string>mailto</string>
+		<string>tel</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

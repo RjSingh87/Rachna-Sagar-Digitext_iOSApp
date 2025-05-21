@@ -396,6 +396,10 @@ PODS:
     - React-Core
   - react-native-safe-area-context (4.7.4):
     - React-Core
+  - react-native-screenguard (1.0.8-beta6):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+    - SDWebImage (~> 5.21.0)
   - react-native-splash-screen (3.3.0):
     - React-Core
   - react-native-voice (3.1.5):
@@ -527,6 +531,9 @@ PODS:
   - RNScreens (3.27.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
+  - SDWebImage (5.21.0):
+    - SDWebImage/Core (= 5.21.0)
+  - SDWebImage/Core (5.21.0)
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -587,6 +594,7 @@ DEPENDENCIES:
   - react-native-razorpay (from `../node_modules/react-native-razorpay`)
   - react-native-render-html (from `../node_modules/react-native-render-html`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-screenguard (from `../node_modules/react-native-screenguard`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - "react-native-voice (from `../node_modules/@react-native-voice/voice`)"
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -629,6 +637,7 @@ SPEC REPOS:
     - libevent
     - OpenSSL-Universal
     - razorpay-pod
+    - SDWebImage
     - SocketRocket
     - YogaKit
 
@@ -693,6 +702,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-render-html"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-screenguard:
+    :path: "../node_modules/react-native-screenguard"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
   react-native-voice:
@@ -790,6 +801,7 @@ SPEC CHECKSUMS:
   react-native-razorpay: 0272dd684bc9148828c54a72e05059e3e2e8b813
   react-native-render-html: 984dfe2294163d04bf5fe25d7c9f122e60e05ebe
   react-native-safe-area-context: 2cd91d532de12acdb0a9cbc8d43ac72a8e4c897c
+  react-native-screenguard: de7cbb6d8014f5c219287ae07ef5b6e3ac5a76bf
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   react-native-voice: 2b4ee948775b528dc450220406ee38c57c91b590
   react-native-webview: 50b995b6f59fd84010a1c1b3b2b782744d2d4c1b
@@ -815,6 +827,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: 5102af8c91262d5a9b757a56e734b1a02071d83b
   RNReanimated: f9d406228327def600da7c60c1d4db94429586c4
   RNScreens: bea7b9767050d69e4b9da14639cdd5c8f5a37881
+  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 6f5ab94cd8b1ecd04b6e973d0bc583ede2a598cc
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

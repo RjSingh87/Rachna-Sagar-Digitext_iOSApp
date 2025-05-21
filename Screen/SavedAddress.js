@@ -67,7 +67,7 @@ const SavedAddress = ({ route, navigation }) => {
     try {
       const result = await Services.post(apiRoutes.defaultAddress, payLoad)
       if (result.status === "success") {
-        Alert.alert("Info", result.message || "Fetch default address went wrong.")
+        Alert.alert("Address", result.message || "Fetch default address went wrong.")
         fetchUserAddress()
       } else if (result.status === "failed") {
         Alert.alert("Failed", result.message || "Fetch default address failed.")
@@ -194,7 +194,9 @@ const SavedAddress = ({ route, navigation }) => {
                   {address?.userAddress?.map((item, index) => {
                     // console.log(item.byDefault, "item.byDefault")
                     let backgroundColor = rsplTheme.rsplWhite
+                    let borderWidth = 0
                     item.byDefault === 1 ? backgroundColor = rsplTheme.rsplGreen : backgroundColor = backgroundColor
+                    item.byDefault === 1 ? borderWidth = .5 : borderWidth = borderWidth
                     if (item.byDefault === 1 && selectedAddress == null) {
                       // console.log("first", item?.id)
                       setSelectedAddress(item?.id)
@@ -205,13 +207,12 @@ const SavedAddress = ({ route, navigation }) => {
                     // }
                     return (
                       <View style={{ flexDirection: "row", alignItems: "center", padding: 5, }} key={item.id}>
-                        <View style={styles.row}>
-
+                        <View style={[styles.row, { borderWidth: borderWidth, borderColor: backgroundColor }]}>
                           {loader && selectedAddress == item?.id ?
                             <ActivityIndicator size={"large"} color={rsplTheme.rsplRed} /> :
-                            <TouchableOpacity onPress={(() => { fetchDefaultAddress(item.id) })} style={[styles.button, { flex: 1, flexDirection: "row", alignItems: "center", }]}>
+                            <TouchableOpacity disabled={address?.userAddress.length == 1} onPress={(() => { item.byDefault === 1 ? null : fetchDefaultAddress(item.id) })} style={[styles.button, { flex: 1, flexDirection: "row", alignItems: "center", }]}>
                               <View style={{ width: 15, height: 15, borderRadius: 15 / 2, borderWidth: 1, alignItems: "center", justifyContent: "center" }}><View style={{ width: 8, height: 8, borderRadius: 8 / 2, backgroundColor: backgroundColor }}></View></View>
-                              <View style={[styles.button, { marginLeft: 10, marginRight: 10, }]}>
+                              <View style={[styles.button, { marginLeft: 10, marginRight: 20, }]}>
                                 <Text selectable={true} style={styles.userName}>{item.name}</Text>
                                 <Text selectable={true} style={styles.userAdd}>{item.address}, {item.landmark}, {item.state} {item.city} {item.country} {item.pincode} </Text>
                                 <Text selectable={true} style={styles.userMob}>+91 {item.mobile}</Text>
@@ -219,7 +220,7 @@ const SavedAddress = ({ route, navigation }) => {
                             </TouchableOpacity>
                           }
 
-                          <View style={[styles.button, { justifyContent: "space-evenly" }]}>
+                          <View style={[styles.button, { justifyContent: "space-between", alignItems: "center", paddingVertical: 10 }]}>
                             <TouchableOpacity onPress={(() => {
                               const sortedAddressId = address?.userAddress?.filter(item => item.byDefault === 1);
                               const currentAddressId = sortedAddressId[0].id
@@ -236,13 +237,15 @@ const SavedAddress = ({ route, navigation }) => {
                                     }
                                   })
                               }
-                            })}
-                              style={{ width: 22, height: 22, borderRadius: 22 / 2, alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
+                            })}>
                               <Feather name="edit" size={16} color={rsplTheme.jetGrey} />
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={(() => { deleteAddress(item.id) })}>
+                            <TouchableOpacity disabled={address?.userAddress.length == 1} onPress={(() => { deleteAddress(item.id) })}>
                               <FontAwesome6 name="trash" size={15} color={rsplTheme.rsplRed} />
                             </TouchableOpacity>
+                            {/* <TouchableOpacity disabled={address?.userAddress.length == 1} onPress={(() => { item.byDefault === 1 ? null : fetchDefaultAddress(item.id) })} style={{ borderWidth: item.byDefault === 1 ? 0 : 1, borderColor: rsplTheme.jetGrey, padding: 5, borderRadius: 4, backgroundColor: backgroundColor }}>
+                              <Text style={{ fontSize: 10, textAlign: "center", color: item.byDefault === 1 ? rsplTheme.rsplWhite : null }}>Set as Default</Text>
+                            </TouchableOpacity> */}
                           </View>
                         </View>
                       </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, Linking, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Header from '../comman/Header'
 import { rsplTheme } from '../constant'
@@ -34,7 +34,41 @@ const ContactUs = ({ navigation }) => {
                   <Feather name="phone-call" size={25} color={rsplTheme.rsplLightPink} />
                 </View>
                 <View style={{ flex: 1, }}>
-                  <Text selectable style={{ fontSize: 16, color: rsplTheme.jetGrey }}>+91-11-43585858, 23285568</Text>
+
+                  <TouchableOpacity
+                    onPress={async () => {
+                      const phone = '+911143585858';
+                      const url = `tel:${phone}`;
+                      const supported = await Linking.canOpenURL(url);
+                      if (supported) {
+                        Linking.openURL(url);
+                      } else {
+                        console.log("Calling not supported on this device.");
+                      }
+                    }}
+                  >
+                    <Text style={{ fontSize: 16, color: rsplTheme.jetGrey, paddingVertical: 4 }}>
+                      +91-11-43585858
+                    </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={async () => {
+                      const phone = '+911123285568';
+                      const url = `tel:${phone}`;
+                      const supported = await Linking.canOpenURL(url);
+                      if (supported) {
+                        Linking.openURL(url);
+                      } else {
+                        console.log("Calling not supported on this device.");
+                      }
+                    }}
+                  >
+                    <Text style={{ fontSize: 16, color: rsplTheme.jetGrey, paddingVertical: 4 }}>
+                      +91-11-23285568
+                    </Text>
+                  </TouchableOpacity>
+                  {/* <Text selectable style={{ fontSize: 16, color: rsplTheme.jetGrey }}>+91-11-43585858, 23285568</Text> */}
                 </View>
               </View>
 
@@ -43,7 +77,23 @@ const ContactUs = ({ navigation }) => {
                   <Feather name="mail" size={25} color={rsplTheme.rsplLightPink} />
                 </View>
                 <View style={{ flex: 1, }}>
-                  <Text selectable style={{ fontSize: 16, color: rsplTheme.jetGrey }}>info@rachnasagar.in </Text>
+                  <TouchableOpacity
+                    onPress={async () => {
+                      const email = 'info@rachnasagar.in';
+                      const url = `mailto:${email}`;
+                      const supported = await Linking.canOpenURL(url);
+                      if (supported) {
+                        Linking.openURL(url);
+                      } else {
+                        console.log("No email app found.");
+                      }
+                    }}
+                  >
+                    <Text selectable style={{ fontSize: 16, color: rsplTheme.jetGrey }}>
+                      info@rachnasagar.in
+                    </Text>
+                  </TouchableOpacity>
+                  {/* <Text selectable style={{ fontSize: 16, color: rsplTheme.jetGrey }}>info@rachnasagar.in </Text> */}
                 </View>
               </View>
 

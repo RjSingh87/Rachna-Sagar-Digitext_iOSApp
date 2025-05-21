@@ -1,4 +1,4 @@
-import { Alert, Button, StyleSheet, Text, TextInput, View, Dimensions, TouchableOpacity, PixelRatio, useWindowDimensions, ActivityIndicator, ScrollView } from 'react-native'
+import { Alert, Button, StyleSheet, Text, DeviceEventEmitter, TextInput, View, Dimensions, TouchableOpacity, PixelRatio, useWindowDimensions, ActivityIndicator, ScrollView } from 'react-native'
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import Pdf from 'react-native-pdf'
 import Header from '../comman/Header'
@@ -9,6 +9,8 @@ import DeviceInfo from 'react-native-device-info'
 import Services from '../services'
 import { MyContext } from '../Store'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import ScreenGuardModule from 'react-native-screenguard';
+import NoInternetConn from './NoInternetConn'
 
 
 
@@ -83,6 +85,27 @@ const PdfViewerPasswordProtected = ({ route }) => {
   }, []);
 
 
+  //screenshot disabled
+  useEffect(() => {
+    // Register blur overlay when app goes background → foreground
+    ScreenGuardModule.register({
+      backgroundColor: rsplTheme.gradientColorRight,
+      timeAfterResume: 2000,
+    });
+
+    // ✅ Add ScreenshotTaken listener to suppress warning
+    const screenshotListener = DeviceEventEmitter.addListener('ScreenshotTaken', () => {
+      console.log('📸 ScreenshotTaken event captured');
+      // Optionally show blur overlay manually
+    });
+
+    return () => {
+      ScreenGuardModule.unregister();
+      screenshotListener.remove();
+    };
+  }, []);
+
+
 
 
 
@@ -140,6 +163,9 @@ const PdfViewerPasswordProtected = ({ route }) => {
         title={pdfTitle}
         onClickLeftIcon={() => { navigation.goBack(); }}
       />
+
+
+      <NoInternetConn />
 
       <View style={styles.container}>
         {/* PDF Container */}

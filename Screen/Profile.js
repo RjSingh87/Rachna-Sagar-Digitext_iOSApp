@@ -72,7 +72,7 @@ const Profile = ({ data }) => {
     const options = { mediaType: 'photo', saveToPhotos: true, quality: 1, };
     try {
       let result
-      setPopupVisible(false) // Hide popup
+      //setPopupVisible(false) // Hide popup
       if (userSelect === "camera") {
         result = await launchCamera(options)
       } else if (userSelect === "photo gallery") {
@@ -89,8 +89,7 @@ const Profile = ({ data }) => {
       const selectedImage = result.assets[0];
       // setUserPickImg(selectedImage.uri); // Show the image locally first
       await uploadImageToServer(selectedImage);// Upload to server
-
-
+      setPopupVisible(false)
     } catch (error) {
       console.error('Camera/Gallery error:', error);
     }
@@ -242,7 +241,12 @@ const Profile = ({ data }) => {
         Alert.alert("Info", result.message)
       }
     } catch (error) {
-      console.log(error, "error?userData.??")
+      // console.log({ error })
+      if (error.message === "TypeError: Network request failed") {
+        Alert.alert("Network Error", "Please try again.");
+      } else {
+        Alert.alert("Error:", error.message || "Something went wrong.")
+      }
     } finally {
       setSaveLoader(false)
     }

@@ -1,5 +1,5 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View, Image, Linking, Share, ImageBackground } from 'react-native'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { rsplTheme } from '../constant'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { MyContext } from '../Store'
@@ -13,11 +13,16 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const DrawerMenu = ({ navigation, props }) => {
 
-  const { userData, logout, setSelectedTab, fetchUpdatedProfileImage, userUpadatedRecord } = useContext(MyContext)
+  const { userData, logout, setSelectedTab, fetchUpdatedProfileImage, userUpadatedRecord, setUserUpadatedRecord } = useContext(MyContext)
+
+  const [userProfileImg, setUserProfileImg] = useState(require("../assets/RSPL.png"))
 
   useEffect(() => {
     if (userData?.isLogin) {
       fetchUpdatedProfileImage()
+    } else {
+      setUserProfileImg(require("../assets/RSPL.png"))
+      setUserUpadatedRecord(null) // <-- reset this
     }
   }, [userData?.isLogin,])
 
@@ -138,16 +143,16 @@ const DrawerMenu = ({ navigation, props }) => {
   return (
     <View style={{ flex: 1, }}>
 
-      <View style={{ width: "100%", paddingVertical: 10, alignItems: "center", justifyContent: "center", backgroundColor: "red", alignSelf: "center", marginBottom: 25, }}>
+      <TouchableOpacity onPress={(() => { setSelectedTab(4), navigation.navigate("Main"), navigation.dispatch(DrawerActions.closeDrawer()) })} style={{ width: "100%", paddingVertical: 10, alignItems: "center", justifyContent: "center", backgroundColor: rsplTheme.gradientColorRight, alignSelf: "center", marginBottom: 25, }}>
         <View style={{ width: 80, height: 80, borderRadius: 80 / 2, alignItems: "center", justifyContent: "center", backgroundColor: rsplTheme.rsplWhite }}>
-          <Image style={{ width: 70, height: 70, borderColor: rsplTheme.rsplLightPink, borderRadius: 70 / 2, resizeMode: "contain" }} source={userUpadatedRecord?.image ? { uri: userUpadatedRecord?.image } : require("../assets/RSPL.png")} />
+          <Image style={{ width: 70, height: 70, borderColor: rsplTheme.rsplLightPink, borderRadius: 70 / 2, resizeMode: "contain" }} source={userUpadatedRecord?.image ? { uri: userUpadatedRecord?.image } : userProfileImg} />
           {/* <Image style={{ width: 70, height: 70, borderColor: rsplTheme.rsplLightPink, borderRadius: 70 / 2, resizeMode: "contain" }} source={userData?.data?.[0]?.image ? { uri: userData?.data[0]?.image } : require("../assets/RSPL.png")} /> */}
         </View>
         <View style={{ marginVertical: 8, }}>
           <Text style={{ color: rsplTheme.rsplWhite, fontWeight: "600", fontSize: 16 }}> {`${userUpadatedRecord?.name || 'Unknow User'}`} </Text>
           {/* <Text style={{ color: rsplTheme.rsplWhite, fontWeight: "600", fontSize: 16 }}> {`${userData?.data?.[0]?.name || 'Unknow User'}`} </Text> */}
         </View>
-      </View>
+      </TouchableOpacity>
 
       <DrawerContentScrollView {...props}>
 
@@ -283,7 +288,7 @@ const DrawerMenu = ({ navigation, props }) => {
 
 
       <View style={{ borderBottomColor: rsplTheme.jetGrey, borderBottomWidth: 1, }}>
-        <Text style={{ fontWeight: "500", color: rsplTheme.jetGrey, marginLeft: 10, }}>Follow Us</Text>
+        <Text style={{ fontWeight: "500", color: rsplTheme.jetGrey, marginLeft: 10, fontSize: 11 }}>Follow Us</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-around", paddingVertical: 10, }}>
           <TouchableOpacity style={{ width: "11.11%", alignItems: "center" }} onPress={() => handlePress('facebook')}>
             <FontAwesome name="facebook" size={17} color="#4267B2" />
@@ -335,7 +340,7 @@ const DrawerMenu = ({ navigation, props }) => {
           <Text style={{ textAlign: "center", color: rsplTheme.rsplBlue, fontWeight: "400", }} >|</Text>
           <Text onPress={(() => { privacyPolicy("Privacy Policy") })} style={{ textAlign: "center", color: rsplTheme.rsplBlue, fontWeight: "400", }}>Privacy Policy</Text>
         </View>
-        <Text style={{ fontSize: 12, textAlign: "center", color: rsplTheme.jetGrey }} >Version: 1.0.1  |  Made in India</Text>
+        <Text style={{ fontSize: 12, textAlign: "center", color: rsplTheme.jetGrey }} >Version: 1.0.1  |  Made in Rachna Sagar</Text>
       </View>
 
 
